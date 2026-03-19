@@ -614,11 +614,24 @@
       background: radial-gradient(ellipse 60% 55% at 0% 60%, rgba(200,169,110,0.04) 0%, transparent 70%);
     }
     .relation-video-item {
-      grid-column: span 4;
+      grid-column: span 3;
     }
     .relation-video-item .video-wrap {
       max-width: 100%;
       aspect-ratio: 16/9;
+    }
+    .video-title {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+    .video-title-jp {
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
     }
 
     /* ── Contact ── */
@@ -1183,6 +1196,13 @@
       <div class="video-credit">Sound Assistant Director</div>
       <div class="video-wrap">
         <iframe src="https://www.youtube.com/embed/HAMhe3GoLZc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="work-item relation-video-item">
+      <div class="video-title">DYSCHRONIA: Chronos Alternate<br><span class="video-title-jp">ディスクロニア: CA</span></div>
+      <div class="video-credit">Assistant Director</div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/uQZH6bmOz64" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
