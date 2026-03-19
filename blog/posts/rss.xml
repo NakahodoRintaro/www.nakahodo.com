@@ -4,11 +4,60 @@
         <title>Rintaro Nakahodo Blog</title>
         <link>https://nakahodo.com/blog/posts</link>
         <description>NLP · AI · Creator</description>
-        <lastBuildDate>Thu, 19 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 20 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>© 2026 Rintaro Nakahodo</copyright>
+        <item>
+            <title><![CDATA[Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労]]></title>
+            <link>https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup</link>
+            <guid>https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup</guid>
+            <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。]]></description>
+            <content:encoded><![CDATA[<p>ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="やりたかったこと">やりたかったこと<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%82%84%E3%82%8A%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8" class="hash-link" aria-label="やりたかったこと への直接リンク" title="やりたかったこと への直接リンク" translate="no">​</a></h2>
+<p>nakahodo.com/blog/ のトップページに、よく読まれた記事のランキングを自動で表示したい。GA4（Google Analytics 4）はすでに設定していたので、そのデータを活用することにした。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="全体の構成">全体の構成<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E5%85%A8%E4%BD%93%E3%81%AE%E6%A7%8B%E6%88%90" class="hash-link" aria-label="全体の構成 への直接リンク" title="全体の構成 への直接リンク" translate="no">​</a></h2>
+<ul>
+<li class="">Docusaurus でブログをビルド</li>
+<li class="">GitHub Actions でビルド時に GA4 Data API からランキングデータを取得</li>
+<li class="">取得したデータを <code>static/ga-ranking.json</code> に書き出し</li>
+<li class="">トップページのReactコンポーネントでJSONを読み込んで表示</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ハマりポイント1測定idとプロパティidの違い">ハマりポイント1：測定IDとプロパティIDの違い<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%83%8F%E3%83%9E%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%881%E6%B8%AC%E5%AE%9Aid%E3%81%A8%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3id%E3%81%AE%E9%81%95%E3%81%84" class="hash-link" aria-label="ハマりポイント1：測定IDとプロパティIDの違い への直接リンク" title="ハマりポイント1：測定IDとプロパティIDの違い への直接リンク" translate="no">​</a></h2>
+<p>GA4には似たようなIDが複数あって最初に混乱した。</p>
+<table><thead><tr><th>名前</th><th>形式</th><th>用途</th></tr></thead><tbody><tr><td>測定ID</td><td><code>G-XXXXXXXX</code></td><td>サイトへのタグ埋め込み用</td></tr><tr><td>プロパティID</td><td>数字のみ（例: <code>123456789</code>）</td><td>Data API呼び出し用</td></tr></tbody></table>
+<p>Data APIに渡すのは<strong>プロパティID</strong>（数字のみ）。測定IDではない。</p>
+<p>プロパティIDの確認場所：GA4管理画面 → 管理（歯車）→ プロパティの設定 → ページ上部に表示。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ハマりポイント2サービスアカウントの設定">ハマりポイント2：サービスアカウントの設定<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%83%8F%E3%83%9E%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%882%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A" class="hash-link" aria-label="ハマりポイント2：サービスアカウントの設定 への直接リンク" title="ハマりポイント2：サービスアカウントの設定 への直接リンク" translate="no">​</a></h2>
+<p>GA4 Data APIはOAuth認証が必要で、GitHub Actionsから呼ぶにはサービスアカウントを使う。手順が多い。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="google-cloud側の設定">Google Cloud側の設定<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#google-cloud%E5%81%B4%E3%81%AE%E8%A8%AD%E5%AE%9A" class="hash-link" aria-label="Google Cloud側の設定 への直接リンク" title="Google Cloud側の設定 への直接リンク" translate="no">​</a></h3>
+<ol>
+<li class=""><a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer" class="">Google Cloud Console</a> でプロジェクトを作成</li>
+<li class="">「APIとサービス」→「ライブラリ」→「Google Analytics Data API」を有効化</li>
+<li class="">「IAMと管理」→「サービスアカウント」→「サービスアカウントを作成」</li>
+<li class="">作成したサービスアカウントの「キー」タブ → 「新しい鍵を作成」→ JSON でダウンロード</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ga4側の設定">GA4側の設定<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#ga4%E5%81%B4%E3%81%AE%E8%A8%AD%E5%AE%9A" class="hash-link" aria-label="GA4側の設定 への直接リンク" title="GA4側の設定 への直接リンク" translate="no">​</a></h3>
+<p>GA4管理画面 → 「プロパティのアクセス管理」→「＋」→ サービスアカウントのメールアドレス（<code>xxx@xxx.iam.gserviceaccount.com</code>）を<strong>閲覧者</strong>として追加。</p>
+<p>これを忘れると APIを叩いても権限エラーになる。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ハマりポイント3github-secretsの設定">ハマりポイント3：GitHub Secretsの設定<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%83%8F%E3%83%9E%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%883github-secrets%E3%81%AE%E8%A8%AD%E5%AE%9A" class="hash-link" aria-label="ハマりポイント3：GitHub Secretsの設定 への直接リンク" title="ハマりポイント3：GitHub Secretsの設定 への直接リンク" translate="no">​</a></h2>
+<p>GitHub リポジトリの Settings → Secrets and variables → Actions に以下を追加：</p>
+<table><thead><tr><th>Secret名</th><th>値</th></tr></thead><tbody><tr><td><code>GA4_PROPERTY_ID</code></td><td>プロパティIDの数字</td></tr><tr><td><code>GA4_CREDENTIALS</code></td><td>ダウンロードしたJSONファイルの内容全体</td></tr></tbody></table>
+<p>JSONはファイルをテキストエディタで開いてまるごとコピペする。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ハマりポイント4データがない期間はランキングを非表示にする">ハマりポイント4：データがない期間はランキングを非表示にする<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%83%8F%E3%83%9E%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%884%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8C%E3%81%AA%E3%81%84%E6%9C%9F%E9%96%93%E3%81%AF%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%92%E9%9D%9E%E8%A1%A8%E7%A4%BA%E3%81%AB%E3%81%99%E3%82%8B" class="hash-link" aria-label="ハマりポイント4：データがない期間はランキングを非表示にする への直接リンク" title="ハマりポイント4：データがない期間はランキングを非表示にする への直接リンク" translate="no">​</a></h2>
+<p>GA4のデータ収集が有効になっていない（サイトへのアクセスがまだない）段階では、APIを叩いてもデータが返ってこない。</p>
+<p>ビルドが落ちないように、APIエラー時や環境変数未設定時は空のJSONを書き出すようにした。</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">"updatedAt"</span><span class="token operator">:</span><span class="token plain"> </span><span class="token null keyword" style="color:rgb(189, 147, 249);font-style:italic">null</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">"ranking"</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<p>トップページ側でも <code>ranking.ranking.length &gt; 0</code> の場合のみランキングセクションを表示するようにして、データがない間はセクション自体を非表示にしている。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="github-actionsのワークフロー">GitHub Actionsのワークフロー<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#github-actions%E3%81%AE%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC" class="hash-link" aria-label="GitHub Actionsのワークフロー への直接リンク" title="GitHub Actionsのワークフロー への直接リンク" translate="no">​</a></h2>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Fetch GA4 ranking</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">run</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> npm run fetch</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">ranking</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">working-directory</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> blog</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">src</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">env</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">GA4_PROPERTY_ID</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> $</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> secrets.GA4_PROPERTY_ID </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">GA4_CREDENTIALS</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> $</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> secrets.GA4_CREDENTIALS </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<p>ビルドのたびに最新のランキングデータを取得してビルドに含めるシンプルな構成。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="まとめ">まとめ<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%81%BE%E3%81%A8%E3%82%81" class="hash-link" aria-label="まとめ への直接リンク" title="まとめ への直接リンク" translate="no">​</a></h2>
+<p>GA4 Data APIをCI/CDに組み込むのは手順が多いが、一度設定してしまえばあとは自動で動く。測定IDとプロパティIDの混同、サービスアカウントのGA4への追加忘れあたりが躓きやすいポイントだった。</p>]]></content:encoded>
+            <category>Engineering</category>
+        </item>
         <item>
             <title><![CDATA[ブログ開設しました]]></title>
             <link>https://nakahodo.com/blog/posts/2026/03/19/welcome</link>
