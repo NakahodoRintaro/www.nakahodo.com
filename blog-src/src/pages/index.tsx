@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useGlobalData from '@docusaurus/useGlobalData';
+import gaRankingData from '../../static/ga-ranking.json';
 import styles from './index.module.css';
+
+type GaRankingEntry = { rank: number; path: string; title: string; views: number };
+type GaRanking = { updatedAt: string | null; ranking: GaRankingEntry[] };
 
 type BlogPostMeta = {
   permalink: string;
@@ -92,6 +96,8 @@ export default function Home(): React.JSX.Element {
     ])
   );
 
+  const ranking = (gaRankingData as GaRanking);
+
   const recentPosts = [...allPosts].sort(
     (a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
   ).slice(0, 5);
@@ -108,6 +114,31 @@ export default function Home(): React.JSX.Element {
         </header>
 
         <div className={styles.body}>
+          {/* Access ranking */}
+          {ranking.ranking.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>
+                アクセスランキング
+                {ranking.updatedAt && (
+                  <span className={styles.updatedAt}>
+                    {new Date(ranking.updatedAt).toLocaleDateString('ja-JP')} 更新
+                  </span>
+                )}
+              </h2>
+              <ol className={styles.rankingList}>
+                {ranking.ranking.map((entry) => (
+                  <li key={entry.path} className={styles.rankingItem}>
+                    <span className={styles.rankNum}>{entry.rank}</span>
+                    <Link to={entry.path} className={styles.postTitle}>
+                      {entry.title}
+                    </Link>
+                    <span className={styles.postDate}>{entry.views.toLocaleString()} views</span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
           {/* Recent posts */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>最新記事</h2>

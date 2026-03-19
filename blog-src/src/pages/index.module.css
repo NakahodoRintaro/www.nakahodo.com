@@ -65,6 +65,45 @@
   border-bottom: 1px solid rgba(200, 169, 110, 0.14);
 }
 
+/* ── Ranking ── */
+.updatedAt {
+  font-size: 0.6rem;
+  color: #3a3a52;
+  letter-spacing: 0.06em;
+  margin-left: 1rem;
+  font-weight: 300;
+  text-transform: none;
+}
+
+.rankingList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  counter-reset: none;
+}
+
+.rankingItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #1a1a24;
+}
+
+.rankingItem:first-child {
+  border-top: 1px solid #1a1a24;
+}
+
+.rankNum {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #c8a96e;
+  letter-spacing: 0.06em;
+  min-width: 1.4rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
 /* ── Post list (recent) ── */
 .postList {
   list-style: none;

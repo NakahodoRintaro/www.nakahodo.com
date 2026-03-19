@@ -8,9 +8,11 @@
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "fetch-ranking": "node scripts/fetch-ga-ranking.mjs"
   },
   "dependencies": {
+    "@google-analytics/data": "^4.0.0",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/preset-classic": "^3.7.0",
     "@mdx-js/react": "^3.0.0",
