@@ -27,7 +27,7 @@ const config: Config = {
       {
         docs: false,
         blog: {
-          routeBasePath: '/',
+          routeBasePath: '/posts',
           showReadingTime: true,
           blogSidebarCount: 'ALL',
           blogSidebarTitle: '記事一覧',
@@ -45,7 +45,7 @@ const config: Config = {
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'ignore',
         },
-        pages: false,
+        pages: {},
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -62,7 +62,8 @@ const config: Config = {
     navbar: {
       title: 'Rintaro Nakahodo',
       items: [
-        { to: '/', label: 'Blog', position: 'left' },
+        { to: '/', label: 'Home', position: 'left' },
+        { to: '/posts', label: '記事一覧', position: 'left' },
         {
           href: 'https://nakahodo.com',
           label: '← Portfolio',

@@ -1,0 +1,157 @@
+/* Landing page — dark aesthetic matching the blog */
+
+.page {
+  background: #0a0a0f;
+  min-height: 100vh;
+  color: #e4e0d8;
+  font-family: 'Jost', 'LINESeedJP', sans-serif;
+}
+
+/* ── Hero ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.12);
+  background: linear-gradient(180deg, #0d0d14 0%, #0a0a0f 100%);
+}
+
+.heroTitle {
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #e4e0d8;
+  margin: 0 0 0.8rem;
+  line-height: 1.3;
+}
+
+.heroSubtitle {
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #c8a96e;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ── Section wrapper ── */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.sectionTitle {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c8a96e;
+  margin: 0 0 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+}
+
+/* ── Category grid ── */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.categoryCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.2rem;
+  background: #111118;
+  border: 1px solid #1e1e2a;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #e4e0d8;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.categoryCard:hover {
+  border-color: rgba(200, 169, 110, 0.5);
+  background: #16161f;
+  color: #c8a96e;
+  text-decoration: none;
+}
+
+.categoryIcon {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Latest posts section ── */
+.postList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.postList li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #1e1e2a;
+  color: #5a5a70;
+  font-size: 0.88rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.postList li:first-child {
+  border-top: 1px solid #1e1e2a;
+}
+
+.allPostsLink {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #c8a96e;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.35);
+  padding-bottom: 2px;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.allPostsLink:hover {
+  opacity: 0.75;
+  border-color: rgba(200, 169, 110, 0.7);
+  text-decoration: none;
+  color: #c8a96e;
+}
+
+/* ── Footer note ── */
+.footerNote {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #2e2e42;
+  padding: 1.5rem 2rem 3rem;
+  border-top: 1px solid #0c0c14;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: 1.7rem;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section {
+    padding: 3rem 1.2rem;
+  }
+}
