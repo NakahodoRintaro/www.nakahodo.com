@@ -600,6 +600,18 @@
       padding: 0 0.5rem;
     }
 
+    /* ── Relation Work ── */
+    #relation-work {
+      background: radial-gradient(ellipse 60% 55% at 0% 60%, rgba(200,169,110,0.04) 0%, transparent 70%);
+    }
+    .relation-video-item {
+      grid-column: span 4;
+    }
+    .relation-video-item .video-wrap {
+      max-width: 100%;
+      aspect-ratio: 16/9;
+    }
+
     /* ── Contact ── */
     #contact {
       background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(200,169,110,0.06) 0%, transparent 70%);
@@ -795,6 +807,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#works">Works</a></li>
+    <li><a href="#relation-work">Relation</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
@@ -1187,17 +1200,6 @@
   <div class="sub-section">
     <div class="section-header">
       <span class="section-num" style="opacity:0; pointer-events:none">—</span>
-      <span class="section-title">関わった作品</span>
-    </div>
-    <div class="video-credit">Sound Assistant Director</div>
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/HAMhe3GoLZc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="sub-section">
-    <div class="section-header">
-      <span class="section-num" style="opacity:0; pointer-events:none">—</span>
       <span class="section-title">Publications</span>
     </div>
     <div class="entries">
@@ -1253,10 +1255,26 @@
   </div>
 </section>
 
+<!-- ── Relation Work ── -->
+<section id="relation-work">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Relation Work</span>
+  </div>
+  <div class="works-grid">
+    <div class="work-item relation-video-item">
+      <div class="video-credit">Sound Assistant Director</div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/HAMhe3GoLZc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Contact ── -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <span class="section-title">Contact</span>
   </div>
   <div class="contact-big">Let's<br>Connect.</div>
