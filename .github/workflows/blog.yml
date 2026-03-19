@@ -25,6 +25,10 @@ jobs:
         run: npm install
         working-directory: blog-src
 
+      - name: Generate posts data
+        run: npm run generate-posts
+        working-directory: blog-src
+
       - name: Fetch GA4 ranking
         run: npm run fetch-ranking
         working-directory: blog-src

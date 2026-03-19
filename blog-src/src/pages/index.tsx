@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import useGlobalData from '@docusaurus/useGlobalData';
+import postsData from '../../static/posts-data.json';
 import gaRankingData from '../../static/ga-ranking.json';
 import styles from './index.module.css';
 
-type GaRankingEntry = { rank: number; path: string; title: string; views: number };
-type GaRanking = { updatedAt: string | null; ranking: GaRankingEntry[] };
-
-type BlogPostMeta = {
-  permalink: string;
+type Post = {
   title: string;
   date: string;
-  tags: Array<{ label: string; permalink: string }>;
+  permalink: string;
+  tags: string[];
   description?: string;
 };
 
-type BlogPost = {
-  id: string;
-  metadata: BlogPostMeta;
-};
+type GaEntry = { rank: number; path: string; title: string; views: number };
+type GaRanking = { updatedAt: string | null; ranking: GaEntry[] };
 
 const CATEGORIES = [
   { key: 'nlp',         label: 'NLP',         href: '/posts/tags/nlp' },
@@ -36,7 +31,7 @@ function formatDate(iso: string): string {
   return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 }
 
-function CategorySection({ cat, posts }: { cat: typeof CATEGORIES[0]; posts: BlogPost[] }) {
+function CategorySection({ cat, posts }: { cat: typeof CATEGORIES[0]; posts: Post[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -60,11 +55,11 @@ function CategorySection({ cat, posts }: { cat: typeof CATEGORIES[0]; posts: Blo
           ) : (
             <ul className={styles.postList}>
               {posts.map((post) => (
-                <li key={post.id} className={styles.postItem}>
-                  <Link to={post.metadata.permalink} className={styles.postTitle}>
-                    {post.metadata.title}
+                <li key={post.permalink} className={styles.postItem}>
+                  <Link to={post.permalink} className={styles.postTitle}>
+                    {post.title}
                   </Link>
-                  <span className={styles.postDate}>{formatDate(post.metadata.date)}</span>
+                  <span className={styles.postDate}>{formatDate(post.date)}</span>
                 </li>
               ))}
             </ul>
@@ -81,26 +76,19 @@ function CategorySection({ cat, posts }: { cat: typeof CATEGORIES[0]; posts: Blo
 }
 
 export default function Home(): React.JSX.Element {
-  const globalData = useGlobalData();
-  const blogData = (globalData?.['docusaurus-plugin-content-blog'] as any)?.default;
-  const allPosts: BlogPost[] = blogData?.blogPosts ?? [];
+  const allPosts = (postsData as { posts: Post[] }).posts;
+  const ranking = (gaRankingData as GaRanking);
+
+  const recentPosts = allPosts.slice(0, 5);
 
   const postsByCategory = Object.fromEntries(
     CATEGORIES.map((cat) => [
       cat.key,
       allPosts.filter((post) =>
-        post.metadata.tags.some(
-          (tag) => tag.label.toLowerCase() === cat.label.toLowerCase()
-        )
+        post.tags.some((tag) => tag.toLowerCase() === cat.label.toLowerCase())
       ),
     ])
   );
-
-  const ranking = (gaRankingData as GaRanking);
-
-  const recentPosts = [...allPosts].sort(
-    (a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
-  ).slice(0, 5);
 
   return (
     <Layout
@@ -114,7 +102,8 @@ export default function Home(): React.JSX.Element {
         </header>
 
         <div className={styles.body}>
-          {/* Access ranking */}
+
+          {/* Access ranking — shown only when GA4 data is available */}
           {ranking.ranking.length > 0 && (
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>
@@ -147,11 +136,11 @@ export default function Home(): React.JSX.Element {
             ) : (
               <ul className={styles.postList}>
                 {recentPosts.map((post) => (
-                  <li key={post.id} className={styles.postItem}>
-                    <Link to={post.metadata.permalink} className={styles.postTitle}>
-                      {post.metadata.title}
+                  <li key={post.permalink} className={styles.postItem}>
+                    <Link to={post.permalink} className={styles.postTitle}>
+                      {post.title}
                     </Link>
-                    <span className={styles.postDate}>{formatDate(post.metadata.date)}</span>
+                    <span className={styles.postDate}>{formatDate(post.date)}</span>
                   </li>
                 ))}
               </ul>
@@ -174,6 +163,7 @@ export default function Home(): React.JSX.Element {
               ))}
             </div>
           </section>
+
         </div>
       </div>
     </Layout>

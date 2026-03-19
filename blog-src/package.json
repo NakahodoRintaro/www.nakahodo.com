@@ -9,7 +9,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "typecheck": "tsc",
-    "fetch-ranking": "node scripts/fetch-ga-ranking.mjs"
+    "fetch-ranking": "node scripts/fetch-ga-ranking.mjs",
+    "generate-posts": "node scripts/generate-posts-data.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^4.0.0",
