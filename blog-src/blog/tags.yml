@@ -1,0 +1,23 @@
+nlp:
+  label: NLP
+  permalink: /nlp
+
+ai:
+  label: AI
+  permalink: /ai
+
+engineering:
+  label: Engineering
+  permalink: /engineering
+
+research:
+  label: Research
+  permalink: /research
+
+game:
+  label: Game
+  permalink: /game
+
+life:
+  label: Life
+  permalink: /life
