@@ -170,7 +170,7 @@ export default function Home(): React.JSX.Element {
           {/* Profile sidebar */}
           <aside className={styles.sidebar}>
             <div className={styles.profileCard}>
-              <img src="/img/icon_03.png" alt="Rintaro Nakahodo" className={styles.profileIcon} />
+              <img src="/img/icon.png" alt="Rintaro Nakahodo" className={styles.profileIcon} />
               <p className={styles.profileName}>Rintaro Nakahodo</p>
               <p className={styles.profileBio}>
                 NLP研究者 / FDEエンジニア / ゲームプロデューサー・開発者。
