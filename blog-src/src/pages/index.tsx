@@ -173,11 +173,13 @@ export default function Home(): React.JSX.Element {
               <img src="/blog/img/icon_03.png" alt="Rintaro Nakahodo" className={styles.profileIcon} />
               <p className={styles.profileName}>Rintaro Nakahodo</p>
               <p className={styles.profileBio}>
-                NLP研究者 / FDEエンジニア / ゲームプロデューサー・開発者。
+                研究者 / JTCのFDEエンジニア / 2019年からのゲームデベロッパー。
                 <br /><br />
                 冴えない彼女の育て方に共感し、ゲーム制作を始める。
                 <br /><br />
                 趣味はゲームとライブ参戦。Liella! をはじめ好きなアーティストのライブに足繁く通う。
+                <br /><br />
+                <em>Live with a Smile!</em>
               </p>
               <a
                 href="https://x.com/rin_88astro"
