@@ -38,7 +38,7 @@
   --ifm-heading-font-family: 'Jost', 'LINESeedJP', sans-serif;
   --ifm-font-size-base: 16px;
   --ifm-line-height-base: 1.9;
-  --ifm-font-weight-base: 300;
+  --ifm-font-weight-base: 400;
   --ifm-code-font-size: 90%;
   --ifm-spacing-horizontal: 2rem;
   --ifm-navbar-height: 64px;
@@ -132,7 +132,7 @@ article header h2 a:hover {
 
 /* ── Article body ── */
 .markdown {
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.9;
 }
 
@@ -141,7 +141,7 @@ article header h2 a:hover {
 .markdown h3 { font-weight: 500; }
 
 .markdown p {
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.9;
 }
 
