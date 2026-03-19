@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://nakahodo.com/blog/</id>
+    <id>https://nakahodo.com/blog/posts</id>
     <title>Rintaro Nakahodo Blog</title>
     <updated>2026-03-19T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://nakahodo.com/blog/"/>
+    <link rel="alternate" href="https://nakahodo.com/blog/posts"/>
     <subtitle>NLP · AI · Creator</subtitle>
     <icon>https://nakahodo.com/blog/img/favicon.ico</icon>
     <rights>© 2026 Rintaro Nakahodo</rights>
     <entry>
         <title type="html"><![CDATA[ブログ開設しました]]></title>
-        <id>https://nakahodo.com/blog/2026/03/19/welcome</id>
-        <link href="https://nakahodo.com/blog/2026/03/19/welcome"/>
+        <id>https://nakahodo.com/blog/posts/2026/03/19/welcome</id>
+        <link href="https://nakahodo.com/blog/posts/2026/03/19/welcome"/>
         <updated>2026-03-19T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[ポートフォリオサイト nakahodo.com にブログを追加しました。]]></summary>
         <content type="html"><![CDATA[<p>ポートフォリオサイト <a href="https://nakahodo.com/" target="_blank" rel="noopener noreferrer" class="">nakahodo.com</a> にブログを追加しました。</p>
 <p>音楽制作・開発関連・ゲーム制作・音楽・日々の思考など、気ままに書いていきます。</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="このブログについて">このブログについて<a href="https://nakahodo.com/blog/2026/03/19/welcome#%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" class="hash-link" aria-label="このブログについて への直接リンク" title="このブログについて への直接リンク" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="このブログについて">このブログについて<a href="https://nakahodo.com/blog/posts/2026/03/19/welcome#%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" class="hash-link" aria-label="このブログについて への直接リンク" title="このブログについて への直接リンク" translate="no">​</a></h2>
 <p>研究やエンジニアリングの話、制作物の裏話、思ったことを日本語・英語混じりで書いていくつもりです。</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ブログで扱う内容">ブログで扱う内容<a href="https://nakahodo.com/blog/2026/03/19/welcome#%E3%83%96%E3%83%AD%E3%82%B0%E3%81%A7%E6%89%B1%E3%81%86%E5%86%85%E5%AE%B9" class="hash-link" aria-label="ブログで扱う内容 への直接リンク" title="ブログで扱う内容 への直接リンク" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ブログで扱う内容">ブログで扱う内容<a href="https://nakahodo.com/blog/posts/2026/03/19/welcome#%E3%83%96%E3%83%AD%E3%82%B0%E3%81%A7%E6%89%B1%E3%81%86%E5%86%85%E5%AE%B9" class="hash-link" aria-label="ブログで扱う内容 への直接リンク" title="ブログで扱う内容 への直接リンク" translate="no">​</a></h2>
 <ul>
 <li class="">音楽制作について</li>
 <li class="">AI プロダクト設計</li>
