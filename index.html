@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Rintaro Nakahodo</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="NLP Researcher, AI Engineer, Creator" name="description">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171495970-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-171495970-1');
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a12;
+      --bg2: #0f0f1a;
+      --text: #e8e0d0;
+      --accent: #c8a96e;
+      --accent2: #f0d898;
+      --muted: #556;
+      --line: #1a1a28;
+      --pixel-size: 3px;
+    }
+    html { background: var(--bg); scroll-behavior: smooth; image-rendering: pixelated; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', 'Noto Sans JP', serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── Stars background ── */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--text);
+      image-rendering: pixelated;
+      animation: twinkle var(--t, 3s) var(--d, 0s) infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.1; }
+    }
+
+    /* ── Scanlines overlay ── */
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9000;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.07) 2px,
+        rgba(0,0,0,0.07) 4px
+      );
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 1.2rem 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,18,0.88);
+      border-bottom: 2px solid var(--line);
+      image-rendering: pixelated;
+    }
+    .nav-logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+    .nav-logo span {
+      color: var(--muted);
+      font-size: 0.45rem;
+      display: block;
+      margin-top: 4px;
+      letter-spacing: 0.15em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s, color 0.2s;
+      position: relative;
+    }
+    .nav-links a::before {
+      content: '▶';
+      position: absolute;
+      left: -1em;
+      opacity: 0;
+      color: var(--accent);
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--accent); }
+    .nav-links a:hover::before { opacity: 1; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 5vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1.6rem, 4vw, 3.5rem);
+      line-height: 1.6;
+      color: var(--text);
+      text-shadow:
+        4px 4px 0 var(--accent),
+        -2px -2px 0 rgba(200,169,110,0.15);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .name-second {
+      color: var(--accent);
+      text-shadow:
+        4px 4px 0 rgba(200,169,110,0.3);
+    }
+
+    .hero-role {
+      font-family: 'VT323', monospace;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--accent2);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-family: 'VT323', monospace;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-scroll {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.45rem;
+      color: var(--muted);
+      letter-spacing: 0.3em;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: blink 1.2s steps(1) infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── Pixel Art Stage (scrolling scene) ── */
+    .pixel-stage {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+      margin-top: 2rem;
+      border-top: 3px solid #1a1a2e;
+      z-index: 2;
+    }
+    .pixel-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,10,18,0.5) 100%);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Ground */
+    .ground {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 24px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #1a2a1a 0px, #1a2a1a 24px,
+          #1e2e1e 24px, #1e2e1e 48px
+        );
+      border-top: 3px solid #2a3a2a;
+    }
+
+    /* ── Scrolling layers ── */
+    .scroll-layer {
+      position: absolute;
+      bottom: 24px;
+      display: flex;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .layer-far   { animation: scrollFar   40s linear infinite; bottom: 60px; }
+    .layer-mid   { animation: scrollMid   25s linear infinite; bottom: 24px; }
+    .layer-near  { animation: scrollNear  15s linear infinite; bottom: 24px; }
+    .layer-clouds { animation: scrollClouds 60s linear infinite; bottom: 110px; }
+
+    @keyframes scrollFar   { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scrollMid   { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scrollNear  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scrollClouds { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* Pixel sprites using CSS */
+    .sprite { display: inline-block; image-rendering: pixelated; position: relative; }
+
+    /* Moon sprite */
+    .sprite-moon {
+      width: 48px; height: 48px;
+      position: absolute;
+      top: 20px; right: 15vw;
+      z-index: 3;
+    }
+    .sprite-moon svg { image-rendering: pixelated; }
+
+    /* Buildings far */
+    .bld {
+      display: inline-block;
+      background: var(--c, #1a1a2e);
+      border-top: 3px solid var(--ct, #2a2a3e);
+      margin-right: var(--gap, 8px);
+      vertical-align: bottom;
+      position: relative;
+    }
+    .bld::before {
+      content: '';
+      position: absolute;
+      top: 6px; left: 50%; transform: translateX(-50%);
+      width: 6px; height: 6px;
+      background: rgba(200,169,110,0.4);
+      box-shadow:
+        0 12px 0 rgba(200,169,110,0.3),
+        12px 0 0 rgba(200,169,110,0.2),
+        12px 12px 0 rgba(200,169,110,0.15);
+    }
+
+    /* Trees */
+    .tree {
+      display: inline-block;
+      position: relative;
+      margin-right: 12px;
+      vertical-align: bottom;
+    }
+    .tree-trunk {
+      width: 9px; height: 15px;
+      background: #3a2a1a;
+      margin: 0 auto;
+      border-top: 3px solid #4a3a2a;
+    }
+    .tree-top {
+      width: 0; height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 30px solid #1a3a1a;
+      position: relative;
+      margin: 0 auto;
+    }
+    .tree-top::before {
+      content: '';
+      position: absolute;
+      top: 8px; left: -14px;
+      width: 0; height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-bottom: 24px solid #1e421e;
+    }
+    .tree-top::after {
+      content: '';
+      position: absolute;
+      top: 18px; left: -10px;
+      width: 0; height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 18px solid #224a22;
+    }
+
+    /* Pixel character (running) */
+    .pixel-char {
+      display: inline-block;
+      position: relative;
+      width: 24px; height: 36px;
+      margin-right: 60px;
+    }
+    .pixel-char svg { image-rendering: pixelated; animation: run 0.4s steps(2) infinite; }
+    @keyframes run {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-3px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Cloud */
+    .cloud {
+      display: inline-block;
+      position: relative;
+      margin-right: 120px;
+    }
+    .cloud-body {
+      width: 60px; height: 18px;
+      background: rgba(200,180,150,0.12);
+      border: 2px solid rgba(200,180,150,0.18);
+      position: relative;
+    }
+    .cloud-body::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: 12px;
+      width: 30px; height: 18px;
+      background: rgba(200,180,150,0.12);
+      border: 2px solid rgba(200,180,150,0.18);
+      border-bottom: none;
+    }
+    .cloud-body::after {
+      content: '';
+      position: absolute;
+      top: -6px; left: 30px;
+      width: 18px; height: 12px;
+      background: rgba(200,180,150,0.12);
+      border: 2px solid rgba(200,180,150,0.18);
+      border-bottom: none;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 7rem 5vw;
+      border-top: 2px solid var(--line);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.55rem;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      padding: 0.4em 0.6em;
+    }
+    .section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── About ── */
+    #about {
+      background: radial-gradient(ellipse 60% 60% at 90% 50%, rgba(200,169,110,0.04) 0%, transparent 70%);
+    }
+    .about-text {
+      font-size: clamp(1.6rem, 3vw, 3rem);
+      font-weight: 300;
+      line-height: 1.65;
+      max-width: 800px;
+    }
+    .about-text em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .about-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 3rem;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-decoration: none;
+      border: 2px solid var(--line);
+      padding: 0.8em 1.2em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .about-link::before { content: '▶'; color: var(--accent); margin-right: 0.4em; }
+    .about-link:hover { color: var(--accent); border-color: var(--accent); background: rgba(200,169,110,0.05); }
+
+    /* ── Experience / Timeline ── */
+    #experience {
+      background: radial-gradient(ellipse 60% 50% at 0% 40%, rgba(200,169,110,0.03) 0%, transparent 65%);
+    }
+    .entries { display: flex; flex-direction: column; }
+    .entry {
+      display: grid;
+      grid-template-columns: 200px 1fr 160px;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .entry::before {
+      content: '▶';
+      position: absolute;
+      left: -1.5rem;
+      top: 2.2rem;
+      font-size: 0.5rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .entry:hover::before { opacity: 1; }
+    .entry:last-child { border-bottom: 1px solid var(--line); }
+
+    .entry-year {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      color: var(--muted);
+      padding-top: 0.2rem;
+      letter-spacing: 0.08em;
+    }
+    .entry-title {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .entry-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .entry-sub a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .entry-sub a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .entry-tag {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-align: right;
+      padding-top: 0.2rem;
+    }
+    .entry-badge {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.4rem;
+      padding: 0.4em 0.7em;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      letter-spacing: 0.15em;
+    }
+    .fde-badge {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      padding: 0.3em 0.6em;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      vertical-align: middle;
+      margin-left: 0.7rem;
+    }
+
+    .sub-section { margin-top: 5rem; }
+
+    /* ── Works ── */
+    #works {
+      background: radial-gradient(ellipse 65% 55% at 100% 60%, rgba(200,169,110,0.04) 0%, transparent 70%);
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.5rem;
+    }
+    .work-item:nth-child(1) { grid-column: span 4; }
+    .work-item:nth-child(2) { grid-column: span 2; }
+    .work-item:nth-child(3),
+    .work-item:nth-child(4) { grid-column: span 3; }
+    .work-item:nth-child(5) { grid-column: span 6; }
+    .work-item:nth-child(n+6) { grid-column: span 2; }
+
+    .work-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--line);
+      border: 2px solid #1e1e30;
+      position: relative;
+    }
+    .work-item:nth-child(2) .work-img { aspect-ratio: 3/4; }
+    .work-item:nth-child(5) .work-img { aspect-ratio: 21/7; }
+
+    /* Pixel art placeholder */
+    .work-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(45deg,
+          transparent,
+          transparent 4px,
+          rgba(200,169,110,0.03) 4px,
+          rgba(200,169,110,0.03) 8px
+        );
+    }
+    .work-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.4s;
+      filter: grayscale(50%) brightness(0.8) sepia(0.2);
+      image-rendering: auto;
+    }
+    .work-item:hover .work-img img {
+      transform: scale(1.05);
+      filter: grayscale(0) brightness(1);
+    }
+    .work-title {
+      font-family: 'VT323', monospace;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+    }
+    .work-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .work-title a:hover { color: var(--accent); }
+    .work-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    /* ── Video ── */
+    .video-wrap {
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 2px solid var(--line);
+    }
+    .video-wrap iframe { width: 100%; height: 100%; border: none; }
+
+    /* ── Pixel scrolling ticker ── */
+    .pixel-ticker {
+      overflow: hidden;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      padding: 0.7rem 0;
+      background: var(--bg2);
+      position: relative;
+      z-index: 2;
+    }
+    .ticker-inner {
+      display: flex;
+      gap: 0;
+      animation: tickerScroll 30s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.45rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      padding: 0 3rem;
+      opacity: 0.6;
+    }
+    .ticker-sep {
+      color: var(--muted);
+      padding: 0 0.5rem;
+    }
+
+    /* ── Contact ── */
+    #contact {
+      background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(200,169,110,0.06) 0%, transparent 70%);
+    }
+    .contact-big {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1.2rem, 4vw, 3.5rem);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      color: var(--text);
+      text-shadow: 4px 4px 0 rgba(200,169,110,0.2);
+    }
+    .social-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .social-link {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-decoration: none;
+      border: 2px solid var(--line);
+      padding: 0.8em 1.2em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .social-link::before { content: '↗'; color: var(--accent); }
+    .social-link:hover { color: var(--accent); border-color: var(--accent); background: rgba(200,169,110,0.05); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 5vw;
+      border-top: 2px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg2);
+    }
+    footer p {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    footer .pixel-heart {
+      color: var(--accent);
+      animation: blink 1.5s steps(1) infinite;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .works-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-item:nth-child(n) { grid-column: span 1; }
+      .work-item:nth-child(1) { grid-column: span 2; }
+      .work-item:nth-child(2) .work-img,
+      .work-item:nth-child(5) .work-img { aspect-ratio: 16/10; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      #hero { padding: 5rem 2rem 0; }
+      section { padding: 4rem 2rem; }
+      .entry { grid-template-columns: 1fr; gap: 0.4rem; }
+      .entry-tag { text-align: left; }
+      .works-grid { grid-template-columns: 1fr; }
+      .work-item:nth-child(n) { grid-column: span 1; }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="stars" id="stars-bg"></div>
+<div class="scanlines"></div>
+
+<!-- ── Nav ── -->
+<nav id="nav">
+  <a class="nav-logo" href="#">NRN
+    <span>NAKAHODO PORTFOLIO</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      NAKAHODO<br>
+      <span class="name-second">RINTARO</span>
+    </h1>
+    <div class="hero-role">Researcher &nbsp;·&nbsp; NLP &nbsp;·&nbsp; AI Engineer</div>
+    <div class="hero-sub">The Eternal Seeker</div>
+    <div class="hero-scroll">▼ &nbsp; SCROLL</div>
+  </div>
+
+  <!-- Moon sprite (static) -->
+  <div class="sprite-moon">
+    <svg viewBox="0 0 16 16" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+      <!-- Moon body -->
+      <rect x="4" y="0" width="8" height="2" fill="#f0d898"/>
+      <rect x="2" y="2" width="12" height="2" fill="#f0d898"/>
+      <rect x="1" y="4" width="14" height="8" fill="#f0d898"/>
+      <rect x="2" y="12" width="12" height="2" fill="#f0d898"/>
+      <rect x="4" y="14" width="8" height="2" fill="#f0d898"/>
+      <!-- Eyes -->
+      <rect x="4" y="6" width="2" height="2" fill="#0a0a12"/>
+      <rect x="10" y="6" width="2" height="2" fill="#0a0a12"/>
+      <!-- Smile -->
+      <rect x="5" y="10" width="6" height="1" fill="#0a0a12"/>
+      <rect x="4" y="9" width="1" height="1" fill="#0a0a12"/>
+      <rect x="11" y="9" width="1" height="1" fill="#0a0a12"/>
+      <!-- Cheeks -->
+      <rect x="2" y="8" width="2" height="1" fill="#e8a0a0" opacity="0.6"/>
+      <rect x="12" y="8" width="2" height="1" fill="#e8a0a0" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- Pixel art scrolling stage -->
+  <div class="pixel-stage">
+
+    <!-- Layer: Clouds (slowest) -->
+    <div class="scroll-layer layer-clouds">
+      <div class="cloud"><div class="cloud-body"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:80px"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:45px"></div></div>
+      <div class="cloud"><div class="cloud-body"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:90px"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:50px"></div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="cloud"><div class="cloud-body"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:80px"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:45px"></div></div>
+      <div class="cloud"><div class="cloud-body"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:90px"></div></div>
+      <div class="cloud"><div class="cloud-body" style="width:50px"></div></div>
+    </div>
+
+    <!-- Layer: Far buildings -->
+    <div class="scroll-layer layer-far">
+      <div class="bld" style="width:30px; height:80px; --c:#12122a; --ct:#1e1e38; --gap:4px"></div>
+      <div class="bld" style="width:20px; height:55px; --c:#141428; --ct:#1c1c36; --gap:6px"></div>
+      <div class="bld" style="width:40px; height:95px; --c:#10102a; --ct:#1a1a3a; --gap:4px"></div>
+      <div class="bld" style="width:25px; height:65px; --c:#121230; --ct:#1a1a40; --gap:8px"></div>
+      <div class="bld" style="width:35px; height:75px; --c:#14142c; --ct:#1e1e3c; --gap:4px"></div>
+      <div class="bld" style="width:18px; height:50px; --c:#101028; --ct:#181838; --gap:10px"></div>
+      <div class="bld" style="width:28px; height:88px; --c:#12123a; --ct:#1c1c4a; --gap:4px"></div>
+      <div class="bld" style="width:22px; height:60px; --c:#10102c; --ct:#18183c; --gap:6px"></div>
+      <!-- duplicate -->
+      <div class="bld" style="width:30px; height:80px; --c:#12122a; --ct:#1e1e38; --gap:4px"></div>
+      <div class="bld" style="width:20px; height:55px; --c:#141428; --ct:#1c1c36; --gap:6px"></div>
+      <div class="bld" style="width:40px; height:95px; --c:#10102a; --ct:#1a1a3a; --gap:4px"></div>
+      <div class="bld" style="width:25px; height:65px; --c:#121230; --ct:#1a1a40; --gap:8px"></div>
+      <div class="bld" style="width:35px; height:75px; --c:#14142c; --ct:#1e1e3c; --gap:4px"></div>
+      <div class="bld" style="width:18px; height:50px; --c:#101028; --ct:#181838; --gap:10px"></div>
+      <div class="bld" style="width:28px; height:88px; --c:#12123a; --ct:#1c1c4a; --gap:4px"></div>
+      <div class="bld" style="width:22px; height:60px; --c:#10102c; --ct:#18183c; --gap:6px"></div>
+    </div>
+
+    <!-- Layer: Mid trees + buildings -->
+    <div class="scroll-layer layer-mid">
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:45px; height:70px; --c:#1a1a36; --ct:#262646; --gap:12px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:55px; height:85px; --c:#1c1c38; --ct:#282848; --gap:8px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:38px; height:65px; --c:#181832; --ct:#24244a; --gap:14px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <!-- duplicate -->
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:45px; height:70px; --c:#1a1a36; --ct:#262646; --gap:12px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:55px; height:85px; --c:#1c1c38; --ct:#282848; --gap:8px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="bld" style="width:38px; height:65px; --c:#181832; --ct:#24244a; --gap:14px"></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+      <div class="tree"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+    </div>
+
+    <!-- Layer: Near (foreground characters + elements) -->
+    <div class="scroll-layer layer-near">
+      <!-- Pixel character SVG -->
+      <div class="pixel-char">
+        <svg viewBox="0 0 8 12" width="24" height="36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="0" width="4" height="4" fill="#c8a96e"/>
+          <rect x="1" y="4" width="6" height="4" fill="#c8a96e"/>
+          <rect x="0" y="8" width="3" height="4" fill="#c8a96e"/>
+          <rect x="5" y="8" width="3" height="4" fill="#c8a96e"/>
+          <rect x="2" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="5" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="3" y="3" width="2" height="1" fill="#0a0a12"/>
+        </svg>
+      </div>
+      <!-- Cat pixel -->
+      <div style="display:inline-block; margin-right:80px; vertical-align:bottom;">
+        <svg viewBox="0 0 10 10" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="8" height="6" fill="#888"/>
+          <rect x="1" y="0" width="2" height="3" fill="#888"/>
+          <rect x="7" y="0" width="2" height="3" fill="#888"/>
+          <rect x="3" y="4" width="1" height="1" fill="#000"/>
+          <rect x="6" y="4" width="1" height="1" fill="#000"/>
+          <rect x="3" y="6" width="4" height="1" fill="#000"/>
+          <rect x="9" y="5" width="3" height="1" fill="#888" transform="translate(-2,0)"/>
+        </svg>
+      </div>
+      <!-- Pixel person 2 -->
+      <div class="pixel-char" style="animation-delay:0.2s">
+        <svg viewBox="0 0 8 12" width="24" height="36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="0" width="4" height="4" fill="#a0c0e0"/>
+          <rect x="1" y="4" width="6" height="4" fill="#a0c0e0"/>
+          <rect x="0" y="8" width="3" height="4" fill="#a0c0e0"/>
+          <rect x="5" y="8" width="3" height="4" fill="#a0c0e0"/>
+          <rect x="2" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="5" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="3" y="3" width="2" height="1" fill="#0a0a12"/>
+        </svg>
+      </div>
+      <!-- Duplicate for loop -->
+      <div class="pixel-char">
+        <svg viewBox="0 0 8 12" width="24" height="36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="0" width="4" height="4" fill="#c8a96e"/>
+          <rect x="1" y="4" width="6" height="4" fill="#c8a96e"/>
+          <rect x="0" y="8" width="3" height="4" fill="#c8a96e"/>
+          <rect x="5" y="8" width="3" height="4" fill="#c8a96e"/>
+          <rect x="2" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="5" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="3" y="3" width="2" height="1" fill="#0a0a12"/>
+        </svg>
+      </div>
+      <div style="display:inline-block; margin-right:80px; vertical-align:bottom;">
+        <svg viewBox="0 0 10 10" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="8" height="6" fill="#888"/>
+          <rect x="1" y="0" width="2" height="3" fill="#888"/>
+          <rect x="7" y="0" width="2" height="3" fill="#888"/>
+          <rect x="3" y="4" width="1" height="1" fill="#000"/>
+          <rect x="6" y="4" width="1" height="1" fill="#000"/>
+          <rect x="3" y="6" width="4" height="1" fill="#000"/>
+          <rect x="9" y="5" width="3" height="1" fill="#888" transform="translate(-2,0)"/>
+        </svg>
+      </div>
+      <div class="pixel-char" style="animation-delay:0.2s">
+        <svg viewBox="0 0 8 12" width="24" height="36" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="0" width="4" height="4" fill="#a0c0e0"/>
+          <rect x="1" y="4" width="6" height="4" fill="#a0c0e0"/>
+          <rect x="0" y="8" width="3" height="4" fill="#a0c0e0"/>
+          <rect x="5" y="8" width="3" height="4" fill="#a0c0e0"/>
+          <rect x="2" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="5" y="1" width="1" height="1" fill="#0a0a12"/>
+          <rect x="3" y="3" width="2" height="1" fill="#0a0a12"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Ground -->
+    <div class="ground"></div>
+  </div>
+</section>
+
+<!-- ── Ticker ── -->
+<div class="pixel-ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">NLP RESEARCHER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">AI ENGINEER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">CREATOR</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">BORN IN HOKKAIDO</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">THE ETERNAL SEEKER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">FUJITSU FDE</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">MICROSOFT TOP PARTNER ENGINEER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">GAME CREATOR</span>
+    <span class="ticker-item">·</span>
+    <!-- duplicate -->
+    <span class="ticker-item">NLP RESEARCHER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">AI ENGINEER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">CREATOR</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">BORN IN HOKKAIDO</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">THE ETERNAL SEEKER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">FUJITSU FDE</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">MICROSOFT TOP PARTNER ENGINEER</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">GAME CREATOR</span>
+    <span class="ticker-item">·</span>
+  </div>
+</div>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">About</span>
+  </div>
+  <p class="about-text">
+    I'm a <em>NLPer</em> and Creator.<br>
+    Born in <em>Hokkaido</em>.<br>
+    Exploring the boundaries<br>of language and intelligence.
+  </p>
+  <a class="about-link" href="https://github.com/NakahodoRintaro" target="_blank">
+    GitHub &nbsp;↗
+  </a>
+</section>
+
+<!-- ── Experience ── -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Experience</span>
+  </div>
+
+  <div class="entries">
+    <div class="entry">
+      <span class="entry-year">April 2024 — Current</span>
+      <div>
+        <div class="entry-title">AI App Engineer <span class="fde-badge">FDE</span></div>
+        <div class="entry-sub">Fujitsu<br>Responsible for front-end, back-end, and infrastructure as an application engineer for advanced generative AI.</div>
+      </div>
+      <div class="entry-tag"><span class="entry-badge">In Progress</span></div>
+    </div>
+    <div class="entry">
+      <span class="entry-year">Sept 2021 — Current</span>
+      <div>
+        <div class="entry-title">Game Biz — Intern</div>
+        <div class="entry-sub"><a href="https://mydearestvr.com/" target="_blank">MyDearest</a><br>Research, Article-Creation, Character-Setting, SNS, PR — <a href="https://dyschroniaca.com/" target="_blank">DYSCHRONIA: Chronos Alternate</a></div>
+      </div>
+      <div class="entry-tag">Game / VR</div>
+    </div>
+    <div class="entry">
+      <span class="entry-year">April 2020 — April 2024</span>
+      <div>
+        <div class="entry-title">Data Scientist — Intern</div>
+        <div class="entry-sub">Media Trust<br>Analyzing documents and creating value from hidden data using machine learning in Sler.</div>
+      </div>
+      <div class="entry-tag">Data Science</div>
+    </div>
+    <div class="entry">
+      <span class="entry-year">Oct — Dec 2020</span>
+      <div>
+        <div class="entry-title">Data Scientist — Intern</div>
+        <div class="entry-sub"><a href="https://corporate.quick.co.jp/" target="_blank">Quick</a><br>Data Science with Financial and Economic Information.</div>
+      </div>
+      <div class="entry-tag">Finance</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="section-header">
+      <span class="section-num" style="opacity:0; pointer-events:none">—</span>
+      <span class="section-title">Education</span>
+    </div>
+    <div class="entries">
+      <div class="entry">
+        <span class="entry-year">— May 2022</span>
+        <div>
+          <div class="entry-title">Data Science Faculty</div>
+          <div class="entry-sub"><a href="https://www.musashino-u.ac.jp/news/20200203-03.html" target="_blank">Musashino University</a> — 4 Years Course</div>
+        </div>
+        <div class="entry-tag">Education</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">2019 —</span>
+        <div>
+          <div class="entry-title">Producer</div>
+          <div class="entry-sub">Fratino — Game Circle</div>
+        </div>
+        <div class="entry-tag">Creative</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="section-header">
+      <span class="section-num" style="opacity:0; pointer-events:none">—</span>
+      <span class="section-title">Awards</span>
+    </div>
+    <div class="entries">
+      <div class="entry">
+        <span class="entry-year">2025</span>
+        <div>
+          <div class="entry-title">AI Microsoft Top Partner Engineer Award</div>
+          <div class="entry-sub"><a href="https://www.microsoft.com/ja-jp/events/jp-tpeaward2025#tab-azure-data-ai" target="_blank">Microsoft 2025 Top Partner Engineer Award Winner</a></div>
+        </div>
+        <div class="entry-tag">Award</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">August 2024</span>
+        <div>
+          <div class="entry-title">AI Microsoft Top Partner Engineer Award</div>
+          <div class="entry-sub"><a href="https://www.microsoft.com/ja-jp/events/jp-tpeaward2024" target="_blank">Microsoft 2024 Top Partner Engineer Award Winner</a></div>
+        </div>
+        <div class="entry-tag">Award</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">January 2021</span>
+        <div>
+          <div class="entry-title">GDL Award</div>
+          <div class="entry-sub"><a href="http://www.gdl.jp/" target="_blank">Governance Design Laboratory</a> — VR Interaction Research</div>
+        </div>
+        <div class="entry-tag">Award</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">March 2020</span>
+        <div>
+          <div class="entry-title">DEIM Online Presentation Award</div>
+          <div class="entry-sub"><a href="https://db-event.jpn.org/deim2020/post/awards.html" target="_blank">DEIM2020</a> — Story Signature</div>
+        </div>
+        <div class="entry-tag">Award</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">January 2020</span>
+        <div>
+          <div class="entry-title">AINOW Award</div>
+          <div class="entry-sub"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">Interviewed by AINOW, Japan's #1 AI online media</a></div>
+        </div>
+        <div class="entry-tag">Award</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Works ── -->
+<section id="works">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">Works</span>
+  </div>
+
+  <div class="works-grid">
+    <div class="work-item">
+      <div class="work-img"><img src="img/port01.png" alt="Story Signature"></div>
+      <div class="work-title"><a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">Story Signature</a></div>
+      <div class="work-desc">ストーリー展開特徴抽出における類似検索可視化方式の実現 — Lead author. Method to score storylines as waves and search for similar novels robustly.</div>
+    </div>
+    <div class="work-item">
+      <div class="work-img"><img src="img/port02.jpg" alt="Recommend Hat"></div>
+      <div class="work-title"><a href="https://ds-pj.musashino-u.ac.jp/RH" target="_blank">Recommend Hat</a></div>
+      <div class="work-desc">A system that suggests hats based on facial features. Web application. Back-end & Web app development.</div>
+    </div>
+    <div class="work-item">
+      <div class="work-img"><img src="img/port05.png" alt="Mosquito interaction"></div>
+      <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
+      <div class="work-desc">Unity VR game. Spray to defeat mosquitoes. Realistic VR sensation — a mosquito bite triggers real itch feedback.</div>
+    </div>
+    <div class="work-item">
+      <div class="work-img"><img src="img/port04.jpg" alt="AINOW Interview"></div>
+      <div class="work-title"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">小説のデータ分析に1年生から挑戦</a></div>
+      <div class="work-desc">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
+    </div>
+    <div class="work-item">
+      <div class="work-img"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"></div>
+      <div class="work-title"><a href="https://twitter.com/myFratino/status/1210639366155980800?s=20" target="_blank">萩原雪歩の穴掘り大作戦</a></div>
+      <div class="work-desc">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="section-header">
+      <span class="section-num" style="opacity:0; pointer-events:none">—</span>
+      <span class="section-title">Demo</span>
+    </div>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/fy0NQZfbj_o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="section-header">
+      <span class="section-num" style="opacity:0; pointer-events:none">—</span>
+      <span class="section-title">Publications</span>
+    </div>
+    <div class="entries">
+      <div class="entry">
+        <span class="entry-year">July 2021</span>
+        <div>
+          <div class="entry-title">Semantic Waveform Measurement Method of Kansei Transition for Time-series Media Contents</div>
+          <div class="entry-sub">Takafumi Nakanishi, Ryotaro Okada, Rintaro Nakahodo — IIAI2021</div>
+        </div>
+        <div class="entry-tag">Journal</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">Oct 2020</span>
+        <div>
+          <div class="entry-title">Linguistic Duality</div>
+          <div class="entry-sub">Rintaro Nakahodo, Virach Sornlertlamvanich — <a href="https://ieeexplore.ieee.org/document/9310942" target="_blank">IEEE InCit2020</a></div>
+        </div>
+        <div class="entry-tag">Publication</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">Sept 2020</span>
+        <div>
+          <div class="entry-title">Kansei Transition Analysis by Time-series Change of Media Content</div>
+          <div class="entry-sub">Takafumi Nakanishi, Ryotaro Okada, Rintaro Nakahodo — IIAI AAI 2020</div>
+        </div>
+        <div class="entry-tag">Publication</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">March 2021</span>
+        <div>
+          <div class="entry-title">ニュース記事を対象としたトピック解析を用いたバイアス発見方式</div>
+          <div class="entry-sub">柳瀬愛里, 木村侑斗, 萩本新平, 中田亮佑, 中村洋太, 本田くれあ, 仲程凜太朗, 中西崇文 — DEIM2021</div>
+        </div>
+        <div class="entry-tag">Publication</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">March 2020</span>
+        <div>
+          <div class="entry-title">Story Signature: ストーリー展開特徴抽出における類似検索可視化方式の実現</div>
+          <div class="entry-sub">仲程凜太朗, 岡田龍太郎, 中西崇史 — <a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">DEIM2020</a></div>
+        </div>
+        <div class="entry-tag">Publication</div>
+      </div>
+      <div class="entry">
+        <span class="entry-year">March 2020</span>
+        <div>
+          <div class="entry-title">顔画像を対象とした特徴量クラスタリングを用いた顔印象自動抽出方式</div>
+          <div class="entry-sub">柳瀬愛里 et al. — <a href="https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=206070&item_no=1&page_id=13&block_id=8" target="_blank">IPSJ2020</a></div>
+        </div>
+        <div class="entry-tag">Publication</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Contact</span>
+  </div>
+  <div class="contact-big">Let's<br>Connect.</div>
+  <div class="social-links">
+    <a class="social-link" href="https://github.com/NakahodoRintaro" target="_blank">GitHub</a>
+    <a class="social-link" href="https://twitter.com/rin_88astro" target="_blank">Twitter</a>
+    <a class="social-link" href="https://www.linkedin.com/in/rintaro-nakahodo-884305199" target="_blank">LinkedIn</a>
+    <a class="social-link" href="https://www.wantedly.com/id/naka_rintaro" target="_blank">Wantedly</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Rintaro Nakahodo</p>
+  <p>Researcher · Creator · <span class="pixel-heart">♥</span> The Eternal Seeker</p>
+</footer>
+
+<script>
+  // ── Generate stars ──
+  (function() {
+    const container = document.getElementById('stars-bg');
+    const count = 120;
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top  = Math.random() * 100 + '%';
+      // Pixel clusters: sometimes 4px
+      if (Math.random() < 0.15) {
+        star.style.width = '4px';
+        star.style.height = '4px';
+        star.style.opacity = '0.5';
+      }
+      star.style.setProperty('--t', (2 + Math.random() * 4) + 's');
+      star.style.setProperty('--d', (Math.random() * 4) + 's');
+      container.appendChild(star);
+    }
+  })();
+
+  // ── Smooth scroll for nav links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── Scroll-in animation ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.entry, .work-item, .section-header, .about-text').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
