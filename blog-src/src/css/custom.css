@@ -246,20 +246,51 @@ th {
 
 /* ── Footer ── */
 .footer {
-  font-size: 0.85rem;
+  background: #030305 !important;
+  border-top: 1px solid rgba(200, 169, 110, 0.18);
+  font-size: 0.82rem;
   font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  padding: 3.5rem 0 2rem;
 }
 
-[data-theme='dark'] .footer {
-  border-top: 1px solid #1e1e2a;
+.footer__links {
+  margin-bottom: 2.5rem;
 }
 
 .footer__title {
   font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
+.footer__item {
+  margin-bottom: 0.6rem;
+}
+
+.footer__link-item {
+  color: #444458;
+  transition: color 0.2s;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.footer__copyright {
+  color: #2e2e42;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  border-top: 1px solid #0c0c14;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 /* ── Author card ── */

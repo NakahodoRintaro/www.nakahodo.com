@@ -717,9 +717,46 @@
       .work-item:nth-child(1) { grid-column: span 2; }
       .work-item:nth-child(2) .work-img { aspect-ratio: 16/10; }
     }
+    /* ── Hamburger ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
+    nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 640px) {
-      nav { padding: 1rem 2rem; }
-      .nav-links { display: none; }
+      nav { padding: 1rem 2rem; flex-wrap: wrap; align-items: center; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 0.8rem 0 0.4rem;
+        order: 3;
+      }
+      nav.open .nav-links { display: flex; }
+      .nav-links li { border-top: 1px solid var(--line); }
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 0.45rem;
+      }
+      .nav-links a::before { display: none; }
       #hero { padding: 5rem 2rem 0; }
       section { padding: 4rem 2rem; }
       .entry { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -741,6 +778,9 @@
   <a class="nav-logo" href="#">
     <img src="img/logo.png" alt="Rintaro Nakahodo">
   </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -1323,6 +1363,16 @@
       container.appendChild(star);
     }
   })();
+
+  // ── Hamburger menu toggle ──
+  document.getElementById('nav-hamburger').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav').classList.remove('open');
+    });
+  });
 
   // ── Smooth scroll for nav links ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
