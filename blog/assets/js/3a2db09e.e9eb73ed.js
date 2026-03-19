@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunknakahodo_blog=globalThis.webpackChunknakahodo_blog||[]).push([[121],{8070(a){a.exports=JSON.parse('{"tags":[{"label":"Life","permalink":"/blog/tags/life","count":1}]}')}}]);
