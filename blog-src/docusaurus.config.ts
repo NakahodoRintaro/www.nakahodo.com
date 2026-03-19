@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Rintaro Nakahodo | Blog',
-  tagline: 'NLP Researcher · AI Engineer · Creator',
+  tagline: 'NLP Researcher · Engineer · Creator',
   favicon: 'img/favicon.ico',
 
   url: 'https://nakahodo.com',
@@ -91,7 +91,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Rintaro Nakahodo — NLP Researcher · AI Engineer · Creator`,
+      copyright: `© ${new Date().getFullYear()} Rintaro Nakahodo — NLP Researcher · Engineer · Creator`,
     },
     prism: {
       theme: prismThemes.github,
