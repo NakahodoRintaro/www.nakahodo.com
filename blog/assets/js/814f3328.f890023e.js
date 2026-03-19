@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunknakahodo_blog=globalThis.webpackChunknakahodo_blog||[]).push([[472],{5513(e){e.exports=JSON.parse('{"title":"\u8a18\u4e8b\u4e00\u89a7","items":[{"title":"\u30d6\u30ed\u30b0\u958b\u8a2d\u3057\u307e\u3057\u305f","permalink":"/blog/2026/03/19/welcome","unlisted":false,"date":"2026-03-19T00:00:00.000Z"}]}')}}]);
