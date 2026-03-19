@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500;600&display=swap');
 
 /* ── Light mode ── */
 :root {
@@ -9,8 +9,8 @@
   --ifm-color-primary-light: #c8a96e;
   --ifm-color-primary-lighter: #d8b97e;
   --ifm-color-primary-lightest: #e8d0a0;
-  --ifm-font-family-base: 'Cormorant Garamond', 'Noto Sans JP', Georgia, serif;
-  --ifm-heading-font-family: 'Cormorant Garamond', Georgia, serif;
+  --ifm-font-family-base: 'Jost', 'Noto Serif JP', serif;
+  --ifm-heading-font-family: 'Jost', 'Noto Serif JP', serif;
   --ifm-font-size-base: 17px;
   --ifm-line-height-base: 1.8;
   --ifm-code-font-size: 90%;
