@@ -326,6 +326,23 @@
   transition: opacity 0.2s, border-color 0.2s;
 }
 
+.motto {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: #c8a96e;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.motto:hover {
+  opacity: 0.7;
+  text-decoration: none;
+  color: #c8a96e;
+}
+
 .profileLink:hover {
   opacity: 0.7;
   border-color: rgba(200, 169, 110, 0.5);

@@ -179,7 +179,14 @@ export default function Home(): React.JSX.Element {
                 <br /><br />
                 趣味はゲームとライブ参戦。Liella! をはじめ好きなアーティストのライブに足繁く通う。
                 <br /><br />
-                <em>Live with a Smile!</em>
+                <a
+                  href="https://open.spotify.com/intl-ja/track/5VmeWIQkbCjW0q2SQbYagC?si=9f1d3f8727064093"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.motto}
+                >
+                  Live with a Smile!
+                </a>
               </p>
               <a
                 href="https://x.com/rin_88astro"
