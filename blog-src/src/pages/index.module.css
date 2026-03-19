@@ -37,11 +37,20 @@
   opacity: 0.85;
 }
 
-/* ── Body ── */
-.body {
-  max-width: 860px;
+/* ── Layout (2-column) ── */
+.layout {
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem 4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+/* ── Body ── */
+.body {
+  flex: 1;
+  min-width: 0;
 }
 
 /* ── Section ── */
@@ -259,18 +268,101 @@
   color: #c8a96e;
 }
 
+/* ── Sidebar ── */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 5rem;
+}
+
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1.2rem;
+  background: #0d0d14;
+  border: 1px solid rgba(200, 169, 110, 0.1);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.profileIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(200, 169, 110, 0.25);
+}
+
+.profileName {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #e4e0d8;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.profileBio {
+  font-size: 0.75rem;
+  color: #7a7a9a;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+  margin: 0;
+  text-align: left;
+}
+
+.profileLink {
+  display: block;
+  width: 100%;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #c8a96e;
+  text-decoration: none;
+  border: 1px solid rgba(200, 169, 110, 0.2);
+  border-radius: 2px;
+  padding: 0.4rem 0;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.profileLink:hover {
+  opacity: 0.7;
+  border-color: rgba(200, 169, 110, 0.5);
+  text-decoration: none;
+  color: #c8a96e;
+}
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .heroTitle {
     font-size: 1.5rem;
   }
 
-  .body {
-    padding: 0 1.2rem 3rem;
-  }
-
   .postItem {
     flex-direction: column;
     gap: 0.2rem;
+  }
+
+  .layout {
+    flex-direction: column;
+    padding: 0 1.2rem 3rem;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .profileCard {
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .profileBio {
+    text-align: left;
   }
 }
