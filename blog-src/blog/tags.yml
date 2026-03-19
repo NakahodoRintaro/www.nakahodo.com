@@ -21,3 +21,7 @@ game:
 life:
   label: Life
   permalink: /life
+
+Music:
+  label: Music
+  permalink: /Music
