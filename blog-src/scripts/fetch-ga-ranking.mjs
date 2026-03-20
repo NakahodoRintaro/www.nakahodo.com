@@ -111,10 +111,11 @@ async function main() {
     if (!isArticlePath(path)) continue;
     const title = row.dimensionValues[1].value;
     const views = Number(row.metricValues[0].value);
+    const cleanTitle = title.replace(/\s*\|\s*Rintaro Nakahodo.*$/, '').trim();
     if (merged.has(path)) {
       merged.get(path).views += views;
     } else {
-      merged.set(path, { path, title, views });
+      merged.set(path, { path, title: cleanTitle, views });
     }
   }
 
