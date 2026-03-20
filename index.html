@@ -555,6 +555,22 @@
       transform: scale(1.05);
       filter: grayscale(0) brightness(1);
     }
+    .work-hover-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .work-item:hover .work-hover-video {
+      opacity: 1;
+    }
+    .work-item:hover .work-img img {
+      opacity: 0;
+    }
     .work-img::after {
       content: attr(data-cta);
       position: absolute;
@@ -1335,17 +1351,17 @@
 
   <div class="works-grid">
     <div class="work-item">
-      <div class="work-img" data-cta="▶ READ PAPER"><img src="img/port01.png" alt="Story Signature"></div>
+      <div class="work-img" data-cta="▶ READ PAPER"><img src="img/port01.png" alt="Story Signature"><video class="work-hover-video" src="img/video/story-signature.mp4" muted loop playsinline></video></div>
       <div class="work-title"><a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">Story Signature</a></div>
       <div class="work-desc" data-i18n="work-1">Method to score storylines as waves and search for similar novels — Lead author. NLP × narrative structure.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ OPEN"><img src="img/port02.jpg" alt="Recommend Hat"></div>
+      <div class="work-img" data-cta="▶ OPEN"><img src="img/port02.jpg" alt="Recommend Hat"><video class="work-hover-video" src="img/video/recommend-hat.mp4" muted loop playsinline></video></div>
       <div class="work-title"><a href="https://ds-pj.musashino-u.ac.jp/RH" target="_blank">Recommend Hat</a></div>
       <div class="work-desc" data-i18n="work-2">A system that suggests hats based on facial features. Web application. Back-end &amp; Web app development.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ PLAY NOW"><img src="img/port05.png" alt="Mosquito interaction"></div>
+      <div class="work-img" data-cta="▶ PLAY NOW"><img src="img/port05.png" alt="Mosquito interaction"><video class="work-hover-video" src="img/video/mosquito.mp4" muted loop playsinline></video></div>
       <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
       <div class="work-desc" data-i18n="work-3">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
     </div>
@@ -1355,7 +1371,7 @@
       <div class="work-desc" data-i18n="work-4">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ VIEW"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"></div>
+      <div class="work-img" data-cta="▶ VIEW"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"><video class="work-hover-video" src="img/video/yukiho.mp4" muted loop playsinline></video></div>
       <div class="work-title"><a href="https://twitter.com/myFratino/status/1210639366155980800?s=20" target="_blank">萩原雪歩の穴掘り大作戦</a></div>
       <div class="work-desc" data-i18n="work-5">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
     </div>
@@ -1592,6 +1608,14 @@
   });
 
   applyLang(currentLang);
+
+  // ── Works hover video ──
+  document.querySelectorAll('.work-hover-video').forEach(video => {
+    if (!video.src) return;
+    const item = video.closest('.work-item');
+    item.addEventListener('mouseenter', () => { video.play().catch(() => {}); });
+    item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  });
 
   // ── Hamburger menu toggle ──
   const hamburger = document.getElementById('nav-hamburger');
