@@ -43,6 +43,14 @@
   --ifm-spacing-horizontal: 2rem;
   --ifm-navbar-height: 64px;
   --docusaurus-highlighted-code-line-bg: rgba(200, 169, 110, 0.1);
+
+  /* ── Page-specific tokens (light) ── */
+  --page-hero-bg-from: #f5f2ec;
+  --page-hero-bg-to: #f0ece4;
+  --page-border: #e0dbd0;
+  --page-border-strong: #d8d2c8;
+  --page-text-muted: #9a96a0;
+  --page-profile-bg: #f8f5ef;
 }
 
 /* ── Dark mode ── */
@@ -64,6 +72,14 @@
   --ifm-hr-border-color: #1e1e2a;
   --ifm-color-emphasis-300: #2a2a38;
   --docusaurus-highlighted-code-line-bg: rgba(200, 169, 110, 0.08);
+
+  /* ── Page-specific tokens (dark) ── */
+  --page-hero-bg-from: #0d0d14;
+  --page-hero-bg-to: #0a0a0f;
+  --page-border: #1a1a24;
+  --page-border-strong: #0e0e18;
+  --page-text-muted: #3a3a52;
+  --page-profile-bg: #0d0d14;
 }
 
 /* ── Global ── */
