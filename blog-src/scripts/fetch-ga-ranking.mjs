@@ -31,6 +31,24 @@ if (CREDENTIALS_JSON) {
 
 const client = new BetaAnalyticsDataClient(clientOptions);
 
+// Paths that are NOT article pages
+const EXCLUDE_PREFIXES = [
+  '/blog/posts/tags/',
+  '/blog/posts/archive',
+  '/blog/posts/authors',
+  '/blog/posts/page/',
+];
+
+function isArticlePath(path) {
+  if (path === '/blog/posts/' || path === '/blog/posts') return false;
+  return !EXCLUDE_PREFIXES.some((prefix) => path.startsWith(prefix));
+}
+
+// Normalize path: ensure trailing slash for consistent dedup
+function normalizePath(path) {
+  return path.endsWith('/') ? path : path + '/';
+}
+
 async function main() {
   const [response] = await client.runReport({
     property: `properties/${PROPERTY_ID}`,
@@ -38,23 +56,72 @@ async function main() {
     dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
     metrics: [{ name: 'screenPageViews' }],
     dimensionFilter: {
-      filter: {
-        fieldName: 'pagePath',
-        stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/' },
+      andGroup: {
+        expressions: [
+          {
+            filter: {
+              fieldName: 'pagePath',
+              stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/' },
+            },
+          },
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/tags/' },
+              },
+            },
+          },
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/archive' },
+              },
+            },
+          },
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/authors' },
+              },
+            },
+          },
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/posts/page/' },
+              },
+            },
+          },
+        ],
       },
     },
     orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-    limit: 10,
+    limit: 50, // fetch more to account for dedup merging
   });
 
-  const ranking = (response.rows ?? [])
-    .filter((row) => row.dimensionValues?.[0]?.value !== '/blog/posts/')
-    .map((row, i) => ({
-      rank: i + 1,
-      path: row.dimensionValues[0].value,
-      title: row.dimensionValues[1].value,
-      views: Number(row.metricValues[0].value),
-    }));
+  // Deduplicate by normalized path, summing views, keeping first title seen
+  const merged = new Map();
+  for (const row of response.rows ?? []) {
+    const rawPath = row.dimensionValues[0].value;
+    const path = normalizePath(rawPath);
+    if (!isArticlePath(path)) continue;
+    const title = row.dimensionValues[1].value;
+    const views = Number(row.metricValues[0].value);
+    if (merged.has(path)) {
+      merged.get(path).views += views;
+    } else {
+      merged.set(path, { path, title, views });
+    }
+  }
+
+  const ranking = [...merged.values()]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 10)
+    .map((entry, i) => ({ rank: i + 1, ...entry }));
 
   writeRanking(ranking);
   console.log(`[fetch-ranking] Wrote ${ranking.length} entries.`);
