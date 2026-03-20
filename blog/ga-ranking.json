@@ -1,17 +1,23 @@
 {
-  "updatedAt": "2026-03-20T11:13:02.397Z",
+  "updatedAt": "2026-03-20T16:36:32.127Z",
   "ranking": [
     {
       "rank": 1,
       "path": "/blog/posts/2026/03/20/ga4-ranking-setup/",
       "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
-      "views": 20
+      "views": 25
     },
     {
       "rank": 2,
       "path": "/blog/posts/2026/03/19/welcome/",
       "title": "ブログ開設しました",
-      "views": 15
+      "views": 20
+    },
+    {
+      "rank": 3,
+      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
+      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
+      "views": 10
     }
   ]
 }
