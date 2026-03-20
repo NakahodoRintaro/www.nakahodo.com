@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://nakahodo.com/blog/posts"/>
     <subtitle>NLP · AI · Creator</subtitle>
-    <icon>https://nakahodo.com/blog/img/favicon.png</icon>
+    <icon>https://nakahodo.com/blog/img/favicon.ico</icon>
     <rights>© 2026 Rintaro Nakahodo</rights>
     <entry>
         <title type="html"><![CDATA[Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く]]></title>
