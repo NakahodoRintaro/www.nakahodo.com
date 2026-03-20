@@ -111,18 +111,114 @@ body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    order: 10;
   }
-  /* Prevent toggle from overlapping right-side items if any appear */
   .navbar__items--right {
     display: none;
   }
-  /* Ensure mobile sidebar menu has correct z-index and is visible */
-  .navbar-sidebar {
-    z-index: 300;
-  }
+}
+
+/* ── Mobile fullscreen overlay menu ── */
+@media (max-width: 996px) {
+  /* Backdrop → semi-transparent full cover */
   .navbar-sidebar__backdrop {
-    z-index: 200;
+    background: rgba(6, 6, 12, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Sidebar panel → full screen slide-in from right */
+  .navbar-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(6, 6, 12, 0.97) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  }
+
+  .navbar-sidebar--show .navbar-sidebar {
+    transform: translateX(0);
+  }
+
+  /* Hide brand row */
+  .navbar-sidebar__brand {
+    display: none;
+  }
+
+  /* Center the nav items */
+  .navbar-sidebar__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    padding: 0 2.5rem;
+    overflow: hidden;
+  }
+
+  .navbar-sidebar__item.menu {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Menu list */
+  .navbar-sidebar .menu {
+    padding: 0;
+  }
+
+  .navbar-sidebar .menu__list {
+    padding: 0;
+    width: 100%;
+  }
+
+  .navbar-sidebar .menu__list-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin: 0;
+  }
+
+  .navbar-sidebar .menu__list-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar-sidebar .menu__link {
+    font-family: 'Jost', 'LINESeedJP', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #e4e0d8 !important;
+    padding: 1.1rem 0;
+    border-radius: 0;
+    background: none !important;
+    transition: color 0.2s;
+    display: block;
+  }
+
+  .navbar-sidebar .menu__link:hover,
+  .navbar-sidebar .menu__link--active {
+    color: #c8a96e !important;
+    background: none !important;
+  }
+
+  /* Close button → top right */
+  .navbar-sidebar__close {
+    position: fixed;
+    top: 1.1rem;
+    right: 1rem;
+    z-index: 10;
+    background: none;
+    border: none;
+    color: #e4e0d8;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+  }
+
+  /* Hide secondary items area (back button etc.) */
+  .navbar-sidebar__items--show-secondary {
+    display: none;
   }
 }
 
