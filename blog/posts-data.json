@@ -11,6 +11,15 @@
       "description": "先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。"
     },
     {
+      "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
+      "date": "2026-03-21",
+      "permalink": "/blog/posts/2026/03/21/giscus-comments/",
+      "tags": [
+        "engineering"
+      ],
+      "description": "ブログに「いいね」と「コメント」を実装した。note.com のようにハートボタンがついていて、記事の下にコメントが書ける、あの機能だ。"
+    },
+    {
       "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
       "date": "2026-03-20",
       "permalink": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
