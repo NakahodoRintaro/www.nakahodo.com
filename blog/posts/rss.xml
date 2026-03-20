@@ -69,7 +69,9 @@
 <p>Entraのポリシーを誰かが誤って変更してしまったとき、今まで手動で復元するしかなかった。運用チームには素直に嬉しいアップデート。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="まとめ">まとめ<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#%E3%81%BE%E3%81%A8%E3%82%81" class="hash-link" aria-label="まとめ への直接リンク" title="まとめ への直接リンク" translate="no">​</a></h2>
-<p>今週はFoundry Agent ServiceのGAが大きかった。エージェント開発のインフラをどこまで自前でやるかという議論が変わってくる可能性がある。FDEエンジニアとして顧客にどう提案するかも少し考え直す必要が出てきた。</p>
+<p>今週はFoundry Agent ServiceのGAが大きかった。</p>
+<p>「エージェントのインフラをどこまで自前でやるか」という問いの立て方自体が、少し変わってきた気がする。各社のマネージドサービスが急速に整備されていく中で、「自前で作れる」ことより「どのサービスが何の課題に効くかを見極められる」ことの方が強みになる。</p>
+<p>FDEエンジニアとしての提案も、根本から作り直す必要はない。むしろこれまで導入時のボトルネックになっていた部分——オブザーバビリティの整備、ランタイム構築、フレームワーク選定——に対して、今回のアップデートがどの程度寄与できるかを具体的に示せるようになった。提案の軸はそのままに、根拠がより厚くなったと捉えている。</p>
 <p>週次でAzureのアップデートを追うのは量が多くて大変だが、<a href="https://youtu.be/jkpcFAYJjvM" target="_blank" rel="noopener noreferrer" class="">John Savillのまとめ動画</a>は毎回コンパクトにまとまっているので重宝している。</p>]]></content:encoded>
             <category>Engineering</category>
             <category>AI</category>
