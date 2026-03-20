@@ -542,6 +542,25 @@
       transform: scale(1.05);
       filter: grayscale(0) brightness(1);
     }
+    .work-img::after {
+      content: attr(data-cta);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      background: rgba(6, 6, 12, 0.55);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .work-item:hover .work-img::after {
+      opacity: 1;
+    }
     .work-title {
       font-family: 'VT323', monospace;
       font-size: 1.15rem;
@@ -927,8 +946,8 @@
       NAKAHODO<br>
       <span class="name-second">RINTARO</span>
     </h1>
-    <div class="hero-role">NLP Researcher &nbsp;·&nbsp; FDE Engineer &nbsp;·&nbsp; Game Producer / Developer</div>
-    <div class="hero-sub">The Eternal Seeker</div>
+    <div class="hero-role">言語を解き、物語を創る。</div>
+    <div class="hero-sub">NLP Researcher &nbsp;·&nbsp; FDE Engineer &nbsp;·&nbsp; Game Creator</div>
     <div class="hero-scroll">▼ &nbsp; SCROLL</div>
   </div>
 
@@ -1139,9 +1158,10 @@
     <span class="section-title">About</span>
   </div>
   <p class="about-text">
-    I'm a <em>NLPer</em> and Creator.<br>
-    Born in <em>Hokkaido</em>.<br>
-    Exploring the boundaries<br>of language and intelligence.
+    NLP researcher, FDE engineer, and game creator — born in <em>Hokkaido</em>.<br><br>
+    Started making games after deeply resonating with <em>Saenai Heroine no Sodatekata</em>.<br>
+    The desire to create something that moves people<br>led me from fiction to language research,<br>and back to building interactive stories.<br><br>
+    Exploring the intersection of language,<br>intelligence, and narrative.
   </p>
   <a class="about-link" href="https://github.com/NakahodoRintaro" target="_blank">
     GitHub &nbsp;↗
@@ -1300,27 +1320,27 @@
 
   <div class="works-grid">
     <div class="work-item">
-      <div class="work-img"><img src="img/port01.png" alt="Story Signature"></div>
+      <div class="work-img" data-cta="▶ READ PAPER"><img src="img/port01.png" alt="Story Signature"></div>
       <div class="work-title"><a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">Story Signature</a></div>
-      <div class="work-desc">ストーリー展開特徴抽出における類似検索可視化方式の実現 — Lead author. Method to score storylines as waves and search for similar novels robustly.</div>
+      <div class="work-desc">小説のストーリー展開を波形として捉え、類似作品を検索するシステム — Lead author. NLP × narrative structure.</div>
     </div>
     <div class="work-item">
-      <div class="work-img"><img src="img/port02.jpg" alt="Recommend Hat"></div>
+      <div class="work-img" data-cta="▶ OPEN"><img src="img/port02.jpg" alt="Recommend Hat"></div>
       <div class="work-title"><a href="https://ds-pj.musashino-u.ac.jp/RH" target="_blank">Recommend Hat</a></div>
       <div class="work-desc">A system that suggests hats based on facial features. Web application. Back-end & Web app development.</div>
     </div>
     <div class="work-item">
-      <div class="work-img"><img src="img/port05.png" alt="Mosquito interaction"></div>
+      <div class="work-img" data-cta="▶ PLAY NOW"><img src="img/port05.png" alt="Mosquito interaction"></div>
       <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
-      <div class="work-desc">Unity VR game. Spray to defeat mosquitoes. Realistic VR sensation — a mosquito bite triggers real itch feedback.</div>
+      <div class="work-desc">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
     </div>
     <div class="work-item">
-      <div class="work-img"><img src="img/port04.jpg" alt="AINOW Interview"></div>
+      <div class="work-img" data-cta="▶ READ"><img src="img/port04.jpg" alt="AINOW Interview"></div>
       <div class="work-title"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">小説のデータ分析に1年生から挑戦</a></div>
       <div class="work-desc">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
     </div>
     <div class="work-item">
-      <div class="work-img"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"></div>
+      <div class="work-img" data-cta="▶ VIEW"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"></div>
       <div class="work-title"><a href="https://twitter.com/myFratino/status/1210639366155980800?s=20" target="_blank">萩原雪歩の穴掘り大作戦</a></div>
       <div class="work-desc">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
     </div>
