@@ -17,13 +17,13 @@ type GaEntry = { rank: number; path: string; title: string; views: number };
 type GaRanking = { updatedAt: string | null; ranking: GaEntry[] };
 
 const CATEGORIES = [
-  { key: 'nlp',         label: 'NLP',         href: '/posts/tags/nlp' },
-  { key: 'ai',          label: 'AI',           href: '/posts/tags/ai' },
+  { key: 'life',        label: 'Life',         href: '/posts/tags/life' },
   { key: 'engineering', label: 'Engineering',  href: '/posts/tags/engineering' },
   { key: 'research',    label: 'Research',     href: '/posts/tags/research' },
   { key: 'game',        label: 'Game',         href: '/posts/tags/game' },
-  { key: 'life',        label: 'Life',         href: '/posts/tags/life' },
   { key: 'music',       label: 'Music',        href: '/posts/tags/Music' },
+  { key: 'nlp',         label: 'NLP',          href: '/posts/tags/nlp' },
+  { key: 'ai',          label: 'AI',           href: '/posts/tags/ai' },
 ];
 
 function formatDate(iso: string): string {
