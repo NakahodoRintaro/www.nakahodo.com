@@ -1,4 +1,35 @@
 {
-  "updatedAt": "2026-03-19T18:32:22.055Z",
-  "ranking": []
+  "updatedAt": "2026-03-20T10:06:46.648Z",
+  "ranking": [
+    {
+      "rank": 1,
+      "path": "/blog/posts/2026/03/20/ga4-ranking-setup/",
+      "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労 | Rintaro Nakahodo | Blog",
+      "views": 17
+    },
+    {
+      "rank": 2,
+      "path": "/blog/posts/2026/03/19/welcome/",
+      "title": "ブログ開設しました | Rintaro Nakahodo | Blog",
+      "views": 11
+    },
+    {
+      "rank": 3,
+      "path": "/blog/posts/2026/03/19/welcome",
+      "title": "ブログ開設しました | Rintaro Nakahodo | Blog",
+      "views": 4
+    },
+    {
+      "rank": 4,
+      "path": "/blog/posts/2026/03/20/ga4-ranking-setup",
+      "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労 | Rintaro Nakahodo | Blog",
+      "views": 3
+    },
+    {
+      "rank": 5,
+      "path": "/blog/posts/tags/life",
+      "title": "「Life」タグの記事が1件件あります | Rintaro Nakahodo | Blog",
+      "views": 2
+    }
+  ]
 }
