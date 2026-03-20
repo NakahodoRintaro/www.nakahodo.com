@@ -773,42 +773,105 @@
     .nav-hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      justify-content: center;
+      gap: 6px;
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
       background: none;
       border: none;
+      z-index: 1001;
+      position: relative;
     }
     .nav-hamburger span {
       display: block;
-      width: 22px;
+      width: 24px;
       height: 2px;
       background: var(--text);
-      transition: transform 0.2s, opacity 0.2s;
+      transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s;
+      transform-origin: center;
     }
-    nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
-    nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ── Mobile overlay menu ── */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(6, 6, 12, 0.97);
+      opacity: 0;
+      transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+    }
+    .nav-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-overlay-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+      padding: 0 2.5rem;
+    }
+    .nav-overlay-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .nav-overlay-links li {
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-overlay-links li:first-child {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-overlay-links a {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      text-decoration: none;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.45s;
+    }
+    .nav-overlay.is-open .nav-overlay-links a {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .nav-overlay-links li:nth-child(1) a { transition-delay: 0.04s; }
+    .nav-overlay-links li:nth-child(2) a { transition-delay: 0.08s; }
+    .nav-overlay-links li:nth-child(3) a { transition-delay: 0.12s; }
+    .nav-overlay-links li:nth-child(4) a { transition-delay: 0.16s; }
+    .nav-overlay-links li:nth-child(5) a { transition-delay: 0.20s; }
+    .nav-overlay-links li:nth-child(6) a { transition-delay: 0.24s; }
+    .nav-overlay-num {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      color: var(--accent);
+      opacity: 0.7;
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+    }
+    .nav-overlay-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav-overlay-links a:hover .nav-overlay-label { color: var(--accent); }
 
     @media (max-width: 640px) {
-      nav { padding: 1rem 2rem; flex-wrap: wrap; align-items: center; }
+      nav { padding: 1rem 2rem; }
       .nav-hamburger { display: flex; }
-      .nav-links {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-        padding: 0.8rem 0 0.4rem;
-        order: 3;
-      }
-      nav.open .nav-links { display: flex; }
-      .nav-links li { border-top: 1px solid var(--line); }
-      .nav-links a {
-        display: block;
-        padding: 0.75rem 0;
-        font-size: 0.45rem;
-      }
-      .nav-links a::before { display: none; }
+      .nav-links { display: none; }
+      .nav-overlay { display: block; }
       #hero { padding: 5rem 2rem 0; }
       section { padding: 4rem 2rem; }
       .entry { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -824,6 +887,20 @@
 
 <div class="stars" id="stars-bg"></div>
 <div class="scanlines"></div>
+
+<!-- ── Mobile overlay menu ── -->
+<div class="nav-overlay" id="nav-overlay">
+  <div class="nav-overlay-inner">
+    <ul class="nav-overlay-links">
+      <li><a href="#about"><span class="nav-overlay-num">01</span><span class="nav-overlay-label">About</span></a></li>
+      <li><a href="#experience"><span class="nav-overlay-num">02</span><span class="nav-overlay-label">Experience</span></a></li>
+      <li><a href="#relation-work"><span class="nav-overlay-num">03</span><span class="nav-overlay-label">Game</span></a></li>
+      <li><a href="#works"><span class="nav-overlay-num">04</span><span class="nav-overlay-label">Works</span></a></li>
+      <li><a href="#contact"><span class="nav-overlay-num">05</span><span class="nav-overlay-label">Contact</span></a></li>
+      <li><a href="/blog/"><span class="nav-overlay-num">06</span><span class="nav-overlay-label">Blog</span></a></li>
+    </ul>
+  </div>
+</div>
 
 <!-- ── Nav ── -->
 <nav id="nav">
@@ -1429,13 +1506,32 @@
   })();
 
   // ── Hamburger menu toggle ──
-  document.getElementById('nav-hamburger').addEventListener('click', () => {
-    document.getElementById('nav').classList.toggle('open');
+  const hamburger = document.getElementById('nav-hamburger');
+  const overlay = document.getElementById('nav-overlay');
+
+  function openMenu() {
+    hamburger.classList.add('is-open');
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.contains('is-open') ? closeMenu() : openMenu();
   });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('nav').classList.remove('open');
-    });
+
+  // Close on link click
+  overlay.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Close on overlay background click (outside inner area)
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeMenu();
   });
 
   // ── Smooth scroll for nav links ──
