@@ -5,6 +5,7 @@
   min-height: 100vh;
   color: var(--ifm-font-color-base);
   font-family: 'Jost', 'LINESeedJP', sans-serif;
+  overflow-x: hidden;
 }
 
 /* ── Hero ── */
