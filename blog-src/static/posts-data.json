@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
+      "date": "2026-03-20",
+      "permalink": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
+      "tags": [
+        "engineering",
+        "life"
+      ],
+      "description": "朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。地味だが、こういう日が積み重なってサイトが育っていく。"
+    },
+    {
       "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
       "date": "2026-03-20",
       "permalink": "/blog/posts/2026/03/20/ga4-ranking-setup/",
