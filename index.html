@@ -119,6 +119,19 @@
     }
     .nav-links a:hover { opacity: 1; color: var(--accent); }
     .nav-links a:hover::before { opacity: 1; }
+    .lang-toggle {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--line);
+      padding: 0.28em 0.6em;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1;
+    }
+    .lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
     /* ── Hero ── */
     #hero {
@@ -917,6 +930,9 @@
       <li><a href="#works"><span class="nav-overlay-num">04</span><span class="nav-overlay-label">Works</span></a></li>
       <li><a href="#contact"><span class="nav-overlay-num">05</span><span class="nav-overlay-label">Contact</span></a></li>
       <li><a href="/blog/"><span class="nav-overlay-num">06</span><span class="nav-overlay-label">Blog</span></a></li>
+      <li style="border-bottom:none; padding: 1.2rem 0 0;">
+        <button class="lang-toggle" id="lang-toggle-overlay" aria-label="Switch language" style="font-size:0.5rem; padding:0.4em 0.8em;">JP</button>
+      </li>
     </ul>
   </div>
 </div>
@@ -936,6 +952,7 @@
     <li><a href="#works">Works</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="/blog/">Blog</a></li>
+    <li><button class="lang-toggle" id="lang-toggle" aria-label="Switch language">JP</button></li>
   </ul>
 </nav>
 
@@ -946,7 +963,7 @@
       NAKAHODO<br>
       <span class="name-second">RINTARO</span>
     </h1>
-    <div class="hero-role">言語を解き、物語を創る。</div>
+    <div class="hero-role" data-i18n="catchphrase">Decoding Language. Crafting Stories.</div>
     <div class="hero-sub">NLP Researcher &nbsp;·&nbsp; FDE Engineer &nbsp;·&nbsp; Game Creator</div>
     <div class="hero-scroll">▼ &nbsp; SCROLL</div>
   </div>
@@ -1157,11 +1174,9 @@
     <span class="section-num">01</span>
     <span class="section-title">About</span>
   </div>
-  <p class="about-text">
+  <p class="about-text" data-i18n="about">
     NLP researcher, FDE engineer, and game creator — born in <em>Hokkaido</em>.<br><br>
-    Started making games after deeply resonating with <em>Saenai Heroine no Sodatekata</em>.<br>
-    The desire to create something that moves people<br>led me from fiction to language research,<br>and back to building interactive stories.<br><br>
-    Exploring the intersection of language,<br>intelligence, and narrative.
+    Exploring the intersection of language,<br>intelligence, and interactive narrative.
   </p>
   <a class="about-link" href="https://github.com/NakahodoRintaro" target="_blank">
     GitHub &nbsp;↗
@@ -1180,7 +1195,7 @@
       <span class="entry-year">April 2024 — Current</span>
       <div>
         <div class="entry-title">FDE Engineer <span class="fde-badge">FDE</span></div>
-        <div class="entry-sub">Fujitsu<br>Responsible for front-end, back-end, and infrastructure as an application engineer for advanced generative AI.</div>
+        <div class="entry-sub" data-i18n="exp-1">Fujitsu<br>Responsible for front-end, back-end, and infrastructure as an application engineer for advanced generative AI.</div>
       </div>
       <div class="entry-tag"><span class="entry-badge">In Progress</span></div>
     </div>
@@ -1188,7 +1203,7 @@
       <span class="entry-year">Sept 2021 — Current</span>
       <div>
         <div class="entry-title">Game Biz — Intern</div>
-        <div class="entry-sub"><a href="https://mydearestvr.com/" target="_blank">MyDearest</a><br>Research, Article-Creation, Character-Setting, SNS, PR — <a href="https://dyschroniaca.com/" target="_blank">DYSCHRONIA: Chronos Alternate</a></div>
+        <div class="entry-sub" data-i18n="exp-2"><a href="https://mydearestvr.com/" target="_blank">MyDearest</a><br>Research, Article-Creation, Character-Setting, SNS, PR — <a href="https://dyschroniaca.com/" target="_blank">DYSCHRONIA: Chronos Alternate</a></div>
       </div>
       <div class="entry-tag">Game / VR</div>
     </div>
@@ -1196,7 +1211,7 @@
       <span class="entry-year">April 2020 — April 2024</span>
       <div>
         <div class="entry-title">Data Scientist — Intern</div>
-        <div class="entry-sub">Media Trust<br>Analyzing documents and creating value from hidden data using machine learning in Sler.</div>
+        <div class="entry-sub" data-i18n="exp-3">Media Trust<br>Analyzing documents and creating value from hidden data using machine learning in Sler.</div>
       </div>
       <div class="entry-tag">Data Science</div>
     </div>
@@ -1204,7 +1219,7 @@
       <span class="entry-year">Oct — Dec 2020</span>
       <div>
         <div class="entry-title">Data Scientist — Intern</div>
-        <div class="entry-sub"><a href="https://corporate.quick.co.jp/" target="_blank">Quick</a><br>Data Science with Financial and Economic Information.</div>
+        <div class="entry-sub" data-i18n="exp-4"><a href="https://corporate.quick.co.jp/" target="_blank">Quick</a><br>Data Science with Financial and Economic Information.</div>
       </div>
       <div class="entry-tag">Finance</div>
     </div>
@@ -1322,27 +1337,27 @@
     <div class="work-item">
       <div class="work-img" data-cta="▶ READ PAPER"><img src="img/port01.png" alt="Story Signature"></div>
       <div class="work-title"><a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">Story Signature</a></div>
-      <div class="work-desc">小説のストーリー展開を波形として捉え、類似作品を検索するシステム — Lead author. NLP × narrative structure.</div>
+      <div class="work-desc" data-i18n="work-1">Method to score storylines as waves and search for similar novels — Lead author. NLP × narrative structure.</div>
     </div>
     <div class="work-item">
       <div class="work-img" data-cta="▶ OPEN"><img src="img/port02.jpg" alt="Recommend Hat"></div>
       <div class="work-title"><a href="https://ds-pj.musashino-u.ac.jp/RH" target="_blank">Recommend Hat</a></div>
-      <div class="work-desc">A system that suggests hats based on facial features. Web application. Back-end & Web app development.</div>
+      <div class="work-desc" data-i18n="work-2">A system that suggests hats based on facial features. Web application. Back-end &amp; Web app development.</div>
     </div>
     <div class="work-item">
       <div class="work-img" data-cta="▶ PLAY NOW"><img src="img/port05.png" alt="Mosquito interaction"></div>
       <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
-      <div class="work-desc">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
+      <div class="work-desc" data-i18n="work-3">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
     </div>
     <div class="work-item">
       <div class="work-img" data-cta="▶ READ"><img src="img/port04.jpg" alt="AINOW Interview"></div>
       <div class="work-title"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">小説のデータ分析に1年生から挑戦</a></div>
-      <div class="work-desc">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
+      <div class="work-desc" data-i18n="work-4">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
     </div>
     <div class="work-item">
       <div class="work-img" data-cta="▶ VIEW"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦"></div>
       <div class="work-title"><a href="https://twitter.com/myFratino/status/1210639366155980800?s=20" target="_blank">萩原雪歩の穴掘り大作戦</a></div>
-      <div class="work-desc">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
+      <div class="work-desc" data-i18n="work-5">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
     </div>
   </div>
 
@@ -1410,7 +1425,7 @@
     <span class="section-num">05</span>
     <span class="section-title">Contact</span>
   </div>
-  <div class="contact-big">Let's<br>Connect.</div>
+  <div class="contact-big" data-i18n="contact-cta">Let's<br>Connect.</div>
   <div class="social-links">
     <a class="social-link" href="https://github.com/NakahodoRintaro" target="_blank">GitHub</a>
     <a class="social-link" href="https://twitter.com/rin_88astro" target="_blank">Twitter</a>
@@ -1524,6 +1539,59 @@
       container.appendChild(star);
     }
   })();
+
+  // ── i18n ──
+  const I18N = {
+    en: {
+      'catchphrase': 'Decoding Language. Crafting Stories.',
+      'about': 'NLP researcher, FDE engineer, and game creator — born in <em>Hokkaido</em>.<br><br>Exploring the intersection of language, intelligence, and interactive narrative.',
+      'work-1': 'Method to score storylines as waves and search for similar novels — Lead author. NLP × narrative structure.',
+      'work-2': 'A system that suggests hats based on facial features. Web application. Back-end &amp; Web app development.',
+      'work-3': 'Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.',
+      'work-4': "Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.",
+      'work-5': 'First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.',
+      'exp-1': 'Fujitsu<br>Responsible for front-end, back-end, and infrastructure as an application engineer for advanced generative AI.',
+      'exp-2': '<a href="https://mydearestvr.com/" target="_blank">MyDearest</a><br>Research, Article-Creation, Character-Setting, SNS, PR — <a href="https://dyschroniaca.com/" target="_blank">DYSCHRONIA: Chronos Alternate</a>',
+      'exp-3': 'Media Trust<br>Analyzing documents and creating value from hidden data using machine learning in Sler.',
+      'exp-4': '<a href="https://corporate.quick.co.jp/" target="_blank">Quick</a><br>Data Science with Financial and Economic Information.',
+      'contact-cta': "Let's<br>Connect.",
+    },
+    ja: {
+      'catchphrase': '言語を解き、物語を創る。',
+      'about': 'NLP研究者、FDEエンジニア、ゲームクリエイター — 北海道出身。<br><br>言語と知性、そしてインタラクティブな物語の交差点を探求しています。',
+      'work-1': '小説のストーリー展開を波形として捉え、類似作品を検索するシステム。筆頭著者。NLP × 物語構造。',
+      'work-2': '顔の特徴をもとに帽子を提案するシステム。Webアプリ。バックエンド・Webアプリ開発。',
+      'work-3': 'Unity VRゲーム。スプレーで蚊を退治。蚊に刺された感覚をリアルに再現 — UnityRoomでプレイ可能。',
+      'work-4': '日本最大級のAIメディアAINOWに掲載。データサイエンス研究の未来について語った。',
+      'work-5': '同人サークルFratinoの第一作。アイドルマスター創作ゲーム。編曲・プログラム・シナリオ担当。',
+      'exp-1': 'Fujitsu<br>先進的な生成AIのアプリケーションエンジニアとして、フロントエンド・バックエンド・インフラを担当。',
+      'exp-2': '<a href="https://mydearestvr.com/" target="_blank">MyDearest</a><br>リサーチ・記事制作・キャラクター設定・SNS・PR — <a href="https://dyschroniaca.com/" target="_blank">DYSCHRONIA: Chronos Alternate</a>',
+      'exp-3': 'Media Trust<br>SlerにてMLを活用し、ドキュメント分析・隠れたデータからの価値創出。',
+      'exp-4': '<a href="https://corporate.quick.co.jp/" target="_blank">Quick</a><br>金融・経済情報を用いたデータサイエンス。',
+      'contact-cta': 'つながり<br>ましょう。',
+    },
+  };
+
+  let currentLang = localStorage.getItem('site-lang') || 'en';
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (I18N[lang]?.[key]) el.innerHTML = I18N[lang][key];
+    });
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+      btn.textContent = lang === 'en' ? 'JP' : 'EN';
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('site-lang', lang);
+    currentLang = lang;
+  }
+
+  document.querySelectorAll('.lang-toggle').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'ja' : 'en'));
+  });
+
+  applyLang(currentLang);
 
   // ── Hamburger menu toggle ──
   const hamburger = document.getElementById('nav-hamburger');
