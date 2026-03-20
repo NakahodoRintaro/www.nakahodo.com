@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",
+      "date": "2026-03-21",
+      "permalink": "/blog/posts/2026/03/21/azure-foundry-weekly/",
+      "tags": [
+        "engineering",
+        "ai"
+      ],
+      "description": "先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。"
+    },
+    {
       "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
       "date": "2026-03-20",
       "permalink": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
