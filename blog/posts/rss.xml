@@ -4,11 +4,76 @@
         <title>Rintaro Nakahodo Blog</title>
         <link>https://nakahodo.com/blog/posts</link>
         <description>NLP · AI · Creator</description>
-        <lastBuildDate>Fri, 20 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 21 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>© 2026 Rintaro Nakahodo</copyright>
+        <item>
+            <title><![CDATA[Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く]]></title>
+            <link>https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly</link>
+            <guid>https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly</guid>
+            <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。]]></description>
+            <content:encoded><![CDATA[<p>先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="今週のハイライト">今週のハイライト<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#%E4%BB%8A%E9%80%B1%E3%81%AE%E3%83%8F%E3%82%A4%E3%83%A9%E3%82%A4%E3%83%88" class="hash-link" aria-label="今週のハイライト への直接リンク" title="今週のハイライト への直接リンク" translate="no">​</a></h2>
+<p><a href="https://youtu.be/jkpcFAYJjvM" target="_blank" rel="noopener noreferrer" class="">Azure Weekly Update — 20th March 2026</a> より、特に気になったものをピックアップする。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="foundry-agent-serviceついにga">Foundry Agent Service、ついにGA<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#foundry-agent-service%E3%81%A4%E3%81%84%E3%81%ABga" class="hash-link" aria-label="Foundry Agent Service、ついにGA への直接リンク" title="Foundry Agent Service、ついにGA への直接リンク" translate="no">​</a></h2>
+<p>今週一番注目しているのはここ。</p>
+<p><a href="https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/" target="_blank" rel="noopener noreferrer" class="">Azure AI Foundry Agent Service</a>がGAになった。ひとことで言えば、<strong>エージェントをフルマネージドで動かせるプラットフォーム</strong>だ。</p>
+<p>何が良いかというと、フレームワークを選ばないこと。</p>
+<ul>
+<li class="">ノーコードのPrompt Agentから</li>
+<li class="">Azure AI Agent Framework</li>
+<li class="">LangGraph</li>
+<li class="">自前実装</li>
+</ul>
+<p>までが同じ基盤で動く。今まで「フレームワーク選定→ランタイム構築→オブザーバビリティ整備」を自前でやっていたところがまるごとマネージドになった感じ。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ネイティブライブボイスが面白い">ネイティブライブボイスが面白い<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96%E3%83%A9%E3%82%A4%E3%83%96%E3%83%9C%E3%82%A4%E3%82%B9%E3%81%8C%E9%9D%A2%E7%99%BD%E3%81%84" class="hash-link" aria-label="ネイティブライブボイスが面白い への直接リンク" title="ネイティブライブボイスが面白い への直接リンク" translate="no">​</a></h3>
+<p>個人的に注目しているのが<strong>Native Live Voice</strong>の対応。</p>
+<p>従来のボイスエージェントは「音声→テキスト→LLM推論→テキスト→音声」という変換を複数ステップ挟んでいたが、これをエンドツーエンドで統合できる。140ロケール・700種類以上の音声も用意されているとのことで、多言語対応のボイスエージェントを作る敷居がかなり下がった。</p>
+<p>ゲーム開発とかリアルタイムNPCとかに使えないか、少し考えている。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="foundry-observabilityも同時に強化">Foundry Observabilityも同時に強化<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#foundry-observability%E3%82%82%E5%90%8C%E6%99%82%E3%81%AB%E5%BC%B7%E5%8C%96" class="hash-link" aria-label="Foundry Observabilityも同時に強化 への直接リンク" title="Foundry Observabilityも同時に強化 への直接リンク" translate="no">​</a></h3>
+<p>エージェントが壊れているかどうか検知するのは難しい。モデルのバージョンが変わったとき、プロンプトを少し変えたとき、本番トラフィックが増えたとき——どのタイミングで品質が劣化したかがわからないことが多い。</p>
+<p>Foundry Observabilityでは以下を評価できる：</p>
+<ul>
+<li class=""><strong>関連性・一貫性</strong>（Relevance / Coherence）</li>
+<li class=""><strong>Groundedness</strong>（幻覚の度合い）</li>
+<li class=""><strong>Retrieval品質</strong>（RAGの検索精度）</li>
+<li class=""><strong>安全性・ポリシー整合性</strong></li>
+</ul>
+<p>さらにAzure Monitorとの統合と、カスタムLLMによる評価も可能。エージェントをプロダクションで運用するなら、ここを最初に整備しないと後で詰まる。自戒を込めて。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="waf-default-rule-set-22">WAF Default Rule Set 2.2<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#waf-default-rule-set-22" class="hash-link" aria-label="WAF Default Rule Set 2.2 への直接リンク" title="WAF Default Rule Set 2.2 への直接リンク" translate="no">​</a></h2>
+<p>地味だが重要。App GatewayとFront Door両方のWeb Application Firewall（WAF）がDefault Rule Set（DRS）2.2に対応した。</p>
+<p>DRS 2.2はOWASP CRSのスーパーセット + Microsoft脅威インテリジェンスチームが管理するルール群が追加されている。最新3バージョンのサポートが維持されるようになった点も地味に嬉しい。既存のWAFルールをいつ更新するか考えていた人は、このタイミングで確認しておくといい。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="azure-databricks--microsoft-fabric連携">Azure Databricks × Microsoft Fabric連携<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#azure-databricks--microsoft-fabric%E9%80%A3%E6%90%BA" class="hash-link" aria-label="Azure Databricks × Microsoft Fabric連携 への直接リンク" title="Azure Databricks × Microsoft Fabric連携 への直接リンク" translate="no">​</a></h2>
+<p>AzureのデータプラットフォームとFabricの連携が着実に深まっている。</p>
+<p><strong>Lakeflow Connect 無料枠</strong>では、ワークスペースあたり1日100 DBU（≒約1億レコード）が無料になった。ServiceNow・Salesforce・Dynamics365などSaaSからの取り込みや、SQL Server・Oracle・PostgreSQLなどDBからの取り込みが対象。AnalyticsやAIアプリへのデータ流入コストが下がる話として読んだ。</p>
+<p><strong>Unity Catalog ↔ OneLake フェデレーション</strong>も興味深い。DatabricksからFabricのデータに直接クエリを打てるようになり、データをコピーせずにサイド・バイ・サイドで扱える。データコピーの管理コストが嫌いな人間なので、これは素直に好き。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="openai-gpt-41-mini--nano">OpenAI GPT-4.1 mini / nano<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#openai-gpt-41-mini--nano" class="hash-link" aria-label="OpenAI GPT-4.1 mini / nano への直接リンク" title="OpenAI GPT-4.1 mini / nano への直接リンク" translate="no">​</a></h2>
+<p>Microsoft Foundryに新しいモデルファミリーが追加された。</p>
+<table><thead><tr><th>モデル</th><th>用途</th></tr></thead><tbody><tr><td><strong>GPT-4.1 mini</strong></td><td>マルチモーダル・ツール使用・Computer Use対応。リアルタイムエージェント、RAGアプリ、Dev Tools向け</td></tr><tr><td><strong>GPT-4.1 nano</strong></td><td>極めて低レイテンシ・高スループット。高ボリュームリクエスト、リアルタイムチャット向け</td></tr></tbody></table>
+<p>nanoはGitHub Copilotにも展開されている。エージェントの中でルーティングやフィルタリングなど「速さが必要な部分」にnanoを使い、重い推論にはフルサイズを使い分けるアーキテクチャが現実的になってきた。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="entra-id-バックアップリカバリ">Entra ID バックアップ・リカバリ<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#entra-id-%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA" class="hash-link" aria-label="Entra ID バックアップ・リカバリ への直接リンク" title="Entra ID バックアップ・リカバリ への直接リンク" translate="no">​</a></h2>
+<p>地味にありがたい機能。5日間の自動日次バックアップから以下を復元できるようになった：</p>
+<ul>
+<li class="">ユーザー・グループ・アプリケーション</li>
+<li class="">条件付きアクセスポリシー</li>
+<li class="">認証ポリシー・名前付き場所</li>
+</ul>
+<p>Entraのポリシーを誰かが誤って変更してしまったとき、今まで手動で復元するしかなかった。運用チームには素直に嬉しいアップデート。</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="まとめ">まとめ<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#%E3%81%BE%E3%81%A8%E3%82%81" class="hash-link" aria-label="まとめ への直接リンク" title="まとめ への直接リンク" translate="no">​</a></h2>
+<p>今週はFoundry Agent ServiceのGAが大きかった。エージェント開発のインフラをどこまで自前でやるかという議論が変わってくる可能性がある。FDEエンジニアとして顧客にどう提案するかも少し考え直す必要が出てきた。</p>
+<p>週次でAzureのアップデートを追うのは量が多くて大変だが、<a href="https://youtu.be/jkpcFAYJjvM" target="_blank" rel="noopener noreferrer" class="">John Savillのまとめ動画</a>は毎回コンパクトにまとまっているので重宝している。</p>]]></content:encoded>
+            <category>Engineering</category>
+            <category>AI</category>
+        </item>
         <item>
             <title><![CDATA[ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録]]></title>
             <link>https://nakahodo.com/blog/posts/2026/03/20/dev-diary-blog-polish</link>
