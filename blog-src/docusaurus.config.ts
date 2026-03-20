@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Rintaro Nakahodo | Blog',
   tagline: 'NLP Researcher · Engineer · Creator',
-  favicon: 'img/favicon.png',
+  favicon: 'img/favicon.ico',
 
   url: 'https://nakahodo.com',
   baseUrl: '/blog/',
