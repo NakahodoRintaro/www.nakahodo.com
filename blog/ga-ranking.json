@@ -1,23 +1,35 @@
 {
-  "updatedAt": "2026-03-20T21:49:54.714Z",
+  "updatedAt": "2026-03-21T15:15:18.793Z",
   "ranking": [
     {
       "rank": 1,
       "path": "/blog/posts/2026/03/20/ga4-ranking-setup/",
       "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
-      "views": 25
+      "views": 31
     },
     {
       "rank": 2,
-      "path": "/blog/posts/2026/03/19/welcome/",
-      "title": "ブログ開設しました",
-      "views": 20
+      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
+      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
+      "views": 24
     },
     {
       "rank": 3,
-      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
-      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
-      "views": 12
+      "path": "/blog/posts/2026/03/19/welcome/",
+      "title": "ブログ開設しました",
+      "views": 23
+    },
+    {
+      "rank": 4,
+      "path": "/blog/posts/2026/03/21/azure-foundry-weekly/",
+      "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",
+      "views": 16
+    },
+    {
+      "rank": 5,
+      "path": "/blog/posts/2026/03/21/giscus-comments/",
+      "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
+      "views": 2
     }
   ]
 }
