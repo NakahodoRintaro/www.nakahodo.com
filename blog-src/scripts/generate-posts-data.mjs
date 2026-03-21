@@ -3,7 +3,7 @@
  * Run before docusaurus build.
  */
 
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, statSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -47,11 +47,18 @@ function getDescription(content, fm) {
   return first.slice(0, 120);
 }
 
-const files = readdirSync(BLOG_DIR)
-  .filter((f) => /\.(md|mdx)$/.test(f) && !f.startsWith('_') && !/^authors|tags/.test(f));
+const entries = readdirSync(BLOG_DIR);
+const fileEntries = entries
+  .filter((f) => /\.(md|mdx)$/.test(f) && !f.startsWith('_') && !/^authors|tags/.test(f))
+  .map((f) => ({ filename: f, filepath: join(BLOG_DIR, f) }));
+const dirEntries = entries
+  .filter((f) => statSync(join(BLOG_DIR, f)).isDirectory())
+  .filter((f) => existsSync(join(BLOG_DIR, f, 'index.md')))
+  .map((f) => ({ filename: f, filepath: join(BLOG_DIR, f, 'index.md') }));
+const allEntries = [...fileEntries, ...dirEntries];
 
-const posts = files.map((filename) => {
-  const content = readFileSync(join(BLOG_DIR, filename), 'utf-8');
+const posts = allEntries.map(({ filename, filepath }) => {
+  const content = readFileSync(filepath, 'utf-8');
   const fm = parseFrontmatter(content);
   const dateMatch = filename.match(/^(\d{4}-\d{2}-\d{2})/);
   const date = dateMatch ? dateMatch[1] : (fm.date ?? '');
