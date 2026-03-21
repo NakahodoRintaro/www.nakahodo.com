@@ -92,16 +92,24 @@ body {
 /* ── Navbar ── */
 .navbar {
   border-bottom: 1px solid rgba(200, 169, 110, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: none;
+  background: transparent;
 }
 
-[data-theme='dark'] .navbar {
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: -1;
+}
+
+[data-theme='dark'] .navbar::before {
   background: rgba(10, 10, 15, 0.94);
 }
 
-[data-theme='light'] .navbar {
+[data-theme='light'] .navbar::before {
   background: rgba(255, 255, 255, 0.94);
 }
 
