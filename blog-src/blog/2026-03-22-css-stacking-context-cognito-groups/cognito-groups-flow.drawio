@@ -1,0 +1,101 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram name="Cognito Groups Flow">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="100" value="Cognito Groups によるロール判定フロー" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1a1a2e;" vertex="1" parent="1">
+          <mxGeometry x="200" y="30" width="760" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- User -->
+        <mxCell id="10" value="ユーザー" style="shape=mxgraph.basic.person;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="60" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Cognito User Pool box -->
+        <mxCell id="20" value="Cognito User Pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=13;verticalAlign=top;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="220" y="200" width="300" height="260" as="geometry" />
+        </mxCell>
+
+        <!-- Group A inside Cognito -->
+        <mxCell id="21" value="グループ A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="245" y="270" width="110" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Group B inside Cognito -->
+        <mxCell id="22" value="グループ B" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="385" y="270" width="110" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- JWT label inside Cognito -->
+        <mxCell id="23" value="↓ グループ情報を含むJWTを発行" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="230" y="330" width="275" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- JWT Token box -->
+        <mxCell id="30" value="JWT (IDトークン)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;verticalAlign=top;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="220" y="510" width="300" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- JWT payload -->
+        <mxCell id="31" value='{ "sub": "...",&#xa;  "cognito:groups": ["グループA"] }' style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;fontFamily=Courier New;fontColor=#7a4400;" vertex="1" parent="1">
+          <mxGeometry x="235" y="540" width="275" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend box -->
+        <mxCell id="40" value="フロントエンド" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;verticalAlign=top;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="640" y="420" width="280" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend logic -->
+        <mxCell id="41" value="parseJwt(idToken)&#xa;↓&#xa;cognito:groups を読む&#xa;↓&#xa;ロール判定" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#4a2060;" vertex="1" parent="1">
+          <mxGeometry x="650" y="455" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- UI A -->
+        <mxCell id="50" value="ロールAのUI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="660" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- UI B -->
+        <mxCell id="51" value="ロールBのUI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="660" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: User → Cognito (login) -->
+        <mxCell id="60" value="ログイン" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;fontStyle=1;" edge="1" source="10" target="20" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Cognito → JWT -->
+        <mxCell id="61" value="JWT発行" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d6b656;fontColor=#996600;fontSize=10;fontStyle=1;" edge="1" source="20" target="30" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: JWT → Frontend -->
+        <mxCell id="62" value="トークン送信" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9673a6;fontColor=#4a2060;fontSize=10;fontStyle=1;" edge="1" source="30" target="40" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="560" />
+              <mxPoint x="560" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Arrow: Frontend → UI A -->
+        <mxCell id="63" value="グループA" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d6b656;fontColor=#996600;fontSize=10;" edge="1" source="40" target="50" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Frontend → UI B -->
+        <mxCell id="64" value="グループB" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;fontColor=#336600;fontSize=10;" edge="1" source="40" target="51" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
