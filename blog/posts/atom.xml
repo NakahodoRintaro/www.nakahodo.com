@@ -74,11 +74,11 @@
         <category label="Engineering" term="Engineering"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[CSSのスタッキングコンテキスト地雷と、Cognitoで作るロール管理]]></title>
+        <title type="html"><![CDATA[CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理]]></title>
         <id>https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups</id>
         <link href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups"/>
         <updated>2026-03-22T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[今日は2つのデバッグをした。ひとつはCSSの地雷、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。]]></summary>
+        <summary type="html"><![CDATA[今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。]]></summary>
         <content type="html"><![CDATA[<p>今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cssのスタッキングコンテキスト">CSSのスタッキングコンテキスト<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#css%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" class="hash-link" aria-label="CSSのスタッキングコンテキスト への直接リンク" title="CSSのスタッキングコンテキスト への直接リンク" translate="no">​</a></h2>
