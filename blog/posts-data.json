@@ -1,13 +1,13 @@
 {
   "posts": [
     {
-      "title": "CSSのスタッキングコンテキスト地雷と、Cognitoで作るロール管理",
+      "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
       "date": "2026-03-22",
       "permalink": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
       "tags": [
         "engineering"
       ],
-      "description": "今日は2つのデバッグをした。ひとつはCSSの地雷、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。"
+      "description": "今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。"
     },
     {
       "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",

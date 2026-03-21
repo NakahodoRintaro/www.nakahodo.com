@@ -10,14 +10,14 @@
         <language>ja</language>
         <copyright>© 2026 Rintaro Nakahodo</copyright>
         <item>
-            <title><![CDATA[CSSのスタッキングコンテキスト地雷と、Cognitoで作るロール管理]]></title>
+            <title><![CDATA[CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理]]></title>
             <link>https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups</guid>
             <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[今日は2つのデバッグをした。ひとつはCSSの地雷、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。]]></description>
-            <content:encoded><![CDATA[<p>今日は2つのデバッグをした。ひとつはCSSの地雷、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。</p>
+            <description><![CDATA[今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。]]></description>
+            <content:encoded><![CDATA[<p>今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cssのスタッキングコンテキスト地雷">CSSのスタッキングコンテキスト地雷<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#css%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%9C%B0%E9%9B%B7" class="hash-link" aria-label="CSSのスタッキングコンテキスト地雷 への直接リンク" title="CSSのスタッキングコンテキスト地雷 への直接リンク" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cssのスタッキングコンテキスト">CSSのスタッキングコンテキスト<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#css%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" class="hash-link" aria-label="CSSのスタッキングコンテキスト への直接リンク" title="CSSのスタッキングコンテキスト への直接リンク" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="症状">症状<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#%E7%97%87%E7%8A%B6" class="hash-link" aria-label="症状 への直接リンク" title="症状 への直接リンク" translate="no">​</a></h3>
 <p>スマホでハンバーガーメニューを押すと、ヘッダーだけが動いてメニューの中身が一切出てこない。あるいは、ページが横にずれてフリーズする。</p>
 <p>フレームワークが生成するUIなのに壊れている、しかも原因は自分が書いた別のCSSだった、というパターン。</p>
@@ -48,7 +48,7 @@
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cognito-groupsでロールを管理する">Cognito Groupsでロールを管理する<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#cognito-groups%E3%81%A7%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" class="hash-link" aria-label="Cognito Groupsでロールを管理する への直接リンク" title="Cognito Groupsでロールを管理する への直接リンク" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="背景">背景<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#%E8%83%8C%E6%99%AF" class="hash-link" aria-label="背景 への直接リンク" title="背景 への直接リンク" translate="no">​</a></h3>
-<p>受講生とインストラクターが使うサービスを作っていて、ロールによって見えるUIを変えたい。受講生には受講メニューを、インストラクターにはコンテンツ管理画面を。</p>
+<p>とあるサービスで、ロールによって見えるUIを変えたい。一般ロールはサービス画面を、管理ロールには管理画面を。</p>
 <p>サーバーレス構成なのでバックエンドを持ちたくない。認証にはAWS Cognitoを使っている。</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="選択肢を整理した">選択肢を整理した<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#%E9%81%B8%E6%8A%9E%E8%82%A2%E3%82%92%E6%95%B4%E7%90%86%E3%81%97%E3%81%9F" class="hash-link" aria-label="選択肢を整理した への直接リンク" title="選択肢を整理した への直接リンク" translate="no">​</a></h3>
 <table><thead><tr><th>方法</th><th>概要</th><th>問題点</th></tr></thead><tbody><tr><td>カスタム属性</td><td><code>custom:role</code> をユーザー属性に持たせる</td><td>ユーザー自身が書き換えられるリスク</td></tr><tr><td>Cognito Groups</td><td>グループにアサイン、JWTに自動反映</td><td>管理者のみ変更可能、サーバー不要</td></tr><tr><td>外部DB</td><td>DynamoDBなどでロール管理</td><td>バックエンドが必要になる</td></tr></tbody></table>
@@ -65,7 +65,7 @@
 <p>重要なAPIへのアクセス制御は必ずバックエンド側（API GatewayのオーソライザーやLambda）で行う。フロントだけで認可を完結させると、JWTを改ざんされたときに突破される。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="今日の感想">今日の感想<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#%E4%BB%8A%E6%97%A5%E3%81%AE%E6%84%9F%E6%83%B3" class="hash-link" aria-label="今日の感想 への直接リンク" title="今日の感想 への直接リンク" translate="no">​</a></h2>
-<p>CSSの地雷は「なぜ壊れるか」の仕組みを知っていると格段に早く直せる。スタッキングコンテキストの概念は最初ピンとこないが、「重なりのグループ」とイメージするとわかりやすい。</p>
+<p>当たり前になって恐縮だが、CSSは「なぜ壊れるか」の仕組みを知っていると格段に早く直せる。スタッキングコンテキストの概念は最初ピンとこないが、「重なりのグループ」とイメージするとわかりやすい。</p>
 <p>Cognito Groupsはシンプルで使いやすかった。ロールが増えてきたり権限が複雑になってきたらDynamoDBと組み合わせることになるが、今のフェーズはこれで十分だ。</p>
 <p><em>Live with a Smile!</em></p>]]></content:encoded>
             <category>Engineering</category>
