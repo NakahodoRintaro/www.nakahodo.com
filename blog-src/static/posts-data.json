@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "title": "Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク",
+      "date": "2026-03-23",
+      "permalink": "/blog/posts/2026/03/23/mcp-security-azure-foundry/",
+      "tags": [
+        "engineering"
+      ],
+      "description": "Azure Foundry Agent ServiceにプライベートなMCPサーバーを登録できるか調べた。結論から言うと、現時点ではできない。そしてその制約を理解した上で、MCPを使ったアーキテクチャにどんなセキュリティリスクが潜むかを整理"
+    },
+    {
       "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
       "date": "2026-03-22",
       "permalink": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
