@@ -24,7 +24,7 @@
 <p>つまり、同一VNET内に閉じたプライベートMCPサーバーをFoundry Agent Serviceから直接呼ぶことは今のところできない。「内部APIを安全に統合できる」と謳っているわりに、接続にはパブリックエンドポイントが必要という設計上の矛盾がある。</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="現時点での回避策">現時点での回避策<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E7%8F%BE%E6%99%82%E7%82%B9%E3%81%A7%E3%81%AE%E5%9B%9E%E9%81%BF%E7%AD%96" class="hash-link" aria-label="現時点での回避策 への直接リンク" title="現時点での回避策 への直接リンク" translate="no">​</a></h3>
 <p>どうしてもプライベートに近い構成にしたければ、<strong>Azure API Management（APIM）を前段に置く</strong>のが現実的な選択肢になる。</p>
-<p><img decoding="async" loading="lazy" alt="APIM経由のVNet構成" src="https://nakahodo.com/blog/assets/images/vnet-apim-4c91b8a3fe4256fc9c5c89b229470d01.png" width="800" height="627" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="APIM経由のVNet構成" src="https://nakahodo.com/blog/assets/images/vnet-apim-285a6733c8ca4f17a5e6f8e410d767bd.png" width="800" height="646" class="img_ev3q"></p>
 <p>APIMを挟むことで、Functions本体は外部からアクセスできない状態に保ちつつ、APIM側でIP制限や認証をかけられる。ただしAPIMは費用がかかるし構成も複雑になる。Microsoftがこの制限を将来解除する（Foundry Agent ServiceのPrivate Link対応など）かどうかをウォッチし続けるのが正直なところ。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mcpアーキテクチャのセキュリティリスク">MCPアーキテクチャのセキュリティリスク<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#mcp%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%AE%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%AA%E3%82%B9%E3%82%AF" class="hash-link" aria-label="MCPアーキテクチャのセキュリティリスク への直接リンク" title="MCPアーキテクチャのセキュリティリスク への直接リンク" translate="no">​</a></h2>
@@ -41,7 +41,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク3-confused-deputy混乱した代理人">リスク3: Confused Deputy（混乱した代理人）<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF3-confused-deputy%E6%B7%B7%E4%B9%B1%E3%81%97%E3%81%9F%E4%BB%A3%E7%90%86%E4%BA%BA" class="hash-link" aria-label="リスク3: Confused Deputy（混乱した代理人） への直接リンク" title="リスク3: Confused Deputy（混乱した代理人） への直接リンク" translate="no">​</a></h3>
 <p>Foundry Agent ServiceからMCPサーバーへの呼び出しは<strong>サービスのIDで行われる</strong>。MCPサーバーが内部APIを呼ぶとき、その認証に「エンドユーザーが誰か」という情報は乗っていない。</p>
-<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-9f0664ba0dd23442809b57cf566319ea.png" width="1041" height="656" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-668a055757e589049d7ec363efc3bf6c.png" width="1042" height="661" class="img_ev3q"></p>
 <p>対策はOAuth Identity Passthroughを使い、エンドユーザーのIDをMCPサーバーまで伝搬させること。MCPサーバー内でユーザーIDを検証してから内部APIを呼ぶ設計にする。</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク4-過剰な権限スコープ">リスク4: 過剰な権限スコープ<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF4-%E9%81%8E%E5%89%B0%E3%81%AA%E6%A8%A9%E9%99%90%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97" class="hash-link" aria-label="リスク4: 過剰な権限スコープ への直接リンク" title="リスク4: 過剰な権限スコープ への直接リンク" translate="no">​</a></h3>

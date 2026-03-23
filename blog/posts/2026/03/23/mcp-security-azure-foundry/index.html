@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X5FV7SNY8N"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-X5FV7SNY8N",{})</script><link rel="stylesheet" href="/blog/assets/css/styles.e3c65a0c.css">
-<script src="/blog/assets/js/runtime~main.756fdf23.js" defer="defer"></script>
+<script src="/blog/assets/js/runtime~main.cc7681be.js" defer="defer"></script>
 <script src="/blog/assets/js/main.12ca4284.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -30,7 +30,7 @@
 <p>つまり、同一VNET内に閉じたプライベートMCPサーバーをFoundry Agent Serviceから直接呼ぶことは今のところできない。「内部APIを安全に統合できる」と謳っているわりに、接続にはパブリックエンドポイントが必要という設計上の矛盾がある。</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="現時点での回避策">現時点での回避策<a href="#現時点での回避策" class="hash-link" aria-label="現時点での回避策 への直接リンク" title="現時点での回避策 への直接リンク" translate="no">​</a></h3>
 <p>どうしてもプライベートに近い構成にしたければ、<strong>Azure API Management（APIM）を前段に置く</strong>のが現実的な選択肢になる。</p>
-<p><img decoding="async" loading="lazy" alt="APIM経由のVNet構成" src="/blog/assets/images/vnet-apim-4c91b8a3fe4256fc9c5c89b229470d01.png" width="800" height="627" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="APIM経由のVNet構成" src="/blog/assets/images/vnet-apim-285a6733c8ca4f17a5e6f8e410d767bd.png" width="800" height="646" class="img_ev3q"></p>
 <p>APIMを挟むことで、Functions本体は外部からアクセスできない状態に保ちつつ、APIM側でIP制限や認証をかけられる。ただしAPIMは費用がかかるし構成も複雑になる。Microsoftがこの制限を将来解除する（Foundry Agent ServiceのPrivate Link対応など）かどうかをウォッチし続けるのが正直なところ。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mcpアーキテクチャのセキュリティリスク">MCPアーキテクチャのセキュリティリスク<a href="#mcpアーキテクチャのセキュリティリスク" class="hash-link" aria-label="MCPアーキテクチャのセキュリティリスク への直接リンク" title="MCPアーキテクチャのセキュリティリスク への直接リンク" translate="no">​</a></h2>
@@ -47,7 +47,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク3-confused-deputy混乱した代理人">リスク3: Confused Deputy（混乱した代理人）<a href="#リスク3-confused-deputy混乱した代理人" class="hash-link" aria-label="リスク3: Confused Deputy（混乱した代理人） への直接リンク" title="リスク3: Confused Deputy（混乱した代理人） への直接リンク" translate="no">​</a></h3>
 <p>Foundry Agent ServiceからMCPサーバーへの呼び出しは<strong>サービスのIDで行われる</strong>。MCPサーバーが内部APIを呼ぶとき、その認証に「エンドユーザーが誰か」という情報は乗っていない。</p>
-<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="/blog/assets/images/confused-deputy-9f0664ba0dd23442809b57cf566319ea.png" width="1041" height="656" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="/blog/assets/images/confused-deputy-668a055757e589049d7ec363efc3bf6c.png" width="1042" height="661" class="img_ev3q"></p>
 <p>対策はOAuth Identity Passthroughを使い、エンドユーザーのIDをMCPサーバーまで伝搬させること。MCPサーバー内でユーザーIDを検証してから内部APIを呼ぶ設計にする。</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク4-過剰な権限スコープ">リスク4: 過剰な権限スコープ<a href="#リスク4-過剰な権限スコープ" class="hash-link" aria-label="リスク4: 過剰な権限スコープ への直接リンク" title="リスク4: 過剰な権限スコープ への直接リンク" translate="no">​</a></h3>
