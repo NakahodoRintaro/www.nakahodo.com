@@ -1,56 +1,48 @@
 <mxfile host="app.diagrams.net" version="24.0.0">
   <diagram name="APIM VNet Architecture">
-    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="680" math="0" shadow="0">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="660" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- Title -->
         <mxCell id="t1" value="Azure Foundry × MCP: APIM経由のVNet構成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#1a1a2e;" vertex="1" parent="1">
-          <mxGeometry x="150" y="20" width="800" height="35" as="geometry" />
+          <mxGeometry x="150" y="15" width="800" height="35" as="geometry" />
         </mxCell>
 
         <!-- Foundry Agent Service -->
-        <mxCell id="10" value="Foundry Agent Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#1a1a2e;" vertex="1" parent="1">
-          <mxGeometry x="410" y="80" width="280" height="60" as="geometry" />
+        <mxCell id="10" value="Foundry Agent Service" style="shape=mxgraph.azure2.cognitive_services;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="517" y="45" width="66" height="66" as="geometry" />
         </mxCell>
 
-        <!-- APIM box -->
-        <mxCell id="20" value="Azure API Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;verticalAlign=top;arcSize=3;fontColor=#1a1a2e;" vertex="1" parent="1">
-          <mxGeometry x="310" y="215" width="480" height="115" as="geometry" />
-        </mxCell>
-
-        <!-- APIM details -->
-        <mxCell id="21" value="IP制限 / 認証・認可 / レート制限 / ポリシー適用" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#336699;" vertex="1" parent="1">
-          <mxGeometry x="320" y="258" width="460" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="22" value="（唯一のパブリックエンドポイント）" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#6699cc;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="320" y="285" width="460" height="25" as="geometry" />
+        <!-- Azure API Management -->
+        <mxCell id="20" value="Azure API Management&#xa;IP制限 / 認証・認可 / レート制限" style="shape=mxgraph.azure2.api_management;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="517" y="195" width="66" height="66" as="geometry" />
         </mxCell>
 
         <!-- VNet dashed boundary -->
         <mxCell id="30" value="VNet（プライベート）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#336600;verticalAlign=top;dashed=1;arcSize=3;" vertex="1" parent="1">
-          <mxGeometry x="190" y="405" width="720" height="240" as="geometry" />
+          <mxGeometry x="175" y="355" width="750" height="275" as="geometry" />
         </mxCell>
 
-        <!-- Azure Functions -->
-        <mxCell id="40" value="Azure Functions（MCP Server）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;fontColor=#1a1a2e;" vertex="1" parent="1">
-          <mxGeometry x="380" y="450" width="340" height="55" as="geometry" />
+        <!-- Azure Functions (MCP Server) -->
+        <mxCell id="40" value="Azure Functions（MCP Server）" style="shape=mxgraph.azure2.function_apps;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="517" y="385" width="66" height="66" as="geometry" />
         </mxCell>
 
         <!-- Internal DB -->
-        <mxCell id="50" value="内部DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888888;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="230" y="565" width="90" height="50" as="geometry" />
+        <mxCell id="50" value="内部DB" style="shape=mxgraph.azure2.sql_database;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="263" y="515" width="55" height="55" as="geometry" />
         </mxCell>
 
         <!-- Internal API -->
-        <mxCell id="51" value="内部API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888888;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="505" y="565" width="90" height="50" as="geometry" />
+        <mxCell id="51" value="内部API" style="shape=mxgraph.azure2.app_services;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="522" y="515" width="55" height="55" as="geometry" />
         </mxCell>
 
         <!-- Other service -->
-        <mxCell id="52" value="その他サービス" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#888888;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="740" y="565" width="110" height="50" as="geometry" />
+        <mxCell id="52" value="その他サービス" style="shape=mxgraph.azure2.service_bus;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="778" y="515" width="55" height="55" as="geometry" />
         </mxCell>
 
         <!-- Arrow: Foundry → APIM -->
