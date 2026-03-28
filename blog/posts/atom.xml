@@ -138,7 +138,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク3-confused-deputy混乱した代理人">リスク3: Confused Deputy（混乱した代理人）<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF3-confused-deputy%E6%B7%B7%E4%B9%B1%E3%81%97%E3%81%9F%E4%BB%A3%E7%90%86%E4%BA%BA" class="hash-link" aria-label="リスク3: Confused Deputy（混乱した代理人） への直接リンク" title="リスク3: Confused Deputy（混乱した代理人） への直接リンク" translate="no">​</a></h3>
 <p>Foundry Agent ServiceからMCPサーバーへの呼び出しは<strong>サービスのIDで行われる</strong>。MCPサーバーが内部APIを呼ぶとき、その認証に「エンドユーザーが誰か」という情報は乗っていない。</p>
-<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-291c2fd94e2be489d13ae518521c73af.webp" width="1042" height="661" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-ea469eba13474ba3ff34d91f08c2df3b.webp" width="1042" height="661" class="img_ev3q"></p>
 <p>対策はOAuth Identity Passthroughを使い、エンドユーザーのIDをMCPサーバーまで伝搬させること。MCPサーバー内でユーザーIDを検証してから内部APIを呼ぶ設計にする。</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク4-過剰な権限スコープ">リスク4: 過剰な権限スコープ<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF4-%E9%81%8E%E5%89%B0%E3%81%AA%E6%A8%A9%E9%99%90%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97" class="hash-link" aria-label="リスク4: 過剰な権限スコープ への直接リンク" title="リスク4: 過剰な権限スコープ への直接リンク" translate="no">​</a></h3>
