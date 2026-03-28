@@ -13,7 +13,19 @@ description: ポートフォリオサイト nakahodo.com に SEO の基礎実装
 
 ## 出発点
 
-`nakahodo.com` は静的 HTML で作った一枚ページのポートフォリオ。デザインにはこだわっていたが、SEO は完全に放置していた。
+### サイト構成
+
+`nakahodo.com` は静的 HTML で作った一枚ページのポートフォリオ。ビルドステップはなく、`index.html` と CSS・JS・画像を GitHub リポジトリに置いて **GitHub Pages** で公開している。カスタムドメインは DNS の CNAME レコードで GitHub Pages に向けている。
+
+```
+リポジトリの main ブランチ → GitHub Pages → nakahodo.com
+```
+
+ファイルを push すれば数秒で反映される手軽さがある一方、CDN のキャッシュ TTL が 10 分〜数時間に固定されており、配信設定を細かく制御できないという制約もある。後述する「残った課題」はほぼこの制約から来ている。
+
+### SEO の初期状態
+
+デザインにはこだわっていたが、SEO は完全に放置していた。
 
 - `<meta name="description">` なし
 - OGP・Twitter Card なし

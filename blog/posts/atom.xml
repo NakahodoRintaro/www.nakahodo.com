@@ -113,7 +113,12 @@
         <content type="html"><![CDATA[<p>ポートフォリオサイトの SEO とパフォーマンスを一日かけて本気で改善した。「ちゃんとやったことがない」状態からスタートし、PageSpeed Insights を繰り返し回しながら指摘を潰していった記録。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="出発点">出発点<a href="https://nakahodo.com/blog/posts/2026/03/28/pagespeed-seo-100#%E5%87%BA%E7%99%BA%E7%82%B9" class="hash-link" aria-label="出発点 への直接リンク" title="出発点 への直接リンク" translate="no">​</a></h2>
-<p><code>nakahodo.com</code> は静的 HTML で作った一枚ページのポートフォリオ。デザインにはこだわっていたが、SEO は完全に放置していた。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="サイト構成">サイト構成<a href="https://nakahodo.com/blog/posts/2026/03/28/pagespeed-seo-100#%E3%82%B5%E3%82%A4%E3%83%88%E6%A7%8B%E6%88%90" class="hash-link" aria-label="サイト構成 への直接リンク" title="サイト構成 への直接リンク" translate="no">​</a></h3>
+<p><code>nakahodo.com</code> は静的 HTML で作った一枚ページのポートフォリオ。ビルドステップはなく、<code>index.html</code> と CSS・JS・画像を GitHub リポジトリに置いて <strong>GitHub Pages</strong> で公開している。カスタムドメインは DNS の CNAME レコードで GitHub Pages に向けている。</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">リポジトリの main ブランチ → GitHub Pages → nakahodo.com</span><br></span></code></pre></div></div>
+<p>ファイルを push すれば数秒で反映される手軽さがある一方、CDN のキャッシュ TTL が 10 分〜数時間に固定されており、配信設定を細かく制御できないという制約もある。後述する「残った課題」はほぼこの制約から来ている。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="seo-の初期状態">SEO の初期状態<a href="https://nakahodo.com/blog/posts/2026/03/28/pagespeed-seo-100#seo-%E3%81%AE%E5%88%9D%E6%9C%9F%E7%8A%B6%E6%85%8B" class="hash-link" aria-label="SEO の初期状態 への直接リンク" title="SEO の初期状態 への直接リンク" translate="no">​</a></h3>
+<p>デザインにはこだわっていたが、SEO は完全に放置していた。</p>
 <ul>
 <li class=""><code>&lt;meta name="description"&gt;</code> なし</li>
 <li class="">OGP・Twitter Card なし</li>
@@ -233,7 +238,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク3-confused-deputy混乱した代理人">リスク3: Confused Deputy（混乱した代理人）<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF3-confused-deputy%E6%B7%B7%E4%B9%B1%E3%81%97%E3%81%9F%E4%BB%A3%E7%90%86%E4%BA%BA" class="hash-link" aria-label="リスク3: Confused Deputy（混乱した代理人） への直接リンク" title="リスク3: Confused Deputy（混乱した代理人） への直接リンク" translate="no">​</a></h3>
 <p>Foundry Agent ServiceからMCPサーバーへの呼び出しは<strong>サービスのIDで行われる</strong>。MCPサーバーが内部APIを呼ぶとき、その認証に「エンドユーザーが誰か」という情報は乗っていない。</p>
-<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-ea469eba13474ba3ff34d91f08c2df3b.webp" width="1042" height="661" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Confused Deputy 問題と対策" src="https://nakahodo.com/blog/assets/images/confused-deputy-ea469eba13474ba3ff34d91f08c2df3b.webp" width="900" height="571" class="img_ev3q"></p>
 <p>対策はOAuth Identity Passthroughを使い、エンドユーザーのIDをMCPサーバーまで伝搬させること。MCPサーバー内でユーザーIDを検証してから内部APIを呼ぶ設計にする。</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク4-過剰な権限スコープ">リスク4: 過剰な権限スコープ<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E3%83%AA%E3%82%B9%E3%82%AF4-%E9%81%8E%E5%89%B0%E3%81%AA%E6%A8%A9%E9%99%90%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97" class="hash-link" aria-label="リスク4: 過剰な権限スコープ への直接リンク" title="リスク4: 過剰な権限スコープ への直接リンク" translate="no">​</a></h3>
