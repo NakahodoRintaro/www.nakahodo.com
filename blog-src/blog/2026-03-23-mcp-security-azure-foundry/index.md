@@ -23,7 +23,7 @@ Microsoftの公式ドキュメント（2026年3月現在）にはっきり書か
 
 どうしてもプライベートに近い構成にしたければ、**Azure API Management（APIM）を前段に置く**のが現実的な選択肢になる。
 
-![APIM経由のVNet構成](./vnet-apim.png)
+![APIM経由のVNet構成](./vnet-apim.webp)
 
 APIMを挟むことで、Functions本体は外部からアクセスできない状態に保ちつつ、APIM側でIP制限や認証をかけられる。ただしAPIMは費用がかかるし構成も複雑になる。Microsoftがこの制限を将来解除する（Foundry Agent ServiceのPrivate Link対応など）かどうかをウォッチし続けるのが正直なところ。
 
@@ -68,7 +68,7 @@ MCPの最大の脅威。DBやファイルから取得したデータをそのま
 
 Foundry Agent ServiceからMCPサーバーへの呼び出しは**サービスのIDで行われる**。MCPサーバーが内部APIを呼ぶとき、その認証に「エンドユーザーが誰か」という情報は乗っていない。
 
-![Confused Deputy 問題と対策](./confused-deputy.png)
+![Confused Deputy 問題と対策](./confused-deputy.webp)
 
 対策はOAuth Identity Passthroughを使い、エンドユーザーのIDをMCPサーバーまで伝搬させること。MCPサーバー内でユーザーIDを検証してから内部APIを呼ぶ設計にする。
 
