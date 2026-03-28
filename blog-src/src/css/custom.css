@@ -239,6 +239,11 @@ pre {
   border-radius: 6px !important;
   font-size: 0.88em;
   line-height: 1.65;
+  letter-spacing: 0;
+}
+
+pre code {
+  letter-spacing: 0;
 }
 
 [data-theme='light'] pre {
@@ -257,6 +262,7 @@ code {
   font-size: 0.88em;
   border-radius: 3px;
   padding: 0.15em 0.4em;
+  letter-spacing: 0;
 }
 
 [data-theme='light'] code:not(pre code) {
