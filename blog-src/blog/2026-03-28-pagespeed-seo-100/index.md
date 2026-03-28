@@ -11,7 +11,7 @@ description: ポートフォリオサイト nakahodo.com に SEO の基礎実装
 
 ---
 
-## 出発点
+## 背景
 
 ### サイト構成
 
