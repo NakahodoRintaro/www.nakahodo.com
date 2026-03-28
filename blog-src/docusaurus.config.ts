@@ -114,12 +114,12 @@ const config: Config = {
       items: [
         { to: '/', label: 'Home', position: 'left' },
         { to: '/posts', label: '記事一覧', position: 'left' },
-        { type: 'localeDropdown', position: 'right' },
         {
           href: 'https://nakahodo.com',
           label: '← Portfolio',
           position: 'right',
         },
+        { type: 'localeDropdown', position: 'right' },
         {
           href: 'https://github.com/NakahodoRintaro',
           label: 'GitHub',
