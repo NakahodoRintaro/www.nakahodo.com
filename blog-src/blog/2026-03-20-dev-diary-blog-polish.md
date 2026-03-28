@@ -127,10 +127,10 @@ if (merged.has(path)) {
 }
 ```
 
-さらにGA4が返すタイトルには `| Rintaro Nakahodo | Blog` というサイト名が付いていたので、正規表現で除去した。
+さらにGA4が返すタイトルには `| Your Site Name | Blog` のようにサイト名が付いていることがある。正規表現で除去する。
 
 ```javascript
-const cleanTitle = title.replace(/\s*\|\s*Rintaro Nakahodo.*$/, '').trim();
+const cleanTitle = title.replace(/\s*\|\s*Your Site Name.*$/, '').trim();
 ```
 
 ---

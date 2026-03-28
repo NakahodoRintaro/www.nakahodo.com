@@ -2,7 +2,7 @@
 title: Taking SEO Seriously — A Record of Pushing PageSpeed Insights to the Limit
 authors: rintaro
 tags: [engineering]
-description: One day of going from near-zero SEO to a perfect PageSpeed Insights score on nakahodo.com — WebP conversion (95% reduction), 7.8 MB font removal, GA4 deferred loading, JSON-LD/OGP, and everything else the code could address. Including unexpected traps like Cloudflare email obfuscation.
+description: Going from near-zero SEO to a perfect PageSpeed Insights score — WebP conversion (95% reduction), GA4 deferred loading, JSON-LD/OGP, and everything else the code could address. Including unexpected traps like Cloudflare email obfuscation.
 ---
 
 A record of going from nearly zero SEO to PageSpeed Insights ALL 100.
@@ -17,10 +17,10 @@ Images converted to WebP for 95% reduction, 7.8 MB of fonts removed, JSON-LD/OGP
 
 ### Site structure
 
-`nakahodo.com` is a single-page portfolio built with static HTML — no build step. `index.html`, CSS, JS, and images live in a GitHub repository hosted on **GitHub Pages**. The custom domain is pointed to GitHub Pages via a DNS CNAME record.
+The target site is a single-page portfolio built with static HTML — no build step. `index.html`, CSS, JS, and images live in a GitHub repository hosted on **GitHub Pages**. The custom domain is pointed to GitHub Pages via a DNS CNAME record.
 
 ```
-Repository main branch → GitHub Pages → nakahodo.com
+Repository main branch → GitHub Pages → example.com
 ```
 
 Files push and reflect within seconds. The tradeoff is that GitHub Pages CDN TTL is fixed at 10 minutes to several hours, with no fine-grained control over delivery settings. The remaining issues mentioned later are mostly a result of this constraint.
@@ -48,21 +48,21 @@ First, I added everything missing from `<head>`.
 ### Meta tags
 
 ```html
-<title>Rintaro Nakahodo — NLP Researcher & Engineer</title>
-<meta name="description" content="Portfolio of Rintaro Nakahodo. NLP researcher, engineer, game producer. Working in AI, natural language processing, music, and game development.">
-<link rel="canonical" href="https://nakahodo.com/">
-<link rel="alternate" hreflang="ja" href="https://nakahodo.com/">
-<link rel="alternate" hreflang="x-default" href="https://nakahodo.com/">
+<title>Your Name — Your Title</title>
+<meta name="description" content="Your Name's portfolio. Describe your profession and areas of expertise here.">
+<link rel="canonical" href="https://example.com/">
+<link rel="alternate" hreflang="en" href="https://example.com/">
+<link rel="alternate" hreflang="x-default" href="https://example.com/">
 ```
 
 ### OGP / Twitter Card
 
 ```html
 <meta property="og:type" content="website">
-<meta property="og:title" content="Rintaro Nakahodo — NLP Researcher & Engineer">
-<meta property="og:image" content="https://nakahodo.com/img/port04.jpg">
-<meta property="og:image:width" content="2000">
-<meta property="og:image:height" content="1050">
+<meta property="og:title" content="Your Name — Your Title">
+<meta property="og:image" content="https://example.com/img/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 ```
 
@@ -76,13 +76,13 @@ Added both a Person schema and a WebSite schema:
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Rintaro Nakahodo",
-  "url": "https://nakahodo.com/",
-  "jobTitle": "NLP Researcher & Engineer",
+  "name": "Your Name",
+  "url": "https://example.com/",
+  "jobTitle": "Your Job Title",
   "sameAs": [
-    "https://github.com/NakahodoRintaro",
-    "https://twitter.com/rin_88astro",
-    "https://www.linkedin.com/in/rintaro-nakahodo-884305199"
+    "https://github.com/your-username",
+    "https://twitter.com/your-username",
+    "https://www.linkedin.com/in/your-profile"
   ]
 }
 ```
@@ -99,7 +99,7 @@ Docusaurus auto-generates `/blog/sitemap.xml` for the blog side, but there was n
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://nakahodo.com/blog/sitemap.xml</loc>
+    <loc>https://example.com/blog/sitemap.xml</loc>
   </sitemap>
 </sitemapindex>
 ```
@@ -115,7 +115,7 @@ Images were the most loudly flagged issue in PageSpeed.
 Converted all 6 PNG/JPG images to WebP. `sips` is macOS's built-in tool but doesn't support WebP output, so I used `cwebp`:
 
 ```bash
-cwebp -q 82 img/port05.png -o img/port05.webp
+cwebp -q 82 img/hero.png -o img/hero.webp
 ```
 
 Total size before and after:
@@ -133,15 +133,15 @@ WebP conversion alone isn't enough — you need to serve the right size based on
 ```html
 <picture>
   <source
-    srcset="img/port05-1x.webp 672w,
-      img/port05-968.webp 968w,
-      img/port05-sm.webp 1080w,
-      img/port05-md.webp 1202w,
-      img/port05.webp 1344w"
+    srcset="img/hero-1x.webp 672w,
+      img/hero-968.webp 968w,
+      img/hero-sm.webp 1080w,
+      img/hero-md.webp 1202w,
+      img/hero.webp 1344w"
     sizes="(max-width: 640px) 617px, 672px"
     type="image/webp"
   >
-  <img src="img/port05.png" alt="Mosquito interaction"
+  <img src="img/hero.png" alt="Hero image"
     width="1344" height="748">
 </picture>
 ```
@@ -152,11 +152,11 @@ DPR-to-file selection breakdown:
 
 | DPR | Needed px | File selected |
 |---|---|---|
-| 1.0 | 672 | port05-1x.webp (43 KB) |
-| 1.44 | 968 | port05-968.webp (72 KB) |
-| 1.6 | 1075 | port05-sm.webp (85 KB) |
-| 1.79 | 1203 | port05-md.webp (99 KB) |
-| 2.0 | 1344 | port05.webp (116 KB) |
+| 1.0 | 672 | hero-1x.webp (43 KB) |
+| 1.44 | 968 | hero-968.webp (72 KB) |
+| 1.6 | 1075 | hero-sm.webp (85 KB) |
+| 1.79 | 1203 | hero-md.webp (99 KB) |
+| 2.0 | 1344 | hero.webp (116 KB) |
 
 ---
 
@@ -220,7 +220,7 @@ PageSpeed Insights revealed that the GA4 script was causing 53ms of forced reflo
 ```javascript
 window.addEventListener('load', function() {
   var s = document.createElement('script');
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X5FV7SNY8N';
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
   s.async = true;
   document.head.appendChild(s);
 });

@@ -127,10 +127,10 @@ if (merged.has(path)) {
 }
 ```
 
-GA4 also appends `| Rintaro Nakahodo | Blog` to titles, so I stripped that with a regex:
+GA4 also appends `| Your Site Name | Blog` to titles, so strip that with a regex:
 
 ```javascript
-const cleanTitle = title.replace(/\s*\|\s*Rintaro Nakahodo.*$/, '').trim();
+const cleanTitle = title.replace(/\s*\|\s*Your Site Name.*$/, '').trim();
 ```
 
 ---

@@ -51,7 +51,7 @@ While researching, I came across **Giscus** — a comment system that uses GitHu
 
 The one downside: **commenting and reacting requires a GitHub account**.
 
-Given this blog's audience — mostly engineering and technical content — the number of readers without a GitHub account is probably small. There's a chance it could be a barrier if non-technical readers want to comment on non-technical posts. If that becomes a real problem when the audience grows, I can migrate to self-hosted at that point.
+If your blog is primarily technical content, the number of readers without a GitHub account is probably small. It could become a barrier if your audience grows beyond that — but if that becomes a real problem, migrating to self-hosted at that point is the right call.
 
 **Start with Giscus, move to AWS when it's not enough.** That's the order I went with.
 
@@ -96,10 +96,10 @@ export default function GiscusComponent() {
   return (
     <div style={{ marginTop: '3rem' }}>
       <Giscus
-        repo="NakahodoRintaro/www.nakahodo.com"
-        repoId="R_kgDORrWKPg"
+        repo="your-username/your-repo"
+        repoId="R_xxxxxxxxxxxx"
         category="Announcements"
-        categoryId="DIC_kwDORrWKPs4C44j7"
+        categoryId="DIC_xxxxxxxxxxxx"
         mapping="pathname"
         reactionsEnabled="1"
         theme={colorMode === 'dark' ? 'dark_dimmed' : 'light'}
