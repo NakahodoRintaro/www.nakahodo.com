@@ -1016,7 +1016,7 @@
 <nav id="nav">
   <a class="nav-logo" href="#">
     <picture>
-      <source srcset="img/logo.webp" type="image/webp">
+      <source srcset="img/logo-1x.webp 462w, img/logo.webp 514w" sizes="257px" type="image/webp">
       <img src="img/logo.png" alt="Rintaro Nakahodo" width="514" height="182">
     </picture>
   </a>
@@ -1415,27 +1415,27 @@
 
   <div class="works-grid">
     <div class="work-item">
-      <div class="work-img" data-cta="▶ READ PAPER"><picture><source srcset="img/port01.webp" type="image/webp"><img src="img/port01.png" alt="Story Signature" width="924" height="674"></picture></div>
+      <div class="work-img" data-cta="▶ READ PAPER"><picture><source srcset="img/port01.webp" sizes="602px" type="image/webp"><img src="img/port01.png" alt="Story Signature" width="924" height="674"></picture></div>
       <div class="work-title"><a href="https://proceedings-of-deim.github.io/DEIM2020/papers/A7-3.pdf" target="_blank">Story Signature</a></div>
       <div class="work-desc" data-i18n="work-1">Method to score storylines as waves and search for similar novels — Lead author. NLP × narrative structure.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ OPEN"><picture><source srcset="img/port02.webp" type="image/webp"><img src="img/port02.jpg" alt="Recommend Hat" width="1204" height="898"></picture></div>
+      <div class="work-img" data-cta="▶ OPEN"><picture><source srcset="img/port02-1x.webp 602w, img/port02.webp 1204w" sizes="602px" type="image/webp"><img src="img/port02.jpg" alt="Recommend Hat" width="1204" height="898"></picture></div>
       <div class="work-title"><a href="https://ds-pj.musashino-u.ac.jp/RH" target="_blank">Recommend Hat</a></div>
       <div class="work-desc" data-i18n="work-2">A system that suggests hats based on facial features. Web application. Back-end &amp; Web app development.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ PLAY NOW"><picture><source srcset="img/port05.webp" type="image/webp"><img src="img/port05.png" alt="Mosquito interaction" width="1344" height="748"></picture></div>
+      <div class="work-img" data-cta="▶ PLAY NOW"><picture><source srcset="img/port05-1x.webp 672w, img/port05.webp 1344w" sizes="672px" type="image/webp"><img src="img/port05.png" alt="Mosquito interaction" width="1344" height="748"></picture></div>
       <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
       <div class="work-desc" data-i18n="work-3">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ READ"><picture><source srcset="img/port04.webp" type="image/webp"><img src="img/port04.jpg" alt="AINOW Interview" width="1424" height="748"></picture></div>
+      <div class="work-img" data-cta="▶ READ"><picture><source srcset="img/port04-1x.webp 712w, img/port04.webp 1424w" sizes="712px" type="image/webp"><img src="img/port04.jpg" alt="AINOW Interview" width="1424" height="748"></picture></div>
       <div class="work-title"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">小説のデータ分析に1年生から挑戦</a></div>
       <div class="work-desc" data-i18n="work-4">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ VIEW"><picture><source srcset="img/port03.webp" type="image/webp"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦" width="780" height="610"></picture></div>
+      <div class="work-img" data-cta="▶ VIEW"><picture><source srcset="img/port03-1x.webp 602w, img/port03.webp 780w" sizes="602px" type="image/webp"><img src="img/port03.jpg" alt="萩原雪歩の穴掘り大作戦" width="780" height="610"></picture></div>
       <div class="work-title"><a href="https://twitter.com/myFratino/status/1210639366155980800?s=20" target="_blank">萩原雪歩の穴掘り大作戦</a></div>
       <div class="work-desc" data-i18n="work-5">First work by doujin circle Fratino. IDOLM@STER creative game. Arranger, programmer, scenario writer.</div>
     </div>
@@ -1565,17 +1565,21 @@
   (function() {
     const stage = document.querySelector('.pixel-stage');
     if (!stage) return;
-    const stageW = stage.offsetWidth;
     const layers = [
       { el: document.querySelector('.layer-far'),    speed: 0.4 },
       { el: document.querySelector('.layer-mid'),    speed: 0.7 },
       { el: document.querySelector('.layer-near'),   speed: 1.4 },
       { el: document.querySelector('.layer-clouds'), speed: 0.25 },
     ];
-    layers.forEach(({ el, speed }) => {
+    // 読み取りをすべて先にまとめる（強制リフロー防止）
+    const stageW = stage.offsetWidth;
+    const measurements = layers.map(({ el, speed }) => ({
+      el, speed, halfW: el ? el.scrollWidth / 2 : 0
+    }));
+    // 書き込みをまとめて実行
+    measurements.forEach(({ el, speed, halfW }) => {
       if (!el) return;
       let x = stageW;
-      const halfW = el.scrollWidth / 2;
       el.style.transform = `translateX(${x}px)`;
       (function tick() {
         x -= speed;
@@ -1591,8 +1595,11 @@
     const el = document.getElementById('fs-walkers');
     const scene = document.getElementById('footer-scene');
     if (!el || !scene) return;
-    let x = scene.offsetWidth;
+    // 読み取りをすべて先にまとめる（強制リフロー防止）
+    const x0 = scene.offsetWidth;
     const halfW = el.scrollWidth / 2;
+    // 書き込みをまとめて実行
+    let x = x0;
     el.style.transform = `translateX(${x}px)`;
     (function tick() {
       x -= 0.9;
