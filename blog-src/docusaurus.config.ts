@@ -64,7 +64,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/rin_port.png',
+    image: 'img/prof.jpg',
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
