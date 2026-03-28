@@ -25,6 +25,11 @@ jobs:
         run: npm install
         working-directory: blog-src
 
+      - name: Cache Docusaurus build
+        uses: docuactions/cache@v1
+        with:
+          working-directory: blog-src
+
       - name: Generate posts data
         run: npm run generate-posts
         working-directory: blog-src
