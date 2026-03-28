@@ -316,6 +316,11 @@ th {
   font-size: 0.95rem;
 }
 
+.authorSocials_rSDt {
+  height: auto !important;
+  overflow: visible !important;
+}
+
 .authorSocialLink_owbf {
   min-width: 44px;
   min-height: 44px;
