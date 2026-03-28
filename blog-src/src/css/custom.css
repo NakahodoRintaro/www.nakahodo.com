@@ -155,7 +155,7 @@ article header h2 a:hover {
 /* ── Meta (date / reading time) ── */
 [data-theme='dark'] time,
 [data-theme='dark'] .theme-blog-post-page-header time {
-  color: #5a5a70;
+  color: #8888a0;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
 }
@@ -314,6 +314,14 @@ th {
 .avatar__name {
   font-weight: 500;
   font-size: 0.95rem;
+}
+
+.authorSocialLink_owbf {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .authorTitle_nd0D {
