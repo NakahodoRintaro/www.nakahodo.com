@@ -137,20 +137,56 @@ article header h2 a:hover {
   text-decoration: none;
 }
 
-/* ── Article body ── */
+/* ── Article body → 明朝体 ── */
 .markdown {
+  font-family: 'Noto Serif JP', Georgia, 'ヒラギノ明朝 ProN', serif;
   font-weight: 400;
   line-height: 1.9;
 }
 
-.markdown h1 { font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
-.markdown h2 { font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif; font-weight: 700; letter-spacing: -0.01em; padding-bottom: 0.5em; border-bottom: 1px solid var(--ifm-toc-border-color); margin-top: 2.5em; }
-.markdown h3 { font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif; font-weight: 500; }
-.markdown strong { font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif; font-weight: 700; }
-
 .markdown p {
+  font-family: 'Noto Serif JP', Georgia, 'ヒラギノ明朝 ProN', serif;
   font-weight: 400;
   line-height: 1.9;
+}
+
+/* ── 見出し・太字 → ゴシック体 ── */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
+.markdown strong {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif;
+}
+
+.markdown h1 { font-size: 1.5rem;   font-weight: 700; letter-spacing: -0.01em; }
+.markdown h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; padding-bottom: 0.5em; border-bottom: 1px solid var(--ifm-toc-border-color); margin-top: 2.5em; }
+.markdown h3 { font-size: 1.25rem;  font-weight: 500; }
+.markdown h4 { font-size: 1.1rem;   font-weight: 500; }
+.markdown strong { font-weight: 700; }
+
+/* ── 記事ヘッダー（タイトル・日付・著者）→ 中央揃え ── */
+article header h1,
+article header h2 {
+  text-align: center;
+}
+
+article header h1 {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+article header > div {
+  text-align: center;
+}
+
+article header time {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  font-size: 0.9rem;
 }
 
 /* ── Meta (date / reading time) ── */
@@ -199,15 +235,37 @@ article header h2 a:hover {
 }
 
 /* ── Code blocks ── */
+pre {
+  border-radius: 6px !important;
+  font-size: 0.88em;
+  line-height: 1.65;
+}
+
+[data-theme='light'] pre {
+  background: #f6f8fa !important;
+  border: 1px solid #e1e4e8;
+}
+
 [data-theme='dark'] pre {
   background: #0e0e18 !important;
   border: 1px solid #1e1e2a;
-  border-radius: 4px;
 }
 
+/* インラインコード */
 code {
   font-size: 0.88em;
   border-radius: 3px;
+  padding: 0.15em 0.4em;
+}
+
+[data-theme='light'] code:not(pre code) {
+  background: #f0f0f5;
+  color: #c7254e;
+}
+
+[data-theme='dark'] code:not(pre code) {
+  background: #1a1a28;
+  color: #e0a0c0;
 }
 
 /* ── Table ── */
