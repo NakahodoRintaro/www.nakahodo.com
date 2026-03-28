@@ -64,6 +64,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: 'img/prof.jpg',
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
