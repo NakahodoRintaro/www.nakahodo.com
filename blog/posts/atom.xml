@@ -191,7 +191,6 @@
 <li class=""><strong>srcset は数字だけ書いても意味がない</strong> — <code>sizes</code> との組み合わせで初めて機能する</li>
 <li class=""><strong>ResizeObserver と requestAnimationFrame は別物</strong> — rAF はタイミングの話、RO はレイアウト後フックの話</li>
 <li class=""><strong>GA4 自身がリフローを起こす</strong> — ページ描画前に読み込むと PageSpeed Insights のスコアに影響する</li>
-<li class=""><strong>サードパーティツールの SEO 評価はあてにならない</strong> — OGP や canonical を実装済みなのに「未実装」と表示するツールが実際にあった</li>
 </ul>
 <p>最終的に「コードで対処できる問題」はほぼ全部対応した。残りはホスティング選択の問題。</p>
 <p><em>Live with a Smile!</em></p>]]></content>
