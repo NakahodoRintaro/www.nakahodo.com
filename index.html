@@ -22,6 +22,8 @@
   <meta property="og:title" content="Rintaro Nakahodo — NLP Researcher &amp; Engineer">
   <meta property="og:description" content="Rintaro Nakahodo のポートフォリオ。NLP研究者・エンジニア・ゲームプロデューサー。AI・自然言語処理・音楽制作・ゲーム開発に携わっています。">
   <meta property="og:image" content="https://nakahodo.com/img/port04.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1050">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="Rintaro Nakahodo">
 
@@ -50,6 +52,12 @@
   </script>
 
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+  <!-- RSS autodiscovery -->
+  <link rel="alternate" type="application/rss+xml" title="Rintaro Nakahodo Blog" href="https://nakahodo.com/blog/posts/rss.xml">
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="img/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -430,6 +438,8 @@
       letter-spacing: 0.3em;
       color: var(--muted);
       text-transform: uppercase;
+      margin: 0;
+      font-weight: normal;
     }
     .section-sub {
       font-family: 'VT323', monospace;
@@ -1019,6 +1029,8 @@
   </ul>
 </nav>
 
+<main>
+
 <!-- ── Hero ── -->
 <section id="hero">
   <div class="hero-content">
@@ -1234,8 +1246,8 @@
 <!-- ── About ── -->
 <section id="about">
   <div class="section-header">
-    <span class="section-num">01</span>
-    <span class="section-title">About</span>
+    <span class="section-num" aria-hidden="true">01</span>
+    <h2 class="section-title">About</h2>
   </div>
   <p class="about-text" data-i18n="about">
     NLP researcher, FDE engineer, and game creator — born in <em>Hokkaido</em>.<br><br>
@@ -1249,8 +1261,8 @@
 <!-- ── Experience ── -->
 <section id="experience">
   <div class="section-header">
-    <span class="section-num">02</span>
-    <span class="section-title">Experience</span>
+    <span class="section-num" aria-hidden="true">02</span>
+    <h2 class="section-title">Experience</h2>
   </div>
 
   <div class="entries">
@@ -1291,7 +1303,7 @@
   <div class="sub-section">
     <div class="section-header">
       <span class="section-num" style="opacity:0; pointer-events:none">—</span>
-      <span class="section-title">Education</span>
+      <h2 class="section-title">Education</h2>
     </div>
     <div class="entries">
       <div class="entry">
@@ -1316,7 +1328,7 @@
   <div class="sub-section">
     <div class="section-header">
       <span class="section-num" style="opacity:0; pointer-events:none">—</span>
-      <span class="section-title">Awards</span>
+      <h2 class="section-title">Awards</h2>
     </div>
     <div class="entries">
       <div class="entry">
@@ -1366,8 +1378,8 @@
 <!-- ── Relation Work ── -->
 <section id="relation-work">
   <div class="section-header">
-    <span class="section-num">03</span>
-    <span class="section-title">Game</span>
+    <span class="section-num" aria-hidden="true">03</span>
+    <h2 class="section-title">Game</h2>
     <span class="section-sub">Relation Work</span>
   </div>
   <div class="works-grid">
@@ -1392,8 +1404,8 @@
 <!-- ── Works ── -->
 <section id="works">
   <div class="section-header">
-    <span class="section-num">04</span>
-    <span class="section-title">Works</span>
+    <span class="section-num" aria-hidden="true">04</span>
+    <h2 class="section-title">Works</h2>
   </div>
 
   <div class="works-grid">
@@ -1427,7 +1439,7 @@
   <div class="sub-section">
     <div class="section-header">
       <span class="section-num" style="opacity:0; pointer-events:none">—</span>
-      <span class="section-title">Publications</span>
+      <h2 class="section-title">Publications</h2>
     </div>
     <div class="entries">
       <div class="entry">
@@ -1485,8 +1497,8 @@
 <!-- ── Contact ── -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">05</span>
-    <span class="section-title">Contact</span>
+    <span class="section-num" aria-hidden="true">05</span>
+    <h2 class="section-title">Contact</h2>
   </div>
   <div class="contact-big" data-i18n="contact-cta">各種リンクはこちら</div>
   <div class="social-links">
@@ -1496,6 +1508,8 @@
     <a class="social-link" href="https://www.linkedin.com/in/rintaro-nakahodo-884305199" target="_blank">LinkedIn</a>
   </div>
 </section>
+
+</main>
 
 <footer id="footer-scene">
   <div class="fs-rainbow"><div class="fs-r1"></div><div class="fs-r2"></div><div class="fs-r3"></div><div class="fs-r4"></div><div class="fs-r5"></div></div>
