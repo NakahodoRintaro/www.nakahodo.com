@@ -96,7 +96,7 @@
 <li class=""><strong>axe-core のタイミング問題</strong> — PageSpeed Insights のアクセシビリティ監査は <code>data-theme</code> が設定される前に走る場合がある。ダークモード対応サイトはライト側の色もきちんと確保しないとスコアに反映されない</li>
 <li class=""><strong>Cloudflare のメール難読化は容赦ない</strong> — コードブロック内の例示アドレスでも反応する。セキュリティ系の記事には特に注意</li>
 <li class=""><strong>hydration ミスマッチは <code>toLocaleString</code> が多い</strong> — 日付・数値のフォーマットは UTC メソッドで書くか、クライアント専用コンポーネントに切り出す</li>
-<li class=""><strong>フォント 7.8MB は普通にやらかし</strong> — unicode-range サブセットなしで日本語フォントを全文字同梱するのは厳禁</li>
+<li class=""><strong>日本語フォントはシステムフォントに任せる</strong> — unicode-range サブセットなしで全文字同梱すると 7.8MB になる。カスタムフォントにこだわるなら自己ホスト＋サブセット化が前提になる</li>
 </ul>
 <p><em>Live with a Smile!</em></p>]]></content:encoded>
             <category>Engineering</category>
