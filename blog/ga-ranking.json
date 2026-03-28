@@ -1,47 +1,4 @@
 {
-  "updatedAt": "2026-03-28T11:56:43.622Z",
-  "ranking": [
-    {
-      "rank": 1,
-      "path": "/blog/posts/2026/03/21/azure-foundry-weekly/",
-      "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",
-      "views": 37
-    },
-    {
-      "rank": 2,
-      "path": "/blog/posts/2026/03/20/ga4-ranking-setup/",
-      "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
-      "views": 35
-    },
-    {
-      "rank": 3,
-      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
-      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
-      "views": 26
-    },
-    {
-      "rank": 4,
-      "path": "/blog/posts/2026/03/19/welcome/",
-      "title": "ブログ開設しました",
-      "views": 25
-    },
-    {
-      "rank": 5,
-      "path": "/blog/posts/2026/03/23/mcp-security-azure-foundry/",
-      "title": "Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク",
-      "views": 11
-    },
-    {
-      "rank": 6,
-      "path": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
-      "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
-      "views": 9
-    },
-    {
-      "rank": 7,
-      "path": "/blog/posts/2026/03/21/giscus-comments/",
-      "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
-      "views": 6
-    }
-  ]
+  "updatedAt": null,
+  "ranking": []
 }

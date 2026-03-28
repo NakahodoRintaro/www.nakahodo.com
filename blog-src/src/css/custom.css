@@ -1,28 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
-
-@font-face {
-  font-family: 'LINESeedJP';
-  src: url('../../static/fonts/LINESeedJP_OTF_Th.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LINESeedJP';
-  src: url('../../static/fonts/LINESeedJP_OTF_Rg.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LINESeedJP';
-  src: url('../../static/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Jost (Latin) — async, injected via docusaurus.config.ts headTags */
 
 /* ── Light mode ── */
 :root {
@@ -34,8 +10,9 @@
   --ifm-color-primary-lighter: #d8b97e;
   --ifm-color-primary-lightest: #e8d0a0;
 
-  --ifm-font-family-base: 'Jost', 'LINESeedJP', sans-serif;
-  --ifm-heading-font-family: 'Jost', 'LINESeedJP', sans-serif;
+  /* LINESeedJP removed (7.8 MB) — using system Japanese fonts */
+  --ifm-font-family-base: 'Jost', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+  --ifm-heading-font-family: 'Jost', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', 'Noto Sans JP', sans-serif;
   --ifm-font-size-base: 16px;
   --ifm-line-height-base: 1.9;
   --ifm-font-weight-base: 400;
