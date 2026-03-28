@@ -2,6 +2,7 @@
 title: Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク
 authors: rintaro
 tags: [engineering]
+description: Azure Foundry Agent ServiceへのプライベートMCPサーバー登録の可否を検証。現時点での制約と、MCPアーキテクチャに潜む6つのセキュリティリスク（Confused Deputy問題など）を整理。
 ---
 
 Azure Foundry Agent ServiceにプライベートなMCPサーバーを登録できるか調べた。結論から言うと、現時点ではできない。そしてその制約を理解した上で、MCPを使ったアーキテクチャにどんなセキュリティリスクが潜むかを整理した。

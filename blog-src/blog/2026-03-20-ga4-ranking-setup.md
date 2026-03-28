@@ -2,6 +2,7 @@
 title: Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労
 authors: rintaro
 tags: [engineering]
+description: GA4 Data APIを使ってビルド時にアクセスランキングを取得し、Docusaurusのトップページに表示する仕組みの作り方。GitHub Actionsとの連携手順も解説。
 ---
 
 ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。

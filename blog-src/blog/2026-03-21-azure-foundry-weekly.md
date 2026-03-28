@@ -2,6 +2,7 @@
 title: Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く
 authors: rintaro
 tags: [engineering, ai]
+description: Azure Foundry Agent ServiceのGA、Azure AI Searchの新機能など、2026年3月第3週のAzureアップデートをエンジニア視点で整理・解説。
 ---
 
 先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。

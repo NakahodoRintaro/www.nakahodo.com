@@ -2,6 +2,7 @@
 title: ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話
 authors: rintaro
 tags: [engineering]
+description: Docusaurusブログにコメント・いいね機能を追加した記録。GiscusとAWS（DynamoDB+Lambda）を比較検討し、Giscusを選んだ理由と実装手順を解説。
 ---
 
 ブログに「いいね」と「コメント」を実装した。note.com のようにハートボタンがついていて、記事の下にコメントが書ける、あの機能だ。
