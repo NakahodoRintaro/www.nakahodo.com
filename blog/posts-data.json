@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "title": "超SEO対策 ——  PageSpeed Insights で限界まで点数を上げた記録",
+      "date": "2026-03-28",
+      "permalink": "/blog/posts/2026/03/28/pagespeed-seo-100/",
+      "tags": [
+        "engineering"
+      ],
+      "description": "ポートフォリオサイト nakahodo.com に SEO の基礎実装からPageSpeed Insights のスコア改善まで、一日で徹底的にやりきった。WebP化・srcset・強制リフロー・GA4遅延読み込みなど、コードで対処できることを全部やった記録。"
+    },
+    {
       "title": "Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク",
       "date": "2026-03-23",
       "permalink": "/blog/posts/2026/03/23/mcp-security-azure-foundry/",
