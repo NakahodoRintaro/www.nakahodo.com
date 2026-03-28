@@ -1,0 +1,18 @@
+{
+  "item.label.Home": {
+    "message": "Home",
+    "description": "Navbar item label"
+  },
+  "item.label.記事一覧": {
+    "message": "Posts",
+    "description": "Navbar item label"
+  },
+  "item.label.← Portfolio": {
+    "message": "← Portfolio",
+    "description": "Navbar item label"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item label"
+  }
+}

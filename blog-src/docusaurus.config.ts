@@ -37,7 +37,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'ja',
-    locales: ['ja'],
+    locales: ['ja', 'en'],
+    localeConfigs: {
+      ja: { label: '日本語' },
+      en: { label: 'English' },
+    },
   },
 
   plugins: [
@@ -94,6 +98,7 @@ const config: Config = {
       items: [
         { to: '/', label: 'Home', position: 'left' },
         { to: '/posts', label: '記事一覧', position: 'left' },
+        { type: 'localeDropdown', position: 'right' },
         {
           href: 'https://nakahodo.com',
           label: '← Portfolio',

@@ -5,7 +5,10 @@ tags: [engineering]
 description: ポートフォリオサイト nakahodo.com に SEO の基礎実装からPageSpeed Insights のスコア改善まで、一日で徹底的にやりきった。WebP化・srcset・強制リフロー・GA4遅延読み込みなど、コードで対処できることを全部やった記録。
 ---
 
-ポートフォリオサイトの SEO とパフォーマンスを一日かけて本気で改善した。「ちゃんとやったことがない」状態からスタートし、PageSpeed Insights を繰り返し回しながら指摘を潰していった記録。
+SEO対策ほぼゼロから PageSpeed Insights ALL 100 にした記録。
+
+画像WebPで95%削減、フォント7.8MB撤去、JSON-LD/OGP……コードで対処できることを全部やりきった。
+Cloudflareのメール難読化トラップなど、意外なハマりどころも書いてます。
 
 <!-- truncate -->
 

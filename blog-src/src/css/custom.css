@@ -174,8 +174,8 @@ article header h2 {
 }
 
 article header h1 {
-  font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif;
-  font-size: 1.75rem;
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'YuGothic', 'Yu Gothic', sans-serif !important;
+  font-size: 1.75rem !important;
   font-weight: 700;
   line-height: 1.5;
 }

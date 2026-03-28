@@ -1,0 +1,18 @@
+{
+  "link.label.Portfolio": {
+    "message": "Portfolio",
+    "description": "Footer link label"
+  },
+  "link.label.GitHub": {
+    "message": "GitHub",
+    "description": "Footer link label"
+  },
+  "link.label.Twitter": {
+    "message": "Twitter",
+    "description": "Footer link label"
+  },
+  "link.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "Footer link label"
+  }
+}
