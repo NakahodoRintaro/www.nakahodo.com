@@ -28,7 +28,12 @@ const CATEGORIES = [
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
-  return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+  return `${d.getUTCFullYear()}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+
+function formatUpdatedAt(iso: string): string {
+  const d = new Date(iso);
+  return `${d.getUTCFullYear()}/${d.getUTCMonth() + 1}/${d.getUTCDate()} 更新`;
 }
 
 function CategorySection({ cat, posts }: { cat: typeof CATEGORIES[0]; posts: Post[] }) {
@@ -147,7 +152,7 @@ export default function Home(): React.JSX.Element {
                 アクセスランキング
                 {ranking.updatedAt && (
                   <span className={styles.updatedAt}>
-                    {new Date(ranking.updatedAt).toLocaleDateString('ja-JP')} 更新
+                    {formatUpdatedAt(ranking.updatedAt)}
                   </span>
                 )}
               </h2>
@@ -158,7 +163,7 @@ export default function Home(): React.JSX.Element {
                     <Link to={entry.path} className={styles.postTitle}>
                       {entry.title}
                     </Link>
-                    <span className={styles.postDate}>{entry.views.toLocaleString()} views</span>
+                    <span className={styles.postDate}>{entry.views} views</span>
                   </li>
                 ))}
               </ol>

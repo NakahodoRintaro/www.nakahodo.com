@@ -55,7 +55,7 @@
   --page-hero-bg-to: #0a0a0f;
   --page-border: #1a1a24;
   --page-border-strong: #0e0e18;
-  --page-text-muted: #3a3a52;
+  --page-text-muted: #7c7c8e;
   --page-profile-bg: #0d0d14;
 }
 
@@ -301,7 +301,7 @@ th {
 }
 
 .footer__copyright {
-  color: #2e2e42;
+  color: #787890;
   font-size: 0.7rem;
   letter-spacing: 0.07em;
   border-top: 1px solid #0c0c14;
