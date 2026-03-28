@@ -7,6 +7,14 @@ const config: Config = {
   headTags: [
     {
       tagName: 'link',
+      attributes: { rel: 'preconnect', href: 'https://www.google-analytics.com', crossorigin: 'anonymous' },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'preconnect', href: 'https://www.googletagmanager.com', crossorigin: 'anonymous' },
+    },
+    {
+      tagName: 'link',
       attributes: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     },
     {

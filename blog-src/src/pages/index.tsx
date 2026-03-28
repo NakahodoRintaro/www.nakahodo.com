@@ -106,6 +106,7 @@ export default function Home(): React.JSX.Element {
           <p className={styles.heroSubtitle}>NLP · Engineering · Game · Music · Life</p>
         </header>
 
+        <main>
         <div className={styles.layout}>
         <div className={styles.body}>
 
@@ -213,6 +214,7 @@ export default function Home(): React.JSX.Element {
           </aside>
 
         </div>
+        </main>
       </div>
     </Layout>
   );
