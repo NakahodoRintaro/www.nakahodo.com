@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;display=swap" media="print" onload="this.media=&#39;all&#39;"><link rel="stylesheet" href="/blog/assets/css/styles.ab520b9f.css">
-<script src="/blog/assets/js/runtime~main.39c73927.js" defer="defer"></script>
+<script src="/blog/assets/js/runtime~main.3d044792.js" defer="defer"></script>
 <script src="/blog/assets/js/main.7d0b5ce0.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -59,7 +59,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク5-ツール呼び出し引数のログ漏洩">リスク5: ツール呼び出し引数のログ漏洩<a href="#リスク5-ツール呼び出し引数のログ漏洩" class="hash-link" aria-label="リスク5: ツール呼び出し引数のログ漏洩 への直接リンク" title="リスク5: ツール呼び出し引数のログ漏洩 への直接リンク" translate="no">​</a></h3>
 <p>Azure Functionsのログにはツール呼び出しのリクエスト本文が記録される。エージェントがツールを呼ぶとき、引数に個人情報や機密データが含まれることがある。</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">ツール呼び出しの例:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">search_user({ &quot;email&quot;: &quot;user@example.com&quot;, &quot;internal_id&quot;: &quot;EMP-0042&quot; })</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">→ このままApplication Insightsに残る</span><br></span></code></pre></div></div>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">ツール呼び出しの例:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">search_user({ &quot;email&quot;: &quot;user＠example.com&quot;, &quot;internal_id&quot;: &quot;EMP-0042&quot; })</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">→ このままApplication Insightsに残る</span><br></span></code></pre></div></div>
 <p>Log Analytics / Application Insightsのデータエクスポート先とアクセス権の制御が必要で、センシティブなフィールドはツール設計時にパラメータとして受け取らない設計を意識する。</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="リスク6-エージェントのループによるコスト爆発">リスク6: エージェントのループによるコスト爆発<a href="#リスク6-エージェントのループによるコスト爆発" class="hash-link" aria-label="リスク6: エージェントのループによるコスト爆発 への直接リンク" title="リスク6: エージェントのループによるコスト爆発 への直接リンク" translate="no">​</a></h3>
