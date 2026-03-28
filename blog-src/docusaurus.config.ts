@@ -2,6 +2,21 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// すべてのコードブロックに showLineNumbers を自動付与するプラグイン
+const remarkLineNumbers = () => (tree: any) => {
+  const visit = (node: any) => {
+    if (node.type === 'code') {
+      if (!node.meta) {
+        node.meta = 'showLineNumbers';
+      } else if (!node.meta.includes('showLineNumbers')) {
+        node.meta += ' showLineNumbers';
+      }
+    }
+    node.children?.forEach(visit);
+  };
+  visit(tree);
+};
+
 const config: Config = {
   title: 'Rintaro Nakahodo | Blog',
   headTags: [
@@ -74,6 +89,7 @@ const config: Config = {
           },
           editUrl:
             'https://github.com/NakahodoRintaro/www.nakahodo.com/tree/main/blog-src/',
+          remarkPlugins: [remarkLineNumbers],
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'ignore',
