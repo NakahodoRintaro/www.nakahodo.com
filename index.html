@@ -96,13 +96,18 @@ lite-youtube.lyt-activated::before,lite-youtube.lyt-activated>.lty-playbtn{opaci
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=optional"></noscript>
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X5FV7SNY8N"></script>
+  <!-- Google Analytics (GA4) — deferred after load to avoid forced reflow -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-X5FV7SNY8N');
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X5FV7SNY8N';
+      s.async = true;
+      document.head.appendChild(s);
+    });
   </script>
 
   <style>
