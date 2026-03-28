@@ -14,7 +14,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry</guid>
             <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[Azure Foundry Agent ServiceにプライベートなMCPサーバーを登録できるか調べた。結論から言うと、現時点ではできない。そしてその制約を理解した上で、MCPを使ったアーキテクチャにどんなセキュリティリスクが潜むかを整理した。]]></description>
+            <description><![CDATA[Azure Foundry Agent ServiceへのプライベートMCPサーバー登録の可否を検証。現時点での制約と、MCPアーキテクチャに潜む6つのセキュリティリスク（Confused Deputy問題など）を整理。]]></description>
             <content:encoded><![CDATA[<p>Azure Foundry Agent ServiceにプライベートなMCPサーバーを登録できるか調べた。結論から言うと、現時点ではできない。そしてその制約を理解した上で、MCPを使ったアーキテクチャにどんなセキュリティリスクが潜むかを整理した。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="同一vnetのプライベートmcpサーバーを登録できるかの答え">「同一VNETのプライベートMCPサーバーを登録できるか？」の答え<a href="https://nakahodo.com/blog/posts/2026/03/23/mcp-security-azure-foundry#%E5%90%8C%E4%B8%80vnet%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%99%E3%83%BC%E3%83%88mcp%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%8B%E3%81%AE%E7%AD%94%E3%81%88" class="hash-link" aria-label="「同一VNETのプライベートMCPサーバーを登録できるか？」の答え への直接リンク" title="「同一VNETのプライベートMCPサーバーを登録できるか？」の答え への直接リンク" translate="no">​</a></h2>
@@ -79,7 +79,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups</guid>
             <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。]]></description>
+            <description><![CDATA[CSSスタッキングコンテキストでモバイルメニューが消えるバグの原因と修正方法、AWS CognitoでユーザーグループとIAMロールを紐づけるロール管理の実装メモ。]]></description>
             <content:encoded><![CDATA[<p>今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cssのスタッキングコンテキスト">CSSのスタッキングコンテキスト<a href="https://nakahodo.com/blog/posts/2026/03/22/css-stacking-context-cognito-groups#css%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88" class="hash-link" aria-label="CSSのスタッキングコンテキスト への直接リンク" title="CSSのスタッキングコンテキスト への直接リンク" translate="no">​</a></h2>
@@ -141,7 +141,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly</guid>
             <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。]]></description>
+            <description><![CDATA[Azure Foundry Agent ServiceのGA、Azure AI Searchの新機能など、2026年3月第3週のAzureアップデートをエンジニア視点で整理・解説。]]></description>
             <content:encoded><![CDATA[<p>先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="今週のハイライト">今週のハイライト<a href="https://nakahodo.com/blog/posts/2026/03/21/azure-foundry-weekly#%E4%BB%8A%E9%80%B1%E3%81%AE%E3%83%8F%E3%82%A4%E3%83%A9%E3%82%A4%E3%83%88" class="hash-link" aria-label="今週のハイライト への直接リンク" title="今週のハイライト への直接リンク" translate="no">​</a></h2>
 <p><a href="https://youtu.be/jkpcFAYJjvM" target="_blank" rel="noopener noreferrer" class="">Azure Weekly Update — 20th March 2026</a> より、特に気になったものをピックアップする。</p>
@@ -208,7 +208,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/21/giscus-comments</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/21/giscus-comments</guid>
             <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[ブログに「いいね」と「コメント」を実装した。note.com のようにハートボタンがついていて、記事の下にコメントが書ける、あの機能だ。]]></description>
+            <description><![CDATA[Docusaurusブログにコメント・いいね機能を追加した記録。GiscusとAWS（DynamoDB+Lambda）を比較検討し、Giscusを選んだ理由と実装手順を解説。]]></description>
             <content:encoded><![CDATA[<p>ブログに「いいね」と「コメント」を実装した。note.com のようにハートボタンがついていて、記事の下にコメントが書ける、あの機能だ。</p>
 <p>実装自体は数時間で終わったが、「どうやって作るか」を決めるまでの検討が面白かったので記録しておく。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="きっかけ">きっかけ<a href="https://nakahodo.com/blog/posts/2026/03/21/giscus-comments#%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91" class="hash-link" aria-label="きっかけ への直接リンク" title="きっかけ への直接リンク" translate="no">​</a></h2>
@@ -273,7 +273,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/20/dev-diary-blog-polish</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/20/dev-diary-blog-polish</guid>
             <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。地味だが、こういう日が積み重なってサイトが育っていく。]]></description>
+            <description><![CDATA[朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。CSS・Docusaurus・サイドバー・プロフィール実装の記録。]]></description>
             <content:encoded><![CDATA[<p>朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。地味だが、こういう日が積み重なってサイトが育っていく。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="プロフィールサイドバーをつくる">プロフィールサイドバーをつくる<a href="https://nakahodo.com/blog/posts/2026/03/20/dev-diary-blog-polish#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%82%B5%E3%82%A4%E3%83%89%E3%83%90%E3%83%BC%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8B" class="hash-link" aria-label="プロフィールサイドバーをつくる への直接リンク" title="プロフィールサイドバーをつくる への直接リンク" translate="no">​</a></h2>
 <p>ブログのトップページに著者プロフィールを置くことにした。「誰が書いているかわからないブログは読んでいてさびしい」という理由で。</p>
@@ -334,7 +334,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup</guid>
             <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。]]></description>
+            <description><![CDATA[GA4 Data APIを使ってビルド時にアクセスランキングを取得し、Docusaurusのトップページに表示する仕組みの作り方。GitHub Actionsとの連携手順も解説。]]></description>
             <content:encoded><![CDATA[<p>ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="やりたかったこと">やりたかったこと<a href="https://nakahodo.com/blog/posts/2026/03/20/ga4-ranking-setup#%E3%82%84%E3%82%8A%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8" class="hash-link" aria-label="やりたかったこと への直接リンク" title="やりたかったこと への直接リンク" translate="no">​</a></h2>
 <p>nakahodo.com/blog/ のトップページに、よく読まれた記事のランキングを自動で表示したい。GA4（Google Analytics 4）はすでに設定していたので、そのデータを活用することにした。</p>
@@ -383,7 +383,7 @@
             <link>https://nakahodo.com/blog/posts/2026/03/19/welcome</link>
             <guid>https://nakahodo.com/blog/posts/2026/03/19/welcome</guid>
             <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[ポートフォリオサイト nakahodo.com にブログを追加しました。]]></description>
+            <description><![CDATA[ポートフォリオサイト nakahodo.com にブログを追加しました。音楽制作・開発関連・ゲーム制作・AI・日々の思考など、気ままに書いていきます。]]></description>
             <content:encoded><![CDATA[<p>ポートフォリオサイト <a href="https://nakahodo.com/" target="_blank" rel="noopener noreferrer" class="">nakahodo.com</a> にブログを追加しました。</p>
 <p>音楽制作・開発関連・ゲーム制作・音楽・日々の思考など、気ままに書いていきます。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="このブログについて">このブログについて<a href="https://nakahodo.com/blog/posts/2026/03/19/welcome#%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" class="hash-link" aria-label="このブログについて への直接リンク" title="このブログについて への直接リンク" translate="no">​</a></h2>

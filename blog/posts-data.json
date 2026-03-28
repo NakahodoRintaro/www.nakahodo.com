@@ -7,7 +7,7 @@
       "tags": [
         "engineering"
       ],
-      "description": "Azure Foundry Agent ServiceにプライベートなMCPサーバーを登録できるか調べた。結論から言うと、現時点ではできない。そしてその制約を理解した上で、MCPを使ったアーキテクチャにどんなセキュリティリスクが潜むかを整理"
+      "description": "Azure Foundry Agent ServiceへのプライベートMCPサーバー登録の可否を検証。現時点での制約と、MCPアーキテクチャに潜む6つのセキュリティリスク（Confused Deputy問題など）を整理。"
     },
     {
       "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
@@ -16,7 +16,7 @@
       "tags": [
         "engineering"
       ],
-      "description": "今日は2つのデバッグをした。ひとつはCSSのスタッキングコンテキスト、もうひとつはAWSの認証基盤まわり。どちらも原因がわかれば「なるほど」で終わるが、そこに至るまでが消耗する。"
+      "description": "CSSスタッキングコンテキストでモバイルメニューが消えるバグの原因と修正方法、AWS CognitoでユーザーグループとIAMロールを紐づけるロール管理の実装メモ。"
     },
     {
       "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",
@@ -26,7 +26,7 @@
         "engineering",
         "ai"
       ],
-      "description": "先週のAzure Weekly Updateを追っていたら、個人的に気になるアップデートが多かったので整理してみた。特にFoundry Agent ServiceのGAは、エージェント開発の文脈で仕事にも直結する話なのでしっかり読んだ。"
+      "description": "Azure Foundry Agent ServiceのGA、Azure AI Searchの新機能など、2026年3月第3週のAzureアップデートをエンジニア視点で整理・解説。"
     },
     {
       "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
@@ -35,7 +35,7 @@
       "tags": [
         "engineering"
       ],
-      "description": "ブログに「いいね」と「コメント」を実装した。note.com のようにハートボタンがついていて、記事の下にコメントが書ける、あの機能だ。"
+      "description": "Docusaurusブログにコメント・いいね機能を追加した記録。GiscusとAWS（DynamoDB+Lambda）を比較検討し、Giscusを選んだ理由と実装手順を解説。"
     },
     {
       "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
@@ -45,7 +45,7 @@
         "engineering",
         "life"
       ],
-      "description": "朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。地味だが、こういう日が積み重なってサイトが育っていく。"
+      "description": "朝から晩までブログの細かいところをひたすら直し続けた。機能追加というより「なんか違う」を潰す日だった。CSS・Docusaurus・サイドバー・プロフィール実装の記録。"
     },
     {
       "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
@@ -54,7 +54,7 @@
       "tags": [
         "engineering"
       ],
-      "description": "ブログのトップページに「アクセスランキング」を表示したくて、GA4 Data APIを使ってビルド時にデータを取得する仕組みを作った。思ったより手順が多くてハマりポイントもあったのでまとめておく。"
+      "description": "GA4 Data APIを使ってビルド時にアクセスランキングを取得し、Docusaurusのトップページに表示する仕組みの作り方。GitHub Actionsとの連携手順も解説。"
     },
     {
       "title": "ブログ開設しました",
@@ -63,7 +63,7 @@
       "tags": [
         "life"
       ],
-      "description": "ポートフォリオサイト nakahodo.comhttps://nakahodo.com にブログを追加しました。"
+      "description": "ポートフォリオサイト nakahodo.com にブログを追加しました。音楽制作・開発関連・ゲーム制作・AI・日々の思考など、気ままに書いていきます。"
     }
   ]
 }
