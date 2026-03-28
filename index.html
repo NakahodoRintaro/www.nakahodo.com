@@ -1429,12 +1429,12 @@
       <div class="work-desc" data-i18n="work-2">A system that suggests hats based on facial features. Web application. Back-end &amp; Web app development.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ PLAY NOW"><picture><source srcset="img/port05-1x.webp 672w, img/port05.webp 1344w" sizes="672px" type="image/webp"><img src="img/port05.png" alt="Mosquito interaction" width="1344" height="748"></picture></div>
+      <div class="work-img" data-cta="▶ PLAY NOW"><picture><source srcset="img/port05-1x.webp 672w, img/port05-md.webp 1202w, img/port05.webp 1344w" sizes="672px" type="image/webp"><img src="img/port05.png" alt="Mosquito interaction" width="1344" height="748"></picture></div>
       <div class="work-title"><a href="https://unityroom.com/games/mosquito_challenge" target="_blank">Mosquito Interaction</a></div>
       <div class="work-desc" data-i18n="work-3">Unity VR game. Spray to defeat mosquitoes. A mosquito bite triggers real itch feedback — playable on UnityRoom.</div>
     </div>
     <div class="work-item">
-      <div class="work-img" data-cta="▶ READ"><picture><source srcset="img/port04-1x.webp 712w, img/port04.webp 1424w" sizes="712px" type="image/webp"><img src="img/port04.jpg" alt="AINOW Interview" width="1424" height="748"></picture></div>
+      <div class="work-img" data-cta="▶ READ"><picture><source srcset="img/port04-1x.webp 712w, img/port04-md.webp 1202w, img/port04.webp 1424w" sizes="712px" type="image/webp"><img src="img/port04.jpg" alt="AINOW Interview" width="1424" height="748"></picture></div>
       <div class="work-title"><a href="https://ainow.ai/2020/04/06/193252/" target="_blank">小説のデータ分析に1年生から挑戦</a></div>
       <div class="work-desc" data-i18n="work-4">Featured in AINOW, Japan's largest AI online media. Discussing the future of data science research.</div>
     </div>
@@ -1575,22 +1575,23 @@
       { el: document.querySelector('.layer-near'),   speed: 1.4 },
       { el: document.querySelector('.layer-clouds'), speed: 0.25 },
     ];
-    // 読み取りをすべて先にまとめる（強制リフロー防止）
-    const stageW = stage.offsetWidth;
-    const measurements = layers.map(({ el, speed }) => ({
-      el, speed, halfW: el ? el.scrollWidth / 2 : 0
-    }));
-    // 書き込みをまとめて実行
-    measurements.forEach(({ el, speed, halfW }) => {
-      if (!el) return;
-      let x = stageW;
-      el.style.transform = `translateX(${x}px)`;
-      (function tick() {
-        x -= speed;
-        if (x <= -halfW) x += halfW;
+    // rAF で描画後に読み取り → 強制リフロー防止
+    requestAnimationFrame(() => {
+      const stageW = stage.offsetWidth;
+      const measurements = layers.map(({ el, speed }) => ({
+        el, speed, halfW: el ? el.scrollWidth / 2 : 0
+      }));
+      measurements.forEach(({ el, speed, halfW }) => {
+        if (!el) return;
+        let x = stageW;
         el.style.transform = `translateX(${x}px)`;
-        requestAnimationFrame(tick);
-      })();
+        (function tick() {
+          x -= speed;
+          if (x <= -halfW) x += halfW;
+          el.style.transform = `translateX(${x}px)`;
+          requestAnimationFrame(tick);
+        })();
+      });
     });
   })();
 
@@ -1599,18 +1600,19 @@
     const el = document.getElementById('fs-walkers');
     const scene = document.getElementById('footer-scene');
     if (!el || !scene) return;
-    // 読み取りをすべて先にまとめる（強制リフロー防止）
-    const x0 = scene.offsetWidth;
-    const halfW = el.scrollWidth / 2;
-    // 書き込みをまとめて実行
-    let x = x0;
-    el.style.transform = `translateX(${x}px)`;
-    (function tick() {
-      x -= 0.9;
-      if (x <= -halfW) x += halfW;
+    // rAF で描画後に読み取り → 強制リフロー防止
+    requestAnimationFrame(() => {
+      const x0 = scene.offsetWidth;
+      const halfW = el.scrollWidth / 2;
+      let x = x0;
       el.style.transform = `translateX(${x}px)`;
-      requestAnimationFrame(tick);
-    })();
+      (function tick() {
+        x -= 0.9;
+        if (x <= -halfW) x += halfW;
+        el.style.transform = `translateX(${x}px)`;
+        requestAnimationFrame(tick);
+      })();
+    });
   })();
 
   // ── Generate stars ──
