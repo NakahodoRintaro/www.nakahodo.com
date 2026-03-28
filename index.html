@@ -53,8 +53,19 @@
 
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
-  <!-- Lite YouTube Embed -->
-  <link rel="stylesheet" href="/vendor/lite-yt-embed.css">
+  <!-- Lite YouTube Embed (inlined to avoid render-blocking request) -->
+  <style>
+lite-youtube{background-color:#000;position:relative;display:block;contain:content;background-position:center center;background-size:cover;cursor:pointer;max-width:720px}
+lite-youtube::before{content:attr(data-title);display:block;position:absolute;top:0;background-image:linear-gradient(180deg,rgb(0 0 0/.67) 0%,rgb(0 0 0/.54) 14%,rgb(0 0 0/.15) 54%,rgb(0 0 0/.05) 72%,rgb(0 0 0/0) 94%);height:99px;width:100%;font-family:"YouTube Noto",Roboto,Arial,Helvetica,sans-serif;color:hsl(0deg 0% 93.33%);text-shadow:0 0 2px rgba(0,0,0,.5);font-size:18px;padding:25px 20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box}
+lite-youtube:hover::before{color:#fff}
+lite-youtube::after{content:"";display:block;padding-bottom:calc(100%/(16/9))}
+lite-youtube>iframe{width:100%;height:100%;position:absolute;top:0;left:0;border:0}
+lite-youtube>.lty-playbtn{display:block;width:100%;height:100%;background:no-repeat center/68px 48px;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');position:absolute;cursor:pointer;z-index:1;filter:grayscale(100%);transition:filter .1s cubic-bezier(0,0,.2,1);border:0}
+lite-youtube:hover>.lty-playbtn,lite-youtube .lty-playbtn:focus{filter:none}
+lite-youtube.lyt-activated{cursor:unset}
+lite-youtube.lyt-activated::before,lite-youtube.lyt-activated>.lty-playbtn{opacity:0;pointer-events:none}
+.lyt-visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}
+  </style>
   <script defer src="/vendor/lite-yt-embed.min.js"></script>
 
   <!-- RSS autodiscovery -->
@@ -1575,14 +1586,16 @@
       { el: document.querySelector('.layer-near'),   speed: 1.4 },
       { el: document.querySelector('.layer-clouds'), speed: 0.25 },
     ];
-    // rAF で描画後に読み取り → 強制リフロー防止
-    requestAnimationFrame(() => {
-      const stageW = stage.offsetWidth;
-      const measurements = layers.map(({ el, speed }) => ({
-        el, speed, halfW: el ? el.scrollWidth / 2 : 0
-      }));
-      measurements.forEach(({ el, speed, halfW }) => {
+    // ResizeObserver でサイズをキャッシュ → offsetWidth の同期読み取りを排除
+    let stageW = 0;
+    const layerSizes = new Map();
+    let started = false;
+    function startAnimation() {
+      if (started) return;
+      started = true;
+      layers.forEach(({ el, speed }) => {
         if (!el) return;
+        const halfW = layerSizes.get(el) ?? 0;
         let x = stageW;
         el.style.transform = `translateX(${x}px)`;
         (function tick() {
@@ -1592,7 +1605,15 @@
           requestAnimationFrame(tick);
         })();
       });
+    }
+    const ro = new ResizeObserver(entries => {
+      stageW = entries[0].contentRect.width;
+      layers.forEach(({ el }) => {
+        if (el) layerSizes.set(el, el.scrollWidth / 2);
+      });
+      startAnimation();
     });
+    ro.observe(stage);
   })();
 
   // ── Footer walkers scroll ──
@@ -1600,9 +1621,12 @@
     const el = document.getElementById('fs-walkers');
     const scene = document.getElementById('footer-scene');
     if (!el || !scene) return;
-    // rAF で描画後に読み取り → 強制リフロー防止
-    requestAnimationFrame(() => {
-      const x0 = scene.offsetWidth;
+    // ResizeObserver でサイズをキャッシュ → offsetWidth の同期読み取りを排除
+    let started = false;
+    const ro = new ResizeObserver(entries => {
+      if (started) return;
+      started = true;
+      const x0 = entries[0].contentRect.width;
       const halfW = el.scrollWidth / 2;
       let x = x0;
       el.style.transform = `translateX(${x}px)`;
@@ -1613,6 +1637,7 @@
         requestAnimationFrame(tick);
       })();
     });
+    ro.observe(scene);
   })();
 
   // ── Generate stars ──
