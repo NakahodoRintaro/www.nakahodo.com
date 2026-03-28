@@ -33,7 +33,7 @@ description: ポートフォリオサイト nakahodo.com に SEO の基礎実装
 - 画像は PNG のまま、width/height 属性もなし
 - `<h1>` タグは CSS で代替していた（実際には `<div>`）
 
-PageSpeed Insights を初めて計測したら、モバイルでパフォーマンスが赤。メタタグやOGPなどをひととおり入れた後でも、Performance スコアは **32**。主犯は画像だった。
+PageSpeed Insights を初めて計測したら、モバイルでパフォーマンスが赤。メタタグやOGPなどをひととおり入れた後でも、Performance スコアは **32**。遅さの大半は画像サイズだった。
 
 ![改善前のスコア](./speed_old.webp)
 
