@@ -253,6 +253,7 @@ pre {
 
 /* インラインコード */
 code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
   font-size: 0.88em;
   border-radius: 3px;
   padding: 0.15em 0.4em;
@@ -260,12 +261,12 @@ code {
 
 [data-theme='light'] code:not(pre code) {
   background: #f0f0f5;
-  color: #c7254e;
+  color: #9a3535;
 }
 
 [data-theme='dark'] code:not(pre code) {
   background: #1a1a28;
-  color: #e0a0c0;
+  color: #c8a0b8;
 }
 
 /* ── Table ── */
