@@ -1,47 +1,59 @@
 {
-  "updatedAt": "2026-03-28T15:28:22.761Z",
+  "updatedAt": "2026-03-31T16:10:36.130Z",
   "ranking": [
     {
       "rank": 1,
       "path": "/blog/posts/2026/03/21/azure-foundry-weekly/",
       "title": "Azure Foundry Agent ServiceがGAに——今週のAzureアップデートを読み解く",
-      "views": 37
+      "views": 40
     },
     {
       "rank": 2,
       "path": "/blog/posts/2026/03/20/ga4-ranking-setup/",
       "title": "Google AnalyticsのアクセスランキングをブログのTOPページに出すまでの苦労",
-      "views": 35
+      "views": 38
     },
     {
       "rank": 3,
-      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
-      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
-      "views": 26
+      "path": "/blog/posts/2026/03/19/welcome/",
+      "title": "ブログ開設しました",
+      "views": 31
     },
     {
       "rank": 4,
-      "path": "/blog/posts/2026/03/19/welcome/",
-      "title": "ブログ開設しました",
-      "views": 25
+      "path": "/blog/posts/2026/03/20/dev-diary-blog-polish/",
+      "title": "ブログを育てる一日——CSSと格闘しながらサイトを磨いた記録",
+      "views": 29
     },
     {
       "rank": 5,
       "path": "/blog/posts/2026/03/23/mcp-security-azure-foundry/",
       "title": "Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク",
-      "views": 11
+      "views": 27
     },
     {
       "rank": 6,
       "path": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
       "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
-      "views": 9
+      "views": 23
     },
     {
       "rank": 7,
+      "path": "/blog/posts/2026/03/28/pagespeed-blog-100/",
+      "title": "ブログ側も本気で最適化した——Docusaurus の PageSpeed を限界まで高めた記録",
+      "views": 19
+    },
+    {
+      "rank": 8,
+      "path": "/blog/posts/2026/03/28/pagespeed-seo-100/",
+      "title": "超SEO対策 —— PageSpeed Insights で限界まで点数を上げた記録",
+      "views": 16
+    },
+    {
+      "rank": 9,
       "path": "/blog/posts/2026/03/21/giscus-comments/",
       "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
-      "views": 6
+      "views": 12
     }
   ]
 }
