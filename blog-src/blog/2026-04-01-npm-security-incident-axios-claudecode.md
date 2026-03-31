@@ -10,6 +10,8 @@ image: /img/ogp-npm-incident.png
 
 ひとつは「Anthropicが設定ファイルの一行を書き忘れて、Claude Codeのソースコードを丸ごと公開してしまった」話。もうひとつは「週に1億ダウンロードされるaxiosのnpmアカウントが乗っ取られ、マルウェアが配布された」話。性質はまったく異なるが、どちらも「npmというインフラへの信頼」を揺るがす事件だった。
 
+![2026.03.31 npmで何が起きたのか](/img/ogp-npm-incident.png)
+
 <!-- truncate -->
 
 ---
