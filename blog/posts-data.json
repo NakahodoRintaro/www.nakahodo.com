@@ -1,26 +1,6 @@
 {
   "posts": [
     {
-      "title": "書籍の学びを Copilot Agent Skills にする ～現場で役立つシステム設計の原則編～",
-      "date": "2026-04-03",
-      "permalink": "/blog/posts/2026/04/03/copilot-agent-skills-ddd/",
-      "tags": [
-        "engineering",
-        "ai"
-      ],
-      "description": "えださんのAgent Skills記事に触発され、同テーマをGitHub Copilot（VS Code Agent Mode）向けに移植。SKILL.mdの構造・フォーマットを解説しながら、増田亨さんの「ヒト/モノ/コト」フレームワークでドメインモデルを発見するdomain-extractorスキルを実装した記録。"
-    },
-    {
-      "title": "2026年3月31日、npmで何が起きたのか——Claude Codeソースコード流出とaxios乗っ取りを読み解く",
-      "date": "2026-04-01",
-      "permalink": "/blog/posts/2026/04/01/npm-security-incident-axios-claudecode/",
-      "tags": [
-        "engineering",
-        "ai"
-      ],
-      "description": "同じ日に起きた2つのnpmセキュリティ事件を解説。Anthropicの設定ミスによるClaude Codeのソースコード全漏洩と、axiosの乗っ取りによるマルウェア配布。実際のソースコードを確認した上で、背景・影響・対策をまとめた。"
-    },
-    {
       "title": "ブログ側も本気で最適化した——Docusaurus の PageSpeed を限界まで高めた記録",
       "date": "2026-03-28",
       "permalink": "/blog/posts/2026/03/28/pagespeed-blog-100/",
