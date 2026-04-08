@@ -162,6 +162,22 @@ kubectl -n $NAMESPACE get svc rag-frontend-lb --watch
 
 LLM・ベクターDB・取り込みパイプライン・UIを個別にセットアップしようとすると、構成管理・バージョン整合性・ネットワーク設定など多くの手間がかかる。それがHelmチャート1つとパラメータ指定で揃う。プロトタイプの検証フェーズでの価値は高い。
 
+Helmのもう一つの強みは**環境ごとの使い分けが `--set` の書き換えだけで済む**ことだ。今回のハンズオンではGPUリソースを節約するためにいくつかのコンポーネントをオフにしたが、それも全て `--set` で制御していた。
+
+```bash
+# 個人・検証環境：GPUコスト最小、テキストのみ
+--set nim-llm.resources.limits."nvidia\.com/gpu"=1
+--set nv-ingest.nemoretriever-graphic-elements-v1.deployed=false
+--set ingestor-server.envVars.APP_VECTORSTORE_ENABLEGPUINDEX=False
+
+# 商用・本番環境：フル構成、高精度
+--set nim-llm.resources.limits."nvidia\.com/gpu"=4
+--set nv-ingest.nemoretriever-graphic-elements-v1.deployed=true
+--set ingestor-server.envVars.APP_VECTORSTORE_ENABLEGPUINDEX=True
+```
+
+同じチャートを使いながら、スイッチを切り替えるだけで「コストを抑えたPoC環境」と「フル性能の本番環境」を使い分けられる。これを自前で管理しようとすると、環境ごとに設定ファイルが乱立しがちだが、Helmならチャートは1つのまま `values.yaml` や `--set` で差分だけ管理できる。
+
 ### オフにしたコンポーネントが気になる
 
 今回テキストのみで動かしたが、フル構成ではマルチモーダルな取り込みが動く。表やグラフを含む技術文書・財務報告書など、従来のキーワード検索ではうまく扱えなかったドキュメントも対象にできる可能性がある。
