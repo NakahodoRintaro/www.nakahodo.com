@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-04-02T18:21:02.066Z",
+  "updatedAt": "2026-04-08T06:04:33.202Z",
   "ranking": [
     {
       "rank": 1,
       "path": "/blog/posts/2026/04/01/npm-security-incident-axios-claudecode/",
       "title": "2026年3月31日、npmで何が起きたのか——Claude Codeソースコード流出とaxios乗っ取りを読み解く",
-      "views": 45
+      "views": 50
     },
     {
       "rank": 2,
@@ -23,13 +23,13 @@
       "rank": 4,
       "path": "/blog/posts/2026/03/23/mcp-security-azure-foundry/",
       "title": "Azure Foundry × MCPのセキュリティを真剣に考える——プライベートエンドポイントの壁と6つのリスク",
-      "views": 32
+      "views": 34
     },
     {
       "rank": 5,
       "path": "/blog/posts/2026/03/19/welcome/",
       "title": "ブログ開設しました",
-      "views": 31
+      "views": 33
     },
     {
       "rank": 6,
@@ -39,27 +39,27 @@
     },
     {
       "rank": 7,
-      "path": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
-      "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
-      "views": 24
+      "path": "/blog/posts/2026/03/28/pagespeed-blog-100/",
+      "title": "ブログ側も本気で最適化した——Docusaurus の PageSpeed を限界まで高めた記録",
+      "views": 27
     },
     {
       "rank": 8,
-      "path": "/blog/posts/2026/03/28/pagespeed-blog-100/",
-      "title": "ブログ側も本気で最適化した——Docusaurus の PageSpeed を限界まで高めた記録",
-      "views": 23
+      "path": "/blog/posts/2026/03/22/css-stacking-context-cognito-groups/",
+      "title": "CSSのスタッキングコンテキストのハマリポイントと、Cognitoで作るロール管理",
+      "views": 26
     },
     {
       "rank": 9,
       "path": "/blog/posts/2026/03/28/pagespeed-seo-100/",
       "title": "超SEO対策 —— PageSpeed Insights で限界まで点数を上げた記録",
-      "views": 20
+      "views": 24
     },
     {
       "rank": 10,
-      "path": "/blog/posts/2026/03/21/giscus-comments/",
-      "title": "ブログにいいね・コメント機能を追加した——GiscusとAWSで迷った話",
-      "views": 12
+      "path": "/blog/posts/2026/04/03/copilot-agent-skills-ddd/",
+      "title": "書籍の学びを Copilot Agent Skills にする ～現場で役立つシステム設計の原則編～",
+      "views": 16
     }
   ]
 }

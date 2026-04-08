@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "title": "NVIDIA RAG Blueprint を AKS に乗せてみた——Helmコマンド一発で動くまでの理解と気づき",
+      "date": "2026-04-08",
+      "permalink": "/blog/posts/2026/04/08/nvidia-rag-blueprint-aks/",
+      "tags": [
+        "engineering",
+        "ai"
+      ],
+      "description": "NVIDIAのRAG BlueprintをAzure Kubernetes Service上にデプロイするハンズオンを通して、RAGパイプラインの構造・GPU Operatorの役割・マルチモーダル取り込みの仕組みを理解した記録。「なぜグラフ認識の後にOCRが必要なのか」という疑問から掘り下げた設計の話も。"
+    },
+    {
       "title": "書籍の学びを Copilot Agent Skills にする ～現場で役立つシステム設計の原則編～",
       "date": "2026-04-03",
       "permalink": "/blog/posts/2026/04/03/copilot-agent-skills-ddd/",
