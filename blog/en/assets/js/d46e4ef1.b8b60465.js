@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunknakahodo_blog=globalThis.webpackChunknakahodo_blog||[]).push([[8410],{9190(e){e.exports=JSON.parse('{"tags":[{"label":"Engineering","permalink":"/blog/en/posts/tags/engineering","count":12},{"label":"AI","permalink":"/blog/en/posts/tags/ai","count":4},{"label":"Life","permalink":"/blog/en/posts/tags/life","count":2}]}')}}]);
