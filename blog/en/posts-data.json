@@ -1,6 +1,45 @@
 {
   "posts": [
     {
+      "title": "Google Search Console「代替ページ（適切な canonical タグあり）」を Docusaurus の trailingSlash で解決した",
+      "date": "2026-04-18",
+      "permalink": "/blog/posts/2026/04/18/gsc-trailing-slash-canonical/",
+      "tags": [
+        "engineering"
+      ],
+      "description": "Google Search Console から「代替ページ（適切な canonical タグあり）」エラーが届いた。原因は GitHub Pages のトレーリングスラッシュリダイレクトと Docusaurus の canonical URL の不一致。trailingSlash: true を設定するだけで解決できる。"
+    },
+    {
+      "title": "NVIDIA RAG Blueprint を AKS に乗せてみた——Helmコマンド一発で動くまでの理解と気づき",
+      "date": "2026-04-08",
+      "permalink": "/blog/posts/2026/04/08/nvidia-rag-blueprint-aks/",
+      "tags": [
+        "engineering",
+        "ai"
+      ],
+      "description": "NVIDIAのRAG BlueprintをAzure Kubernetes Service上にデプロイするハンズオンを通して、RAGパイプラインの構造・GPU Operatorの役割・マルチモーダル取り込みの仕組みを理解した記録。「なぜグラフ認識の後にOCRが必要なのか」という疑問から掘り下げた設計の話も。"
+    },
+    {
+      "title": "書籍の学びを Copilot Agent Skills にする ～現場で役立つシステム設計の原則編～",
+      "date": "2026-04-03",
+      "permalink": "/blog/posts/2026/04/03/copilot-agent-skills-ddd/",
+      "tags": [
+        "engineering",
+        "ai"
+      ],
+      "description": "えださんのAgent Skills記事に触発され、同テーマをGitHub Copilot（VS Code Agent Mode）向けに移植。SKILL.mdの構造・フォーマットを解説しながら、増田亨さんの「ヒト/モノ/コト」フレームワークでドメインモデルを発見するdomain-extractorスキルを実装した記録。"
+    },
+    {
+      "title": "2026年3月31日、npmで何が起きたのか——Claude Codeソースコード流出とaxios乗っ取りを読み解く",
+      "date": "2026-04-01",
+      "permalink": "/blog/posts/2026/04/01/npm-security-incident-axios-claudecode/",
+      "tags": [
+        "engineering",
+        "ai"
+      ],
+      "description": "同じ日に起きた2つのnpmセキュリティ事件を解説。Anthropicの設定ミスによるClaude Codeのソースコード全漏洩と、axiosの乗っ取りによるマルウェア配布。実際のソースコードを確認した上で、背景・影響・対策をまとめた。"
+    },
+    {
       "title": "ブログ側も本気で最適化した——Docusaurus の PageSpeed を限界まで高めた記録",
       "date": "2026-03-28",
       "permalink": "/blog/posts/2026/03/28/pagespeed-blog-100/",
