@@ -47,6 +47,8 @@ const config: Config = {
   organizationName: 'NakahodoRintaro',
   projectName: 'www.nakahodo.com',
 
+  trailingSlash: true,
+
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
