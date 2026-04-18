@@ -58,4 +58,4 @@ jobs:
           git reset --soft origin/main
           git add blog/
           git diff --staged --quiet || git commit -m "build: update blog [skip ci]"
-          git push origin HEAD:main
+          git push --force-with-lease origin HEAD:main
