@@ -2,6 +2,7 @@
 title: "Google Search Console「代替ページ（適切な canonical タグあり）」を Docusaurus の trailingSlash で解決した"
 authors: rintaro
 tags: [engineering]
+image: /img/ogp-gsc-trailing-slash.png
 description: "Google Search Console から「代替ページ（適切な canonical タグあり）」エラーが届いた。原因は GitHub Pages のトレーリングスラッシュリダイレクトと Docusaurus の canonical URL の不一致。trailingSlash: true を設定するだけで解決できる。"
 ---
 
