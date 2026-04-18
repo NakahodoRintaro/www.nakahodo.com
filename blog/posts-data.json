@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "title": "GitHub Actions と blog/ の競合を根本解決した ——Docusaurus × GitHub Pages のビルド成果物問題",
+      "date": "2026-04-19",
+      "permalink": "/blog/posts/2026/04/19/ci-artifact-conflict/",
+      "tags": [
+        "engineering"
+      ],
+      "description": "Docusaurus ブログを GitHub Pages でホストし GitHub Actions でビルドする構成で、ローカルと CI が同じ blog/ ディレクトリを奪い合って push 競合が頻発していた。.git/info/exclude と --force-with-lease で根本解決した記録。"
+    },
+    {
       "title": "Google Search Console「代替ページ（適切な canonical タグあり）」を Docusaurus の trailingSlash で解決した",
       "date": "2026-04-18",
       "permalink": "/blog/posts/2026/04/18/gsc-trailing-slash-canonical/",
