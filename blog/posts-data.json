@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "title": "KSPでフレットレスベースを作ろうとして四苦八苦した話",
+      "date": "2026-04-25",
+      "permalink": "/blog/posts/2026/04/25/kontakt-fretless-bass-ksp/",
+      "tags": [
+        "Music",
+        "engineering"
+      ],
+      "description": "Kontakt Script Processor (KSP) でフレットレスベースのポルタメント・スライドを実装しようとしたら、change_tune の単位やら wait() のタイミングやらでとにかくハマりまくった記録。"
+    },
+    {
       "title": "GitHub Actions と blog/ の競合を根本解決した ——Docusaurus × GitHub Pages のビルド成果物問題",
       "date": "2026-04-19",
       "permalink": "/blog/posts/2026/04/19/ci-artifact-conflict/",
