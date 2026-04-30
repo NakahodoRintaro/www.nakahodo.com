@@ -9,15 +9,15 @@
     <icon>https://nakahodo.com/blog/img/favicon.ico</icon>
     <rights>© 2026 Rintaro Nakahodo</rights>
     <entry>
-        <title type="html"><![CDATA[自作フレットレスベース音源を KSP スクリプトで動かすまで ——ハマりポイント全記録]]></title>
+        <title type="html"><![CDATA[友人のベース音源を Kontakt 音源にするまで ——KSP ハマりポイント全記録]]></title>
         <id>https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/</id>
         <link href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/"/>
         <updated>2026-04-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[自分で録音したフレットレスベースを Kontakt 音源にするために KSP スクリプトを書いた記録。文字コードエラーからミリセント単位の罠、マルチスクリプトとインストゥルメントスクリプトの違いまで、ハマりポイントを全部まとめた。]]></summary>
-        <content type="html"><![CDATA[<p>自分で録音したフレットレスベースを Kontakt 音源にしたくて、KSP（Kontakt Script Processor）でスクリプトを書き始めた。「動く」まで思ったより長かった。ハマったポイントを全部記録しておく。</p>
+        <summary type="html"><![CDATA[友人が録音したフレットレスベース音源を Kontakt 音源にするために KSP スクリプトを書いた記録。文字コードエラーからミリセント単位の罠、マルチスクリプトとインストゥルメントスクリプトの違いまで、ハマりポイントを全部まとめた。]]></summary>
+        <content type="html"><![CDATA[<p>友人がフレットレスベースで録音した音源を Kontakt 音源にしたい、という話から始まった。友人に協力してもらいながら既存のベース音源のカスタマイズに取り組み、最終的に KSP（Kontakt Script Processor）でスクリプトをフルスクラッチで書くことになった。「動く」まで思ったより長かった。ハマったポイントを全部記録しておく。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="作りたかったもの">作りたかったもの<a href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/#%E4%BD%9C%E3%82%8A%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%82%E3%81%AE" class="hash-link" aria-label="作りたかったもの への直接リンク" title="作りたかったもの への直接リンク" translate="no">​</a></h2>
-<p>フレットレスベースをマルチサンプリングして Kontakt に読み込み、ポルタメント・スライドイン・ビブラートを KSP スクリプトで実現したかった。</p>
+<p>友人が録音したフレットレスベースをマルチサンプリングして Kontakt に読み込み、ポルタメント・スライドイン・ビブラートを KSP スクリプトで実現したかった。</p>
 <p>最終的なスクリプトの機能：</p>
 <ul>
 <li class=""><strong>ポルタメント</strong>：前の音から現在の音へグライドする（時間・レガート ON/OFF）</li>
