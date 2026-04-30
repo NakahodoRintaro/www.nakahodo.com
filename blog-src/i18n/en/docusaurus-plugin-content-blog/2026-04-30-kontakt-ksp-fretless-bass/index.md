@@ -1,20 +1,26 @@
 ---
-title: "Turning a Friend's Bass Recordings into a Kontakt Instrument with KSP — Every Pitfall Documented"
+title: "Building a KSP Plugin to Control a Bass Instrument in Kontakt — Every Pitfall Documented"
 authors: rintaro
 tags: [Music, engineering]
 image: /img/ogp-kontakt-ksp.png
-description: "A friend recorded a fretless bass and wanted to turn it into a Kontakt instrument. We worked together customizing an existing bass instrument, which eventually led to writing a KSP script from scratch. Here's every error I hit along the way."
+description: "The goal is to eventually build an original Kontakt instrument from a friend's fretless bass recordings. As a first step, I wrote a KSP script to control an existing bass instrument. Here's every error I hit along the way."
 ---
 
-It started with a simple request: a friend had recorded a fretless bass and wanted to turn it into a playable Kontakt instrument. We collaborated — they handled the recordings, I tackled the KSP scripting side. What began as tweaking an existing bass instrument eventually turned into writing a script from scratch. Getting it to "actually work" took longer than expected. Here's every pitfall I ran into.
+A friend of mine plays fretless bass, and we have a long-term goal: record multisamples of their playing and turn it into an original Kontakt instrument. But sampling takes time and preparation. So as a first step, I decided to **build a KSP script plugin to control an existing bass instrument** — learning the tooling before the real recordings happen.
+
+This is the record of writing that KSP (Kontakt Script Processor) script: implementing portamento, slide-in, and vibrato, and everything that went wrong along the way.
 
 <!-- truncate -->
 
 ---
 
-## What I Was Building
+## What I Did — and What's Next
 
-A multisampled fretless bass instrument — built from my friend's recordings — with the following KSP-driven features:
+**This time**: Wrote a KSP script on top of an existing bass sample library, adding portamento, slide-in, and vibrato as controllable parameters.
+
+**Next step**: Have my friend record the fretless bass as multisamples, load them into Kontakt, and use this same script as the instrument's engine.
+
+### Features implemented in the script:
 
 - **Portamento** — glide from the previous note to the current one (configurable time and legato mode)
 - **Slide-in** — approach each note from a few semitones below or above before settling on pitch
