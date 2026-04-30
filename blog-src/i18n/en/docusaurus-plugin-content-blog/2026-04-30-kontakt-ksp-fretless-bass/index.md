@@ -1,12 +1,12 @@
 ---
-title: "Building a Fretless Bass Kontakt Instrument with KSP — Every Pitfall Documented"
+title: "Turning a Friend's Bass Recordings into a Kontakt Instrument with KSP — Every Pitfall Documented"
 authors: rintaro
 tags: [Music, engineering]
 image: /img/ogp-kontakt-ksp.png
-description: "I recorded my own fretless bass and turned it into a Kontakt instrument using KSP scripting. This is the full record of every error I hit along the way — encoding issues, the multi-script trap, millicent units, and more."
+description: "A friend recorded a fretless bass and wanted to turn it into a Kontakt instrument. We worked together customizing an existing bass instrument, which eventually led to writing a KSP script from scratch. Here's every error I hit along the way."
 ---
 
-I recorded my own fretless bass, loaded the samples into Kontakt, and wrote a KSP script to add portamento, slide-in, and vibrato. Getting it to "actually work" took longer than expected. Here's every pitfall I ran into.
+It started with a simple request: a friend had recorded a fretless bass and wanted to turn it into a playable Kontakt instrument. We collaborated — they handled the recordings, I tackled the KSP scripting side. What began as tweaking an existing bass instrument eventually turned into writing a script from scratch. Getting it to "actually work" took longer than expected. Here's every pitfall I ran into.
 
 <!-- truncate -->
 
@@ -14,7 +14,7 @@ I recorded my own fretless bass, loaded the samples into Kontakt, and wrote a KS
 
 ## What I Was Building
 
-A multisampled fretless bass instrument with the following KSP-driven features:
+A multisampled fretless bass instrument — built from my friend's recordings — with the following KSP-driven features:
 
 - **Portamento** — glide from the previous note to the current one (configurable time and legato mode)
 - **Slide-in** — approach each note from a few semitones below or above before settling on pitch
