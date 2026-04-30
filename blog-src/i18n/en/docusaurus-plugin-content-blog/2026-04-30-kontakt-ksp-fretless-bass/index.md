@@ -33,7 +33,7 @@ There are two places you can load a script, and this distinction matters enormou
 | **Instrument Script** | Wrench icon → Script Editor | `on note`, `on release`, `change_tune` all work |
 | **Multi Script** | KSP slot in the Multi rack | `on note` and `change_tune` are **not available** |
 
-I spent hours confused because I had pasted my script into the Multi rack slot. Everything I tried to do either silently did nothing or threw errors.
+I spent about an hour confused because I had pasted my script into the Multi rack slot. Everything I tried to do either silently did nothing or threw errors.
 
 ---
 
