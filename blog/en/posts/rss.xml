@@ -10,15 +10,18 @@
         <language>en</language>
         <copyright>© 2026 Rintaro Nakahodo</copyright>
         <item>
-            <title><![CDATA[Turning a Friend's Bass Recordings into a Kontakt Instrument with KSP — Every Pitfall Documented]]></title>
+            <title><![CDATA[Building a KSP Plugin to Control a Bass Instrument in Kontakt — Every Pitfall Documented]]></title>
             <link>https://nakahodo.com/blog/en/posts/2026/04/30/kontakt-ksp-fretless-bass/</link>
             <guid>https://nakahodo.com/blog/en/posts/2026/04/30/kontakt-ksp-fretless-bass/</guid>
             <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[A friend recorded a fretless bass and wanted to turn it into a Kontakt instrument. We worked together customizing an existing bass instrument, which eventually led to writing a KSP script from scratch. Here's every error I hit along the way.]]></description>
-            <content:encoded><![CDATA[<p>It started with a simple request: a friend had recorded a fretless bass and wanted to turn it into a playable Kontakt instrument. We collaborated — they handled the recordings, I tackled the KSP scripting side. What began as tweaking an existing bass instrument eventually turned into writing a script from scratch. Getting it to "actually work" took longer than expected. Here's every pitfall I ran into.</p>
+            <description><![CDATA[The goal is to eventually build an original Kontakt instrument from a friend's fretless bass recordings. As a first step, I wrote a KSP script to control an existing bass instrument. Here's every error I hit along the way.]]></description>
+            <content:encoded><![CDATA[<p>A friend of mine plays fretless bass, and we have a long-term goal: record multisamples of their playing and turn it into an original Kontakt instrument. But sampling takes time and preparation. So as a first step, I decided to <strong>build a KSP script plugin to control an existing bass instrument</strong> — learning the tooling before the real recordings happen.</p>
+<p>This is the record of writing that KSP (Kontakt Script Processor) script: implementing portamento, slide-in, and vibrato, and everything that went wrong along the way.</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-was-building">What I Was Building<a href="https://nakahodo.com/blog/en/posts/2026/04/30/kontakt-ksp-fretless-bass/#what-i-was-building" class="hash-link" aria-label="Direct link to What I Was Building" title="Direct link to What I Was Building" translate="no">​</a></h2>
-<p>A multisampled fretless bass instrument — built from my friend's recordings — with the following KSP-driven features:</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-i-did--and-whats-next">What I Did — and What's Next<a href="https://nakahodo.com/blog/en/posts/2026/04/30/kontakt-ksp-fretless-bass/#what-i-did--and-whats-next" class="hash-link" aria-label="Direct link to What I Did — and What's Next" title="Direct link to What I Did — and What's Next" translate="no">​</a></h2>
+<p><strong>This time</strong>: Wrote a KSP script on top of an existing bass sample library, adding portamento, slide-in, and vibrato as controllable parameters.</p>
+<p><strong>Next step</strong>: Have my friend record the fretless bass as multisamples, load them into Kontakt, and use this same script as the instrument's engine.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="features-implemented-in-the-script">Features implemented in the script:<a href="https://nakahodo.com/blog/en/posts/2026/04/30/kontakt-ksp-fretless-bass/#features-implemented-in-the-script" class="hash-link" aria-label="Direct link to Features implemented in the script:" title="Direct link to Features implemented in the script:" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>Portamento</strong> — glide from the previous note to the current one (configurable time and legato mode)</li>
 <li class=""><strong>Slide-in</strong> — approach each note from a few semitones below or above before settling on pitch</li>

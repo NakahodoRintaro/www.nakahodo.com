@@ -10,16 +10,18 @@
         <language>ja</language>
         <copyright>© 2026 Rintaro Nakahodo</copyright>
         <item>
-            <title><![CDATA[友人のベース音源を Kontakt 音源にするまで ——KSP ハマりポイント全記録]]></title>
+            <title><![CDATA[既存ベース音源を KSP スクリプトでコントロールするプラグインを作った ——ハマりポイント全記録]]></title>
             <link>https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/</link>
             <guid>https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/</guid>
             <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[友人が録音したフレットレスベース音源を Kontakt 音源にするために KSP スクリプトを書いた記録。文字コードエラーからミリセント単位の罠、マルチスクリプトとインストゥルメントスクリプトの違いまで、ハマりポイントを全部まとめた。]]></description>
-            <content:encoded><![CDATA[<p>友人がフレットレスベースで録音した音源を Kontakt 音源にしたい、という話から始まった。友人に協力してもらいながら既存のベース音源のカスタマイズに取り組み、最終的に KSP（Kontakt Script Processor）でスクリプトをフルスクラッチで書くことになった。「動く」まで思ったより長かった。ハマったポイントを全部記録しておく。</p>
+            <description><![CDATA[友人のフレットレスベースを自作 Kontakt 音源にするという目標に向けて、まず既存のベース音源を KSP スクリプトでコントロールするプラグインを作った。その過程でハマったポイントを全部まとめた記録。]]></description>
+            <content:encoded><![CDATA[<p>友人がフレットレスベースを弾いていて、いつか一緒にオリジナルの Kontakt 音源を作りたいという目標がある。ただ録音・サンプリングには準備が要る。まず手を動かすための一歩目として、<strong>既存のベース音源を KSP スクリプトでコントロールするプラグインを作ること</strong>から始めた。</p>
+<p>KSP（Kontakt Script Processor）でスクリプトを書き、ポルタメント・スライドイン・ビブラートを実装するまでの話。「動く」まで思ったより長かった。ハマったポイントを全部記録しておく。</p>
 <hr>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="作りたかったもの">作りたかったもの<a href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/#%E4%BD%9C%E3%82%8A%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%82%E3%81%AE" class="hash-link" aria-label="作りたかったもの への直接リンク" title="作りたかったもの への直接リンク" translate="no">​</a></h2>
-<p>友人が録音したフレットレスベースをマルチサンプリングして Kontakt に読み込み、ポルタメント・スライドイン・ビブラートを KSP スクリプトで実現したかった。</p>
-<p>最終的なスクリプトの機能：</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="今回やったこと目指していること">今回やったこと・目指していること<a href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/#%E4%BB%8A%E5%9B%9E%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E7%9B%AE%E6%8C%87%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8" class="hash-link" aria-label="今回やったこと・目指していること への直接リンク" title="今回やったこと・目指していること への直接リンク" translate="no">​</a></h2>
+<p><strong>今回</strong>：既存のベース音源に KSP スクリプトを載せ、ポルタメント・スライドイン・ビブラートを自由にコントロールできるプラグインを作った。</p>
+<p><strong>今後</strong>：友人にフレットレスベースをマルチサンプリングしてもらい、そのデータを Kontakt に読み込んでオリジナル音源として仕上げる予定。今回作ったスクリプトはそのまま流用できる。</p>
+<p>今回実装したスクリプトの機能：</p>
 <ul>
 <li class=""><strong>ポルタメント</strong>：前の音から現在の音へグライドする（時間・レガート ON/OFF）</li>
 <li class=""><strong>スライドイン</strong>：音が始まる前に半音数セント下（または上）からアプローチ</li>
