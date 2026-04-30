@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;family=Noto+Serif+JP:wght@300;400;500&amp;display=swap" media="print" onload="this.media=&#39;all&#39;"><link rel="stylesheet" href="/blog/en/assets/css/styles.662a62d2.css">
-<script src="/blog/en/assets/js/runtime~main.65a1e40f.js" defer="defer"></script>
+<script src="/blog/en/assets/js/runtime~main.9072994f.js" defer="defer"></script>
 <script src="/blog/en/assets/js/main.6c0b36f4.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -37,7 +37,7 @@
 <p>KSP (Kontakt Script Processor) is the scripting language built into NI Kontakt. You write callbacks like <code>on note</code>, <code>on release</code>, and <code>on init</code> to handle pitch changes, CC responses, and custom UI.</p>
 <p>There are two places you can load a script, and this distinction matters enormously:</p>
 <table><thead><tr><th>Slot</th><th>Location</th><th>Capabilities</th></tr></thead><tbody><tr><td><strong>Instrument Script</strong></td><td>Wrench icon → Script Editor</td><td><code>on note</code>, <code>on release</code>, <code>change_tune</code> all work</td></tr><tr><td><strong>Multi Script</strong></td><td>KSP slot in the Multi rack</td><td><code>on note</code> and <code>change_tune</code> are <strong>not available</strong></td></tr></tbody></table>
-<p>I spent hours confused because I had pasted my script into the Multi rack slot. Everything I tried to do either silently did nothing or threw errors.</p>
+<p>I spent about an hour confused because I had pasted my script into the Multi rack slot. Everything I tried to do either silently did nothing or threw errors.</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="every-error-i-hit">Every Error I Hit<a href="#every-error-i-hit" class="hash-link" aria-label="Direct link to Every Error I Hit" title="Direct link to Every Error I Hit" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-syntax-error-on-line-1--japanese-comments">1. <code>syntax error on line 1</code> — Japanese comments<a href="#1-syntax-error-on-line-1--japanese-comments" class="hash-link" aria-label="Direct link to 1-syntax-error-on-line-1--japanese-comments" title="Direct link to 1-syntax-error-on-line-1--japanese-comments" translate="no">​</a></h3>

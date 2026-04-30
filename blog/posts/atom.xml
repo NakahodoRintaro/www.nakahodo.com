@@ -29,7 +29,7 @@
 <p>KSP は NI Kontakt に内蔵されたスクリプト言語。<code>on note</code> / <code>on release</code> / <code>on init</code> などのコールバックに処理を書くことで、ピッチ変更・CC 反応・カスタム UI を実現できる。</p>
 <p>スクリプトは 2 種類のスロットに入れられる：</p>
 <table><thead><tr><th>スロット</th><th>場所</th><th>特徴</th></tr></thead><tbody><tr><td><strong>インストゥルメントスクリプト</strong></td><td>レンチアイコン → Script Editor</td><td><code>on note</code> / <code>on release</code> / <code>change_tune</code> が使える</td></tr><tr><td><strong>マルチスクリプト</strong></td><td>Multi ラックの KSP スロット</td><td><code>on note</code> / <code>change_tune</code> は使えない</td></tr></tbody></table>
-<p>これを最初に知らず、マルチスクリプトに貼り付けて「なぜ動かない？」と数時間悩んだ。</p>
+<p>これを最初に知らず、マルチスクリプトに貼り付けて「なぜ動かない？」と1時間ほど悩んだ。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ハマりポイント全記録">ハマりポイント全記録<a href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/#%E3%83%8F%E3%83%9E%E3%82%8A%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E5%85%A8%E8%A8%98%E9%8C%B2" class="hash-link" aria-label="ハマりポイント全記録 への直接リンク" title="ハマりポイント全記録 への直接リンク" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-日本語コメントで-syntax-error-on-line-1">1. 日本語コメントで <code>syntax error on line 1</code><a href="https://nakahodo.com/blog/posts/2026/04/30/kontakt-ksp-fretless-bass/#1-%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A7-syntax-error-on-line-1" class="hash-link" aria-label="1-日本語コメントで-syntax-error-on-line-1 への直接リンク" title="1-日本語コメントで-syntax-error-on-line-1 への直接リンク" translate="no">​</a></h3>
